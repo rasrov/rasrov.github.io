@@ -59,7 +59,7 @@ for (const [cardIndex, card] of [...document.querySelectorAll('.hall-result')].e
     const galleryTitle = title.includes(year) ? title : `${title} · ${year}`;
     const slides = card.querySelector('.hall-slides');
     const photoElements = [...(slides?.querySelectorAll('img') || [])];
-    const photos = photoElements.map(image => ({ src: image.getAttribute('src'), alt: image.alt }));
+    const photos = photoElements.map(image => ({ src: image.dataset.fullSrc || image.getAttribute('src'), alt: image.alt }));
     if (!photos.length) continue;
     slides.remove();
     const details = document.createElement('div');
@@ -73,9 +73,15 @@ for (const [cardIndex, card] of [...document.querySelectorAll('.hall-result')].e
     preview.setAttribute('aria-label', `Abrir galería de ${galleryTitle}`);
     preview.setAttribute('aria-expanded', 'false');
     preview.setAttribute('aria-controls', `hall-gallery-${cardIndex}`);
-    preview.innerHTML = '<img src="" alt="" loading="lazy"><span>Ver fotos <span aria-hidden="true">↗</span></span>';
+    preview.innerHTML = '<span>Ver fotos <span aria-hidden="true">↗</span></span>';
+    const previewImage = photoElements[0].cloneNode();
+    previewImage.removeAttribute('class');
+    previewImage.hidden = false;
+    previewImage.alt = '';
+    previewImage.sizes = '(max-width: 900px) 40vw, 240px';
+    preview.prepend(previewImage);
 
-    preview.querySelector('img').src = photos[0].src;
+
 
     const gallery = document.createElement('div');
     gallery.className = 'hall-gallery';

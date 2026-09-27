@@ -124,3 +124,17 @@ for (const button of document.querySelectorAll('[data-copy-code]')) {
 
 new ResizeObserver(scheduleUpdate).observe(document.querySelector('main'));
 
+
+// Load third-party Instagram embeds only near their section.
+const instagramSection = document.querySelector('#contenido');
+if (instagramSection) {
+    const instagramObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some(entry => entry.isIntersecting)) return;
+        observer.disconnect();
+        const script = document.createElement('script');
+        script.src = 'https://www.instagram.com/embed.js';
+        script.async = true;
+        document.body.append(script);
+    }, { rootMargin: '600px' });
+    instagramObserver.observe(instagramSection);
+}
