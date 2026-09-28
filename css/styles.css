@@ -1214,3 +1214,8 @@ html.hall-viewer-open {
 .skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; padding: 12px 18px; background: #fff; color: #111; transform: translateY(-160%); }
 .skip-link:focus { transform: translateY(0); }
 a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.youtube-date { display: block; margin-top: 8px; color: #62625d; font-size: 12px; }
+@media (min-width: 768px) and (max-width: 1100px) {
+    .youtube-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

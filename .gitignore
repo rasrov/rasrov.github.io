@@ -1,2 +1,8 @@
 ## IDE
 .idea/
+# Local Python and build output
+__pycache__/
+*.pyc
+_site/
+.env
+.env.*
