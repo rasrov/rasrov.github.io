@@ -3,15 +3,34 @@ hallViewer.className = 'hall-viewer';
 hallViewer.setAttribute('aria-labelledby', 'hall-viewer-title');
 hallViewer.innerHTML = `
     <header><h2 id="hall-viewer-title"></h2><button type="button" class="viewer-close" aria-label="Cerrar imagen ampliada" autofocus>×</button></header>
-    <img class="viewer-photo" alt="" draggable="false">
-    <div class="viewer-controls"><button type="button" class="viewer-prev" aria-label="Foto anterior">←</button><span class="viewer-counter" aria-live="polite" aria-atomic="true"></span><button type="button" class="viewer-next" aria-label="Foto siguiente">→</button></div>`;
+    <div class="viewer-stage"><img class="viewer-photo" alt="" draggable="false"></div>
+    <div class="viewer-controls"><button type="button" class="viewer-zoom" aria-label="Ampliar imagen al doble" aria-pressed="false">+</button><button type="button" class="viewer-prev" data-nav-direction="previous" aria-label="Foto anterior"></button><span class="viewer-counter" aria-live="polite" aria-atomic="true"></span><button type="button" class="viewer-next" data-nav-direction="next" aria-label="Foto siguiente"></button></div>`;
 document.body.append(hallViewer);
 let viewerState = null;
+const viewerStage = hallViewer.querySelector('.viewer-stage');
+const zoomButton = hallViewer.querySelector('.viewer-zoom');
+function resetViewerZoom() {
+    viewerStage.classList.remove('is-zoomed');
+    viewerStage.scrollTo(0, 0);
+    zoomButton.setAttribute('aria-pressed', 'false');
+    zoomButton.setAttribute('aria-label', 'Ampliar imagen al doble');
+    zoomButton.textContent = '+';
+}
+zoomButton.addEventListener('click', () => {
+    if (viewerStage.classList.contains('is-zoomed')) { resetViewerZoom(); return; }
+    viewerStage.classList.add('is-zoomed');
+    zoomButton.setAttribute('aria-pressed', 'true');
+    zoomButton.setAttribute('aria-label', 'Ajustar imagen a la pantalla');
+    zoomButton.textContent = '−';
+    viewerStage.scrollTo((viewerStage.scrollWidth - viewerStage.clientWidth) / 2,
+        (viewerStage.scrollHeight - viewerStage.clientHeight) / 2);
+});
 function renderHallViewer(index) {
     if (!viewerState) return;
     viewerState.index = (index + viewerState.photos.length) % viewerState.photos.length;
     const entry = viewerState.photos[viewerState.index];
     const image = hallViewer.querySelector('.viewer-photo');
+    resetViewerZoom();
     image.src = entry.src;
     image.alt = entry.alt;
     hallViewer.querySelector('.viewer-counter').textContent = `${viewerState.index + 1} / ${viewerState.photos.length}`;
@@ -40,10 +59,11 @@ hallViewer.addEventListener('close', () => {
 });
 let viewerTouch = null;
 hallViewer.addEventListener('pointerdown', (event) => {
+    if (viewerStage.classList.contains('is-zoomed') || (window.visualViewport?.scale || 1) > 1 || !event.isPrimary) { viewerTouch = null; return; }
     if (event.pointerType === 'touch' && event.target.matches('.viewer-photo')) viewerTouch = { x: event.clientX, y: event.clientY };
 });
 hallViewer.addEventListener('pointerup', (event) => {
-    if (!viewerTouch || !viewerState) return;
+    if (!viewerTouch || !viewerState || viewerStage.classList.contains('is-zoomed') || (window.visualViewport?.scale || 1) > 1) { viewerTouch = null; return; }
     const dx = event.clientX - viewerTouch.x;
     const dy = event.clientY - viewerTouch.y;
     viewerTouch = null;
@@ -96,9 +116,9 @@ for (const [cardIndex, card] of [...document.querySelectorAll('.hall-result')].e
         <div class="hall-gallery-heading"><span></span></div>
         <button class="hall-expand" type="button" aria-label="Ver imágenes en grande" title="Ver en grande"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6"/></svg></button><button class="hall-close" type="button" aria-label="Cerrar galería">×</button>
         <div class="hall-gallery-controls">
-            <button class="hall-prev" type="button" aria-label="Foto anterior">←</button>
+            <button class="hall-prev" data-nav-direction="previous" type="button" aria-label="Foto anterior"></button>
             <span class="hall-counter" aria-live="polite" aria-atomic="true"></span>
-            <button class="hall-next" type="button" aria-label="Foto siguiente">→</button>
+            <button class="hall-next" data-nav-direction="next" type="button" aria-label="Foto siguiente"></button>
         </div>`;
     gallery.querySelector('.hall-gallery-heading span').textContent = galleryTitle;
     gallery.prepend(slides);

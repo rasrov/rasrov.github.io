@@ -43,9 +43,22 @@ class InstagramTests(unittest.TestCase):
         result = ig.replace_posts(page, [post(i) for i in range(1,4)])
         self.assertTrue(result.startswith("YouTube unchanged"))
         self.assertTrue(result.endswith("Sponsors unchanged"))
-        self.assertEqual(result.count('class="instagram-media"'),3)
+        self.assertEqual(result.count('class="social-card"'),3)
         self.assertEqual(result.count('class="social-post"'),3)
         self.assertEqual(result,ig.replace_posts(result,[post(i) for i in range(1,4)]))
+
+    def test_previews_and_fallback(self):
+        items = [post(i) for i in range(1,4)]
+        items[0]["media_url"] = "https://scontent.cdninstagram.com/photo.jpg?a=1&b=2"
+        items[1].update(media_type="VIDEO", media_url="https://scontent.cdninstagram.com/video.mp4", thumbnail_url="https://scontent.cdninstagram.com/thumb.jpg")
+        items[2]["media_url"] = "https://cdninstagram.com.evil.test/photo.jpg"
+        result = ig.replace_posts(ig.START + ig.END, items)
+        self.assertEqual(result.count('class="social-image"'), 2)
+        self.assertIn("a=1&amp;b=2", result)
+        self.assertIn("thumb.jpg", result)
+        self.assertNotIn("video.mp4", result)
+        self.assertNotIn("evil.test", result)
+        self.assertEqual(result.count('class="social-fallback"'), 3)
 
     def test_failure_leaves_existing_files_untouched(self):
         with tempfile.TemporaryDirectory() as folder:

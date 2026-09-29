@@ -17,8 +17,8 @@ Mantener una única landing y conservar su diseño, carruseles y ampliación de 
 - [x] Preparar un inventario que relacione cada original con sus variantes y configurar srcset y sizes, con src de respaldo. Estas tareas pueden hacerse antes de S3.
 - [x] Revisar dimensiones y carga diferida del resto de las imágenes; usar una versión adecuada de mayor resolución al ampliar fotografías.
 - [x] Comprobar en navegador las siete galerías: apertura, cambio de foto, cierre, ampliación, teclado y controles táctiles; verificar el diseño en móvil y escritorio.
-- [x] Medir las descargas locales y confirmar que las fotos inactivas no se descargan antes de abrir la galería; diferir Instagram hasta acercarse a su sección y conservar la carga diferida de YouTube.
-- [ ] Comprobar reproducción y carga real de Instagram y YouTube en GitHub Pages; los servicios externos se aislaron en las pruebas locales.
+- [x] Medir las descargas locales y confirmar que las fotos inactivas no se descargan antes de abrir la galería; usar carga diferida nativa en las imágenes de Instagram y conservar la carga diferida de YouTube.
+- [ ] Comprobar las nuevas tarjetas de Instagram y la reproducción de YouTube en GitHub Pages tras publicar los últimos cambios; las imágenes de Instagram ya cargan en el navegador local.
 - [x] Revisar foco al abrir/cerrar galerías, navegación con flechas, Escape, gesto táctil y ausencia de desbordamiento a 390 y 1440 px; añadir enlace para saltar al contenido y foco visible.
 - [ ] Completar auditoría de accesibilidad con lector de pantalla y contraste sobre fotografías y contenido externo.
 
@@ -55,15 +55,18 @@ La optimización facilita el descubrimiento y la comprensión del contenido, per
 ## Siguientes mejoras propuestas
 
 - [ ] Priorizar revisión en un móvil real: legibilidad, botones, menú, desplazamiento entre secciones, galerías y velocidad con datos móviles.
-- [ ] Completar la revisión de accesibilidad y embeds publicada pendiente arriba.
+- [ ] Completar la revisión de accesibilidad y contenido externo publicado pendiente arriba.
 - [ ] Añadir contacto profesional para colaboraciones o patrocinio cuando el usuario facilite un correo autorizado.
 - [x] Preparar sección de seis publicaciones de YouTube, incluidos Shorts, con consulta de uploads mediante API y despliegue cada seis horas. Guía: docs/youtube.md.
 - [x] Activar YouTube Data API v3 y guardar YOUTUBE_API_KEY; funcionamiento confirmado por el usuario.
 - [x] Activar la automatización de YouTube en GitHub Actions; el usuario confirmó que funciona.
 - [x] Probar Business Discovery para kim_angel con Facebook Login; consulta correcta compartida por el usuario.
-- [x] Preparar actualizador de tres embeds de Instagram y añadirlo al horario de GitHub Actions. Guía: docs/instagram.md.
-- [ ] Obtener/comprobar token de usuario de larga duración y guardar INSTAGRAM_ACCESS_TOKEN en GitHub Secrets antes de subir el workflow actualizado.
-- [ ] Ejecutar el workflow y verificar los embeds de Instagram publicados; registrar vencimiento del token para renovar el acceso.
+- [x] Preparar actualizador de tres publicaciones de Instagram y añadirlo al horario de GitHub Actions. Guía: docs/instagram.md.
+- [x] Obtener token de usuario de larga duración y guardar INSTAGRAM_ACCESS_TOKEN en GitHub Secrets; configuración y actualización correcta confirmadas por el usuario.
+- [x] Ejecutar el workflow de Instagram: primera actualización correcta confirmada por el usuario.
+- [x] Sustituir embeds por tarjetas propias 4:5 con imágenes remotas, iconos por tipo y enlace a Instagram; diseño aprobado por el usuario.
+- [ ] Publicar y verificar las nuevas tarjetas en GitHub Pages.
+- [ ] Registrar la fecha exacta de vencimiento del token de Instagram y renovarlo antes de que caduque; duración aproximada indicada por el usuario: dos meses.
 - [ ] Valorar centralizar datos de campeonatos, patrocinadores y publicaciones para facilitar el mantenimiento sin perder el HTML rastreable.
 
 
@@ -71,14 +74,16 @@ La optimización facilita el descubrimiento y la comprensión del contenido, per
 
 - Seis tarjetas precargadas con publicaciones reales recuperadas del feed del canal; última publicación de la selección: 27/09/2026.
 - Actualizador con siete pruebas unitarias aprobadas: orden, duplicados, contenido no disponible, Shorts sin filtro de duración, paginación y escape HTML/errores sin secretos.
-- Cuadrícula comprobada a 1440, 900 y 390 px (3/2/1 columnas), sin errores JavaScript ni desbordamiento. Servicios externos aislados: reproducción y API real pendientes de activación.
-- Workflow genera HTML y JSON durante el despliegue, sin commits automáticos. Un fallo conserva la web publicada. La configuración remota de Pages no se ha modificado.
+- Cuadrícula comprobada a 1440, 900 y 390 px (3/2/1 columnas), sin errores JavaScript ni desbordamiento. Servicios externos aislados en aquella prueba local. La API y la automatización se activaron posteriormente y el usuario confirmó su funcionamiento; queda la comprobación de reproducción publicada.
+- Workflow genera HTML y JSON durante el despliegue, sin commits automáticos. Un fallo conserva la web publicada. Pages utiliza GitHub Actions; funcionamiento confirmado por el usuario.
 
 ## Instagram — 29/09/2026
 
 - Instantánea de tres publicaciones obtenida de la respuesta válida del usuario. No se guardaron tokens ni captions ni medios locales.
-- Trece pruebas de los actualizadores de YouTube e Instagram aprobadas, incluidos fallos sin sobrescritura y credenciales fuera de las URLs/logs.
-- Cambios locales preparados; sin commit, push ni modificación de secretos. La llamada real desde Actions queda pendiente de configurar INSTAGRAM_ACCESS_TOKEN.
+- Catorce pruebas de los actualizadores de YouTube e Instagram aprobadas, incluidos fallos sin sobrescritura, selección de miniaturas, respaldo sin imagen y credenciales fuera de las URLs/logs.
+- Token configurado y llamada real desde Actions completada correctamente, según confirmación del usuario.
+- Tarjetas propias comprobadas con Edge a 1440 y 390 px: las tres imágenes remotas cargan y las tarjetas mantienen dimensiones uniformes. No se carga embed.js.
+- Últimos cambios de tarjetas preparados en local; publicación pendiente de confirmar. Las URLs temporales de imágenes se renuevan en cada ejecución del actualizador; si fallan, permanece el enlace a la publicación.
 
 ## SEO de contenido y posicionamiento — aplazado
 
@@ -92,3 +97,28 @@ Mantener una única landing y su estilo visual. No añadir frases de búsqueda a
 - [ ] Cuando Search Console acumule datos, analizar consultas, impresiones, clics, CTR y posición media para priorizar mejoras y comparar su evolución.
 
 Primera tarea al retomar: presentación y contexto del Hall of Fame. La actualización automática de redes complementa el contenido propio, pero no lo sustituye.
+
+## Próxima revisión: móvil
+
+- [ ] Revisar la landing completa a distintos anchos móviles: portada, navegación, Sobre Kim, Hall of Fame, YouTube, Instagram, patrocinadores y footer.
+- [ ] Comprobar controles táctiles, apertura y cierre de galerías, ampliación de fotos, copia de descuentos y ausencia de desbordamientos.
+- [ ] Validar después en un teléfono real, incluyendo orientación y velocidad con datos móviles. La emulación de navegador no sustituye esta prueba.
+
+## Otras ideas aplazadas
+
+- [ ] Definir e incorporar métricas: visitas, procedencia del tráfico, uso de galerías, clics en patrocinadores y copias correctas de descuentos.
+- [ ] Valorar un backoffice bajo autenticación para consultar esas métricas.
+- [ ] Elegir un dominio propio y planificar el cambio de URLs, metadatos y Search Console.
+- [ ] Valorar repositorio privado y alojamiento adecuado, además de la organización de futuras webs.
+
+## Correcciones móviles — primera revisión
+
+- [x] Sustituir los enlaces superiores por un menú desplegable en pantallas de hasta 900 px.
+- [x] Ocultar el indicador lateral en móvil y dispositivos con puntero táctil.
+- [x] Desactivar el ajuste vertical entre secciones y la interceptación de rueda en móvil; usar altura estable en la portada.
+- [x] Unificar flechas de galerías y visor con SVG simétricos.
+- [x] Permitir movimiento en ambos ejes en el visor y añadir ampliación al doble con botón; reiniciar al cambiar de foto.
+- [x] Diagnosticar Instagram: la página pública todavía contiene los embeds antiguos; las tarjetas propias están en local.
+- [ ] Publicar estos cambios y comprobarlos en un teléfono real, especialmente pellizco, arrastre de la imagen ampliada y fluidez del scroll.
+
+Comprobación en Edge con móvil emulado: menú, cierre al navegar, dimensiones del visor, desplazamiento horizontal/vertical y reinicio del zoom; sin errores JavaScript ni desbordamientos a 320, 390 y 768 px. No sustituye la validación táctil en un dispositivo real.

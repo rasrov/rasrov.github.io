@@ -45,6 +45,7 @@ function scheduleUpdate() {
 
 // One wheel gesture moves between the two full-screen sections.
 window.addEventListener('wheel', (event) => {
+    if (window.matchMedia('(max-width: 900px), (pointer: coarse)').matches || document.querySelector('dialog[open]')) return;
     if (event.ctrlKey || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
     if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
     // Allow normal scrolling inside a section taller than the viewport.
@@ -125,16 +126,33 @@ for (const button of document.querySelectorAll('[data-copy-code]')) {
 new ResizeObserver(scheduleUpdate).observe(document.querySelector('main'));
 
 
-// Load third-party Instagram embeds only near their section.
-const instagramSection = document.querySelector('#contenido');
-if (instagramSection) {
-    const instagramObserver = new IntersectionObserver((entries, observer) => {
-        if (!entries.some(entry => entry.isIntersecting)) return;
-        observer.disconnect();
-        const script = document.createElement('script');
-        script.src = 'https://www.instagram.com/embed.js';
-        script.async = true;
-        document.body.append(script);
-    }, { rootMargin: '600px' });
-    instagramObserver.observe(instagramSection);
+// Keep the original post accessible if a temporary Instagram image URL expires.
+for (const image of document.querySelectorAll('.social-image')) {
+    const showFallback = () => image.remove();
+    image.addEventListener('error', showFallback, { once: true });
+    if (image.complete && image.naturalWidth === 0) showFallback();
 }
+
+const navToggle = document.querySelector('.nav-toggle');
+function closeMobileNav() {
+    navToggle.setAttribute('aria-expanded', 'false');
+    root.classList.remove('mobile-nav-open');
+}
+navToggle.addEventListener('click', () => {
+    const open = navToggle.getAttribute('aria-expanded') !== 'true';
+    navToggle.setAttribute('aria-expanded', String(open));
+    root.classList.toggle('mobile-nav-open', open);
+});
+navigation.addEventListener('click', event => {
+    if (event.target.closest('a')) closeMobileNav();
+});
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && root.classList.contains('mobile-nav-open')) {
+        closeMobileNav();
+        navToggle.focus();
+    }
+});
+document.addEventListener('click', event => {
+    if (!navigation.contains(event.target)) closeMobileNav();
+});
+window.matchMedia('(max-width: 900px)').addEventListener('change', closeMobileNav);

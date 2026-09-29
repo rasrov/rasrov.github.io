@@ -25,6 +25,17 @@ def parse_date(value):
         raise ValueError("Timestamp without timezone")
     return date
 
+def preview_url(item):
+    value = item.get("thumbnail_url" if item.get("media_type") == "VIDEO" else "media_url", "")
+    url = urlparse(value)
+    host = url.hostname or ""
+    if (url.scheme == "https" and not url.username and not url.password
+            and url.port in (None, 443)
+            and any(host == domain or host.endswith("." + domain)
+                    for domain in ("cdninstagram.com", "fbcdn.net"))):
+        return value
+    return ""
+
 def select_posts(items):
     unique = {}
     for item in items:
@@ -42,6 +53,10 @@ def select_posts(items):
         if date > datetime.now(timezone.utc):
             continue
         unique[post_id] = {key: item[key] for key in ("id", "permalink", "media_type", "timestamp")}
+        preview = preview_url(item)
+        if preview:
+            key = "thumbnail_url" if item["media_type"] == "VIDEO" else "media_url"
+            unique[post_id][key] = preview
     selected = sorted(unique.values(), key=lambda p: (parse_date(p["timestamp"]), str(p["id"])), reverse=True)[:3]
     if len(selected) != 3:
         raise ValueError("Fewer than three valid posts; published site will not be replaced")
@@ -49,7 +64,7 @@ def select_posts(items):
 
 def fetch_posts(token):
     # Read a larger recent batch and sort by timestamp rather than visual pinning.
-    fields = "business_discovery.username(" + TARGET + "){username,media.limit(50){id,permalink,media_type,timestamp}}"
+    fields = "business_discovery.username(" + TARGET + "){username,media.limit(50){id,permalink,media_type,media_url,thumbnail_url,timestamp}}"
     url = f"https://graph.facebook.com/{VERSION}/{OWN_IG_ID}?" + urlencode({"fields": fields})
     request = Request(url, headers={"Authorization": "Bearer " + token})
     for attempt in range(3):
@@ -78,11 +93,21 @@ def replace_posts(page, posts):
     cards = []
     for post in posts:
         link = html.escape(post["permalink"], quote=True)
+        preview = html.escape(preview_url(post), quote=True)
+        kind = {"VIDEO": "Reel", "CAROUSEL_ALBUM": "Carrusel", "IMAGE": "Foto"}[post["media_type"]]
+        icon = ('<path d="m9 5 11 7-11 7Z"/>' if kind == "Reel" else
+                '<rect x="7" y="7" width="13" height="13" rx="2"/><path d="M16 7V4H4v12h3"/>' if kind == "Carrusel" else
+                '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 16 6-6 12 10"/>')
+        label = f"{kind} de @kim_angel del {parse_date(post['timestamp']).strftime('%d/%m/%Y')}. Abrir en Instagram (nueva pestaña)"
+        picture = f'<img class="social-image" src="{preview}" alt="" width="800" height="1000" loading="lazy" decoding="async">' if preview else ''
         cards.append(
             '\n                    <article class="social-post">\n'
-            f'                        <blockquote class="instagram-media" data-instgrm-permalink="{link}" data-instgrm-version="14">\n'
-            f'                            <a href="{link}" target="_blank" rel="noopener noreferrer">Ver esta publicaciÃ³n de @kim_angel en Instagram â†—</a>\n'
-            '                        </blockquote>\n'
+            f'                        <a class="social-card" href="{link}" target="_blank" rel="noopener noreferrer" aria-label="{label}">\n'
+            '                            <span class="social-fallback" aria-hidden="true">@kim_angel<span>Ver publicación en Instagram ↗</span></span>\n'
+            f'                            {picture}\n'
+            f'                            <span class="social-kind" title="{kind}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">{icon}</svg></span>\n'
+            '                            <span class="social-open" aria-hidden="true">Ver en Instagram ↗</span>\n'
+            '                        </a>\n'
             '                    </article>')
     before, rest = page.split(START)
     _, after = rest.split(END)

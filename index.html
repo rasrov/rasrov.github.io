@@ -31,7 +31,8 @@
                 <nav class="hero-nav" aria-label="Navegación principal" inert>
                     <div class="container nav-inner">
                         <a class="brand" href="#inicio" aria-label="Kim Angel, inicio"><img src="img/optimized/web_main_kim_logo-192w.webp" alt="Kim Angel" width="1254" height="1254" srcset="img/optimized/web_main_kim_logo-96w.webp 96w, img/optimized/web_main_kim_logo-192w.webp 192w, img/optimized/web_main_kim_logo-320w.webp 320w" sizes="160px" loading="lazy" decoding="async"></a>
-                        <div class="nav-links">
+                        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav-links" aria-label="Menú de navegación"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+                        <div class="nav-links" id="main-nav-links">
                             <a href="#inicio">Inicio</a><a href="#sobre-kim">Sobre Kim</a>
                             <a href="#hall-of-fame">Palmarés</a>
                             <a href="#youtube">YouTube</a>
@@ -181,6 +182,60 @@
                 </section>
             </div>
         </section>
+        <section class="competition-calendar" id="calendario" aria-labelledby="calendar-title">
+            <div class="container">
+                <p class="social-eyebrow">CLASSIC PHYSIQUE · CALENDARIO</p>
+                <h2 id="calendar-title">Las próximas citas.</h2>
+                <p class="calendar-demo">Classic Physique · Fechas verificadas en las webs de los organizadores. Calendario en actualización. Los días 3, 9, 12, 16, 23, 26 y 30 contienen ejemplos visuales ficticios.</p>
+                <div class="calendar-layout">
+                    <div class="calendar-panel">
+                        <div class="calendar-toolbar">
+                            <h3 id="calendar-month" aria-live="polite"></h3>
+                            <div><button type="button" id="calendar-prev" aria-label="Mes anterior" data-nav-direction="previous"></button><button type="button" id="calendar-next" aria-label="Mes siguiente" data-nav-direction="next"></button></div>
+                        </div>
+                        <div class="calendar-week" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+                        <div class="calendar-days" role="group" aria-labelledby="calendar-month"></div>
+                    </div>
+                    <div class="calendar-agenda">
+                        <p class="social-eyebrow">AGENDA DEL MES</p>
+                        <p class="calendar-empty" hidden>Todavía no hemos añadido competiciones para este mes.</p>
+                        <article class="calendar-event" data-date="2027-03-03" data-status="pending" data-logo="img/calendar/arnold-usa.svg" id="calendar-example-03">
+                            <time datetime="2027-03-03">03 MAR · EJEMPLO VISUAL</time><h3>Arnold Classic USA · Ejemplo 3</h3><p>Fecha y participación ficticias para probar el diseño con más eventos.</p><span class="calendar-status pending">Kim: Por confirmar · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-05" data-status="pending" data-logo="img/calendar/arnold-usa.svg" id="calendar-arnold-usa-2027">
+                            <div class="calendar-event-top"><time datetime="2027-03-05">05 MAR · 2027</time><a href="https://www.arnoldsports.com/tickets/" target="_blank" rel="noopener noreferrer">Programa oficial ↗</a></div><h3>Arnold Classic USA</h3><p>Columbus, Ohio · Estados Unidos</p><p>Finales de Classic Physique · Festival: 4–7 de marzo.</p><span class="calendar-status">Kim: por confirmar</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-09" data-status="confirmed" data-logo="img/calendar/arnold-uk.png" id="calendar-example-09">
+                            <time datetime="2027-03-09">09 MAR · EJEMPLO VISUAL</time><h3>Arnold Classic UK · Ejemplo 9</h3><p>Fecha y participación ficticias para probar el diseño con más eventos.</p><span class="calendar-status confirmed">Kim: Participa · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-12" data-status="confirmed" data-logo="img/calendar/arnold-usa.svg" id="calendar-example-confirmed">
+                            <time datetime="2027-03-12">12 MAR · EJEMPLO VISUAL</time><h3>Arnold Classic USA · Ejemplo</h3><p>Fecha y participación ficticias para comparar el diseño.</p><span class="calendar-status confirmed">Kim participa · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-12" data-status="pending" data-logo="img/calendar/arnold-uk.png" id="calendar-example-same-day-pending">
+                            <time datetime="2027-03-12">12 MAR · EJEMPLO VISUAL</time><h3>Competición B · Ejemplo simultáneo</h3><p>Evento ficticio para probar varias competiciones el mismo día. Logo provisional de Arnold UK.</p><span class="calendar-status">Kim: por confirmar · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-12" data-status="absent" data-logo="img/calendar/arnold-usa.svg" id="calendar-example-same-day-absent">
+                            <time datetime="2027-03-12">12 MAR · EJEMPLO VISUAL</time><h3>Competición C · Ejemplo simultáneo</h3><p>Evento ficticio para probar varias competiciones el mismo día. Logo provisional de Arnold USA.</p><span class="calendar-status absent">Kim: no participa · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-16" data-status="absent" data-logo="img/calendar/arnold-usa.svg" id="calendar-example-16">
+                            <time datetime="2027-03-16">16 MAR · EJEMPLO VISUAL</time><h3>Arnold Classic USA · Ejemplo 16</h3><p>Fecha y participación ficticias para probar el diseño con más eventos.</p><span class="calendar-status absent">Kim: No participa · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-19" data-status="pending" data-logo="img/calendar/arnold-uk.png" id="calendar-arnold-uk-2027">
+                            <div class="calendar-event-top"><time datetime="2027-03-19">19 MAR · 2027</time><a href="https://arnoldsportsuk.com/tickets/" target="_blank" rel="noopener noreferrer">Programa oficial ↗</a></div><h3>Arnold Classic UK</h3><p>Birmingham · Reino Unido</p><p>Finales de Classic Physique · Festival: 19–21 de marzo.</p><span class="calendar-status">Kim: por confirmar</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-23" data-status="pending" data-logo="img/calendar/arnold-uk.png" id="calendar-example-23">
+                            <time datetime="2027-03-23">23 MAR · EJEMPLO VISUAL</time><h3>Arnold Classic UK · Ejemplo 23</h3><p>Fecha y participación ficticias para probar el diseño con más eventos.</p><span class="calendar-status pending">Kim: Por confirmar · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-26" data-status="absent" data-logo="img/calendar/arnold-uk.png" id="calendar-example-absent">
+                            <time datetime="2027-03-26">26 MAR · EJEMPLO VISUAL</time><h3>Arnold Classic UK · Ejemplo</h3><p>Fecha y participación ficticias para comparar el diseño.</p><span class="calendar-status absent">Kim no participa · Ejemplo</span>
+                        </article>
+                        <article class="calendar-event" data-date="2027-03-30" data-status="confirmed" data-logo="img/calendar/arnold-usa.svg" id="calendar-example-30">
+                            <time datetime="2027-03-30">30 MAR · EJEMPLO VISUAL</time><h3>Arnold Classic USA · Ejemplo 30</h3><p>Fecha y participación ficticias para probar el diseño con más eventos.</p><span class="calendar-status confirmed">Kim: Participa · Ejemplo</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="youtube-section" id="youtube" aria-labelledby="youtube-title">
             <div class="container">
                 <header class="social-heading">
@@ -240,19 +295,28 @@
                 <div class="social-grid" role="region" aria-label="Publicaciones de Instagram" tabindex="0">
                 <!-- instagram:generated:start -->
                     <article class="social-post">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dd20B64i8fO/" data-instgrm-version="14">
-                            <a href="https://www.instagram.com/reel/Dd20B64i8fO/" target="_blank" rel="noopener noreferrer">Ver esta publicaciÃ³n de @kim_angel en Instagram â†—</a>
-                        </blockquote>
+                        <a class="social-card" href="https://www.instagram.com/reel/Dd20B64i8fO/" target="_blank" rel="noopener noreferrer" aria-label="Reel de @kim_angel del 29/09/2026. Abrir en Instagram (nueva pestaña)">
+                            <span class="social-fallback" aria-hidden="true">@kim_angel<span>Ver publicación en Instagram ↗</span></span>
+                            <img class="social-image" src="https://scontent.cdninstagram.com/v/t51.82787-15/825277270_18642167815002860_4041241869348533317_n.jpg?stp=dst-jpg_e35_tt6&amp;_nc_cat=102&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&amp;_nc_ohc=6EOM4FITHmkQ7kNvwGx44U8&amp;_nc_oc=AdoifKHFglEa2z3xJ4nzuwGeu_BnIu5kJbKkwoX72NXBsEtURV1N1mn8WTQgf4wkyR8&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;_nc_gid=6L6LWooHPgLhUT1uwIhDbw&amp;_nc_tpa=Q5bMBQKtHoedWD_EOzhRSxVR2e0HtqN5OXIUgaL8SYyNm-corLrs7v5ldVvUTZkrEmZeMBFZkSEHxuFOUA&amp;oh=00_AQOYUCziwbI25BRBS2itsMsV0I-xhjqimETc2ONrdDtpAw&amp;oe=6AC1570A" alt="" width="800" height="1000" loading="lazy" decoding="async">
+                            <span class="social-kind" title="Reel" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 5 11 7-11 7Z"/></svg></span>
+                            <span class="social-open" aria-hidden="true">Ver en Instagram ↗</span>
+                        </a>
                     </article>
                     <article class="social-post">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dd1UazZm6ZT/" data-instgrm-version="14">
-                            <a href="https://www.instagram.com/p/Dd1UazZm6ZT/" target="_blank" rel="noopener noreferrer">Ver esta publicaciÃ³n de @kim_angel en Instagram â†—</a>
-                        </blockquote>
+                        <a class="social-card" href="https://www.instagram.com/p/Dd1UazZm6ZT/" target="_blank" rel="noopener noreferrer" aria-label="Carrusel de @kim_angel del 28/09/2026. Abrir en Instagram (nueva pestaña)">
+                            <span class="social-fallback" aria-hidden="true">@kim_angel<span>Ver publicación en Instagram ↗</span></span>
+                            <img class="social-image" src="https://scontent.cdninstagram.com/v/t51.82787-15/825277276_18641956420002860_6272723044011596628_n.jpg?stp=dst-jpg_e35_tt6&amp;_nc_cat=109&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&amp;_nc_ohc=2Qc8fZ8ObE0Q7kNvwGgGD7X&amp;_nc_oc=Adqck8n7P2G-UyYuTW6bHAezNAjk56GxYaBZWNa3XDo7DLZ938LJRam5VaV29Obm0mM&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;_nc_gid=6L6LWooHPgLhUT1uwIhDbw&amp;oh=00_AQMulZnzlViVIEl6VcCIRJ8QK42F3f71Totlr53sD6TXtg&amp;oe=6AC1603D" alt="" width="800" height="1000" loading="lazy" decoding="async">
+                            <span class="social-kind" title="Carrusel" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="7" width="13" height="13" rx="2"/><path d="M16 7V4H4v12h3"/></svg></span>
+                            <span class="social-open" aria-hidden="true">Ver en Instagram ↗</span>
+                        </a>
                     </article>
                     <article class="social-post">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dd0RivTlR_6/" data-instgrm-version="14">
-                            <a href="https://www.instagram.com/p/Dd0RivTlR_6/" target="_blank" rel="noopener noreferrer">Ver esta publicaciÃ³n de @kim_angel en Instagram â†—</a>
-                        </blockquote>
+                        <a class="social-card" href="https://www.instagram.com/p/Dd0RivTlR_6/" target="_blank" rel="noopener noreferrer" aria-label="Carrusel de @kim_angel del 28/09/2026. Abrir en Instagram (nueva pestaña)">
+                            <span class="social-fallback" aria-hidden="true">@kim_angel<span>Ver publicación en Instagram ↗</span></span>
+                            <img class="social-image" src="https://scontent.cdninstagram.com/v/t51.82787-15/828495750_18641847619002860_5874184718620975454_n.jpg?stp=dst-jpg_e35_tt6&amp;_nc_cat=109&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&amp;_nc_ohc=_lDQ9o932ygQ7kNvwHmqbDG&amp;_nc_oc=AdqHxJAU1pc8pXhhs-yzpYiFPn9I5cGXFen6LXwUi6oEmwYkbplbhGA_Eyo1DNucFP4&amp;_nc_zt=23&amp;_nc_ht=scontent.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;_nc_gid=6L6LWooHPgLhUT1uwIhDbw&amp;oh=00_AQNErnPfNeOTmyB_34wmrJIS4dqoQnOp3boTPYgDH8hsjQ&amp;oe=6AC174D2" alt="" width="800" height="1000" loading="lazy" decoding="async">
+                            <span class="social-kind" title="Carrusel" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="7" width="13" height="13" rx="2"/><path d="M16 7V4H4v12h3"/></svg></span>
+                            <span class="social-open" aria-hidden="true">Ver en Instagram ↗</span>
+                        </a>
                     </article>
                 <!-- instagram:generated:end -->
                 </div>
@@ -342,6 +406,8 @@
     <!-- Instagram is initialized when its section approaches the viewport. -->
     <script src="js/main.js"></script>
     <script src="js/hall-gallery.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/navigation-controls.js"></script>
 </body>
 </html>
 
