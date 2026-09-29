@@ -122,3 +122,11 @@ Primera tarea al retomar: presentación y contexto del Hall of Fame. La actualiz
 - [ ] Publicar estos cambios y comprobarlos en un teléfono real, especialmente pellizco, arrastre de la imagen ampliada y fluidez del scroll.
 
 Comprobación en Edge con móvil emulado: menú, cierre al navegar, dimensiones del visor, desplazamiento horizontal/vertical y reinicio del zoom; sin errores JavaScript ni desbordamientos a 320, 390 y 768 px. No sustituye la validación táctil en un dispositivo real.
+
+## Calendario: histórico real
+- [x] Retirar eventos ficticios e importar las 72 fichas históricas de Classic Physique de IFBB Pro (hasta 29/09/2026).
+- [x] Estados editoriales independientes, todos inicialmente PENDIENTE; logos disponibles y respaldo morado.
+- [x] Generar HTML durante el despliegue desde datos locales; instrucciones en docs/calendar.md.
+- [x] Incorporar la imagen genérica proporcionada por el usuario, también como respaldo si falla un logo.
+- [ ] Revisar el texto NPC PRO QUALIFIER de la imagen genérica: el calendario incluye eventos PRO.
+- [ ] Implementar consulta periódica de fuentes, validación de cambios y conservación de estados manuales.

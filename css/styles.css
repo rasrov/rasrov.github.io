@@ -1431,3 +1431,6 @@ button.navigation-control:disabled, button.navigation-control[aria-disabled="tru
     opacity: .38;
 }
 .calendar-day.multiple-events > span { color: #fff; text-shadow: 0 1px 5px rgb(0 0 0 / 70%); }
+
+.calendar-day.has-event.missing-logo { background: #000; }
+.calendar-event-top time { min-width: 0; overflow-wrap: anywhere; }

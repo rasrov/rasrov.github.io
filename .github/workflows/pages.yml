@@ -29,6 +29,8 @@ jobs:
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
         run: python scripts/update_instagram.py
+      - name: Render competition calendar from curated data
+        run: python scripts/render_calendar.py
       - name: Prepare public files
         run: |
           mkdir -p _site

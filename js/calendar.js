@@ -3,7 +3,8 @@
     const section = document.querySelector('#calendario');
     const days = section.querySelector('.calendar-days');
     const events = [...section.querySelectorAll('.calendar-event')];
-    let month = new Date(2027, 2, 1);
+    const latest = events.map(event => event.dataset.date).sort().at(-1);
+    let month = latest ? new Date(Number(latest.slice(0, 4)), Number(latest.slice(5, 7)) - 1, 1) : new Date();
     const format = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' });
     const pageSize = 3;
     let agendaPage = 0;
@@ -80,10 +81,19 @@
         tile.setAttribute('aria-label', `${event.querySelector('h3').textContent}. Kim: ${label}. Ver detalles`);
         tile.title = tile.getAttribute('aria-label');
         tile.setAttribute('aria-controls', event.id);
-        if (event.dataset.logo) {
-            const logo = document.createElement('img');
-            logo.src = event.dataset.logo; logo.alt = ''; logo.className = 'calendar-day-logo'; tile.append(logo);
-        }
+        const fallback = 'img/calendar/default-championship.png';
+        const logo = document.createElement('img');
+        let usingFallback = !event.dataset.logo;
+        logo.alt = ''; logo.className = 'calendar-day-logo';
+        tile.classList.toggle('missing-logo', usingFallback);
+        logo.addEventListener('error', () => {
+            if (usingFallback) { logo.remove(); return; }
+            usingFallback = true;
+            tile.classList.add('missing-logo');
+            logo.src = fallback;
+        });
+        logo.src = event.dataset.logo || fallback;
+        tile.append(logo);
         const strip = document.createElement('span'); strip.className = 'calendar-day-status'; strip.setAttribute('aria-hidden', 'true');
         const text = document.createElement('span'); text.className = 'calendar-status-label'; text.textContent = label;
         strip.append(text); tile.append(strip);
@@ -132,7 +142,8 @@
         section.querySelector('#calendar-month').textContent = format.format(month);
         days.replaceChildren();
         const prefix = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`;
-        const visible = events.filter(event => event.dataset.date.startsWith(prefix));
+        const monthEnd = `${prefix}-${String(new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate()).padStart(2, '0')}`;
+        const visible = events.filter(event => event.dataset.date <= monthEnd && (event.dataset.end || event.dataset.date) >= prefix + '-01');
         monthEvents = visible;
         agendaPage = 0;
         events.forEach(event => event.classList.remove('is-selected'));
@@ -143,7 +154,8 @@
         const count = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate();
         for (let i = 0; i < Math.ceil((offset + count) / 7) * 7; i++) {
             const day = i - offset + 1;
-            const matches = visible.filter(event => Number(event.dataset.date.slice(-2)) === day);
+            const dateKey = `${prefix}-${String(day).padStart(2, '0')}`;
+            const matches = visible.filter(event => event.dataset.date <= dateKey && (event.dataset.end || event.dataset.date) >= dateKey);
             const cell = document.createElement(matches.length ? 'button' : 'div');
             cell.className = 'calendar-day';
             if (day < 1 || day > count) { cell.classList.add('is-empty'); cell.setAttribute('aria-hidden', 'true'); }
