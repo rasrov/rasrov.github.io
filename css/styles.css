@@ -285,12 +285,16 @@ html::-webkit-scrollbar {
 .social-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: start;
+    align-items: stretch;
     gap: 24px;
 }
 
 .social-post {
     min-width: 0;
+    /* Stretch the card, not Instagram's independently sized content. */
+    background: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
 }
 
 .social-post .instagram-media {
@@ -298,6 +302,15 @@ html::-webkit-scrollbar {
     min-width: 0 !important;
     max-width: 100% !important;
     margin: 0 !important;
+}
+
+/* The card owns the border so unequal embeds have a common outer edge.
+   Keep Instagram's natural iframe height: do not crop controls or media. */
+.social-post iframe.instagram-media {
+    display: block;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
 
 .social-post blockquote {

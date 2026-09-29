@@ -79,3 +79,16 @@ La optimización facilita el descubrimiento y la comprensión del contenido, per
 - Instantánea de tres publicaciones obtenida de la respuesta válida del usuario. No se guardaron tokens ni captions ni medios locales.
 - Trece pruebas de los actualizadores de YouTube e Instagram aprobadas, incluidos fallos sin sobrescritura y credenciales fuera de las URLs/logs.
 - Cambios locales preparados; sin commit, push ni modificación de secretos. La llamada real desde Actions queda pendiente de configurar INSTAGRAM_ACCESS_TOKEN.
+
+## SEO de contenido y posicionamiento — aplazado
+
+Mantener una única landing y su estilo visual. No añadir frases de búsqueda al sitemap: este enumera URLs e imágenes, no palabras clave. No hay garantía de primeras posiciones.
+
+- [ ] Revisar la presentación visible para identificar claramente a Kim Angel y su categoría Classic Physique.
+- [ ] Enriquecer el Hall of Fame con contexto breve y verificado de cada competición (resultado, año y participación), manteniendo las cards y galerías.
+- [ ] Relacionar consultas relevantes con contenido útil: Kim Angel, Classic Physique, palmarés, Olympia 2025, Arnold Classic 2026 y códigos de descuento por patrocinador. Usar términos naturales en títulos, texto visible y descripciones, sin repeticiones artificiales ni textos ocultos para posicionar.
+- [ ] Revisar exactitud y actualidad de resultados, biografía y descuentos antes de ampliar el contenido.
+- [ ] Valorar enlaces auténticos desde los perfiles de Kim o páginas de patrocinadores, si colaboran. No presentar la web como oficial sin autorización ni contactar a terceros sin indicación del usuario.
+- [ ] Cuando Search Console acumule datos, analizar consultas, impresiones, clics, CTR y posición media para priorizar mejoras y comparar su evolución.
+
+Primera tarea al retomar: presentación y contexto del Hall of Fame. La actualización automática de redes complementa el contenido propio, pero no lo sustituye.
