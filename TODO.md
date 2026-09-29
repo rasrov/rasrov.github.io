@@ -58,9 +58,12 @@ La optimización facilita el descubrimiento y la comprensión del contenido, per
 - [ ] Completar la revisión de accesibilidad y embeds publicada pendiente arriba.
 - [ ] Añadir contacto profesional para colaboraciones o patrocinio cuando el usuario facilite un correo autorizado.
 - [x] Preparar sección de seis publicaciones de YouTube, incluidos Shorts, con consulta de uploads mediante API y despliegue cada seis horas. Guía: docs/youtube.md.
-- [ ] Activar YouTube Data API v3 y guardar YOUTUBE_API_KEY como secreto de Actions.
-- [ ] Subir la implementación, cambiar Settings → Pages → Source a GitHub Actions y ejecutar el workflow; validar la consulta real de API y la reproducción publicada.
-- [ ] Revisar después la actualización automática de Instagram (sin cambios en esta tarea).
+- [x] Activar YouTube Data API v3 y guardar YOUTUBE_API_KEY; funcionamiento confirmado por el usuario.
+- [x] Activar la automatización de YouTube en GitHub Actions; el usuario confirmó que funciona.
+- [x] Probar Business Discovery para kim_angel con Facebook Login; consulta correcta compartida por el usuario.
+- [x] Preparar actualizador de tres embeds de Instagram y añadirlo al horario de GitHub Actions. Guía: docs/instagram.md.
+- [ ] Obtener/comprobar token de usuario de larga duración y guardar INSTAGRAM_ACCESS_TOKEN en GitHub Secrets antes de subir el workflow actualizado.
+- [ ] Ejecutar el workflow y verificar los embeds de Instagram publicados; registrar vencimiento del token para renovar el acceso.
 - [ ] Valorar centralizar datos de campeonatos, patrocinadores y publicaciones para facilitar el mantenimiento sin perder el HTML rastreable.
 
 
@@ -70,3 +73,9 @@ La optimización facilita el descubrimiento y la comprensión del contenido, per
 - Actualizador con siete pruebas unitarias aprobadas: orden, duplicados, contenido no disponible, Shorts sin filtro de duración, paginación y escape HTML/errores sin secretos.
 - Cuadrícula comprobada a 1440, 900 y 390 px (3/2/1 columnas), sin errores JavaScript ni desbordamiento. Servicios externos aislados: reproducción y API real pendientes de activación.
 - Workflow genera HTML y JSON durante el despliegue, sin commits automáticos. Un fallo conserva la web publicada. La configuración remota de Pages no se ha modificado.
+
+## Instagram — 29/09/2026
+
+- Instantánea de tres publicaciones obtenida de la respuesta válida del usuario. No se guardaron tokens ni captions ni medios locales.
+- Trece pruebas de los actualizadores de YouTube e Instagram aprobadas, incluidos fallos sin sobrescritura y credenciales fuera de las URLs/logs.
+- Cambios locales preparados; sin commit, push ni modificación de secretos. La llamada real desde Actions queda pendiente de configurar INSTAGRAM_ACCESS_TOKEN.

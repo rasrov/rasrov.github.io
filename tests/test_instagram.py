@@ -1,0 +1,69 @@
+import copy
+import importlib.util
+import json
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+from urllib.error import HTTPError
+
+spec = importlib.util.spec_from_file_location("instagram", Path(__file__).resolve().parents[1] / "scripts/update_instagram.py")
+ig = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(ig)
+
+def post(i):
+    return {"id": str(100+i), "permalink": f"https://www.instagram.com/p/post{i}/",
+            "media_type": "CAROUSEL_ALBUM", "timestamp": f"2026-09-{i:02d}T12:00:00+0000"}
+
+class InstagramTests(unittest.TestCase):
+    def test_order_deduplicate_and_include_reels(self):
+        items = [post(i) for i in range(1,6)]
+        items[-1]["media_type"] = "VIDEO"
+        items[-1]["permalink"] = "https://www.instagram.com/reel/recent/"
+        result = ig.select_posts(items + [copy.deepcopy(items[-1])])
+        self.assertEqual([p["id"] for p in result], ["105", "104", "103"])
+        self.assertEqual(result[0]["media_type"], "VIDEO")
+
+    def test_reject_foreign_url_and_incomplete_data(self):
+        items = [post(i) for i in range(1,4)]
+        items[0]["permalink"] = "https://evil.test/p/post1/"
+        with self.assertRaises(ValueError): ig.select_posts(items)
+        with self.assertRaises(ValueError): ig.select_posts([post(1)])
+
+    def test_allowlist_drops_tokens_and_paging(self):
+        items = [post(i) for i in range(1,4)]
+        for p in items:
+            p["access_token"] = "secret"
+            p["caption"] = "unneeded"
+            p["paging"] = {"next":"secret"}
+        self.assertNotIn("secret", json.dumps(ig.select_posts(items)))
+
+    def test_render_preserves_youtube_and_escapes(self):
+        page = "YouTube unchanged" + ig.START + "old" + ig.END + "Sponsors unchanged"
+        result = ig.replace_posts(page, [post(i) for i in range(1,4)])
+        self.assertTrue(result.startswith("YouTube unchanged"))
+        self.assertTrue(result.endswith("Sponsors unchanged"))
+        self.assertEqual(result.count('class="instagram-media"'),3)
+        self.assertEqual(result.count('class="social-post"'),3)
+        self.assertEqual(result,ig.replace_posts(result,[post(i) for i in range(1,4)]))
+
+    def test_failure_leaves_existing_files_untouched(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder); (root/"data").mkdir()
+            (root/"index.html").write_text("original")
+            (root/"data/instagram.json").write_text("original")
+            with patch.object(ig,"ROOT",root), patch.dict(ig.os.environ,{"INSTAGRAM_ACCESS_TOKEN":"secret"}), patch.object(ig.sys,"argv",["update"]), patch.object(ig,"fetch_posts",side_effect=RuntimeError("expired")):
+                with self.assertRaises(RuntimeError): ig.main()
+            self.assertEqual((root/"index.html").read_text(),"original")
+            self.assertEqual((root/"data/instagram.json").read_text(),"original")
+
+    def test_token_is_header_and_not_in_url_or_error(self):
+        error=HTTPError("https://graph.facebook.com",403,"denied",{},None)
+        with patch.object(ig,"urlopen",side_effect=error) as call:
+            with self.assertRaises(RuntimeError) as result: ig.fetch_posts("secret-value")
+        request=call.call_args.args[0]
+        self.assertNotIn("secret-value",request.full_url)
+        self.assertEqual(request.get_header("Authorization"),"Bearer secret-value")
+        self.assertNotIn("secret-value",str(result.exception))
+
+if __name__ == "__main__": unittest.main()
