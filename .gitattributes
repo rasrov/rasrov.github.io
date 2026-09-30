@@ -1,0 +1,7 @@
+# Keep text consistent across Windows and Linux; preserve binary assets.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary

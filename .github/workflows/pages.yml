@@ -2,16 +2,18 @@ name: Publish website and refresh social feeds
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   schedule:
     - cron: '23 */6 * * *'
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: github-pages
+  group: ${{ github.event_name == 'pull_request' && format('validate-pr-{0}', github.event.pull_request.number) || 'github-pages' }}
   cancel-in-progress: false
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -19,8 +21,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Test social feed updaters
-        run: python -m unittest discover -s tests -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate syntax, tests, and offline rendering
+        run: python scripts/validate.py --browser
+  build:
+    if: github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Fetch six latest public uploads
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
@@ -29,17 +44,8 @@ jobs:
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
         run: python scripts/update_instagram.py
-      - name: Render competition calendar from curated data
-        run: python scripts/render_calendar.py
-      - name: Prepare public files
-        run: |
-          mkdir -p _site
-          cp index.html robots.txt sitemap.xml favicon.ico _site/
-          cp -R css js img data _site/
-          for file in google*.html CNAME; do
-            if [ -f "$file" ]; then cp "$file" _site/; fi
-          done
-          touch _site/.nojekyll
+      - name: Build public files from refreshed snapshots
+        run: python scripts/build.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

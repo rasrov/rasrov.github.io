@@ -1,21 +1,25 @@
 import copy
-import importlib.util
 import json
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
 
-spec = importlib.util.spec_from_file_location("instagram", Path(__file__).resolve().parents[1] / "scripts/update_instagram.py")
-ig = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(ig)
+from scripts import update_instagram as ig
+
 
 def post(i):
     return {"id": str(100+i), "permalink": f"https://www.instagram.com/p/post{i}/",
             "media_type": "CAROUSEL_ALBUM", "timestamp": f"2026-09-{i:02d}T12:00:00+0000"}
 
 class InstagramTests(unittest.TestCase):
+    def setUp(self):
+        clock = patch.object(ig, 'datetime', wraps=datetime)
+        self.addCleanup(clock.stop)
+        clock.start().now.return_value = datetime(2026, 9, 30, tzinfo=timezone.utc)
+
     def test_order_deduplicate_and_include_reels(self):
         items = [post(i) for i in range(1,6)]
         items[-1]["media_type"] = "VIDEO"
@@ -78,5 +82,21 @@ class InstagramTests(unittest.TestCase):
         self.assertNotIn("secret-value",request.full_url)
         self.assertEqual(request.get_header("Authorization"),"Bearer secret-value")
         self.assertNotIn("secret-value",str(result.exception))
+
+    def test_invalid_markers_rejected_with_valid_posts(self):
+        posts = [post(i) for i in range(1, 4)]
+        for page in ('none', ig.START * 2 + ig.END, ig.START + ig.END * 2, ig.END + ig.START):
+            with self.subTest(page=page), self.assertRaisesRegex(ValueError, 'instagram'):
+                ig.replace_posts(page, posts)
+
+    def test_injected_clock_and_timezone_boundary(self):
+        now = datetime(2026, 9, 3, 12, tzinfo=timezone.utc)
+        posts = [post(i) for i in range(1, 5)]
+        posts[2]['timestamp'] = '2026-09-03T14:00:00+02:00'
+        posts[3]['timestamp'] = '2026-09-03T12:00:01Z'
+        self.assertEqual([p['id'] for p in ig.select_posts(posts, now=now)], ['103', '102', '101'])
+        with self.assertRaises(ValueError):
+            ig.parse_date('2026-09-03T12:00:00')
+
 
 if __name__ == "__main__": unittest.main()

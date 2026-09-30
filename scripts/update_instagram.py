@@ -12,6 +12,13 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
 
+if __package__:
+    from .generated_regions import replace_region
+    from .snapshot_write import RecoveryRequiredError, write_outputs
+else:
+    from generated_regions import replace_region
+    from snapshot_write import RecoveryRequiredError, write_outputs
+
 ROOT = Path(__file__).resolve().parents[1]
 OWN_IG_ID = "17841401870042081"
 TARGET = "kim_angel"
@@ -36,7 +43,8 @@ def preview_url(item):
         return value
     return ""
 
-def select_posts(items):
+def select_posts(items, now=None):
+    now = now or datetime.now(timezone.utc)
     unique = {}
     for item in items:
         if item.get("media_type") not in ("IMAGE", "VIDEO", "CAROUSEL_ALBUM"):
@@ -50,7 +58,7 @@ def select_posts(items):
                 or link.query or link.fragment):
             raise ValueError("Unexpected Instagram permalink")
         date = parse_date(item["timestamp"])
-        if date > datetime.now(timezone.utc):
+        if date > now:
             continue
         unique[post_id] = {key: item[key] for key in ("id", "permalink", "media_type", "timestamp")}
         preview = preview_url(item)
@@ -86,10 +94,8 @@ def fetch_posts(token):
                 raise RuntimeError("Meta unavailable after three attempts") from None
         time.sleep(2 ** attempt)
 
-def replace_posts(page, posts):
-    posts = select_posts(posts)
-    if page.count(START) != 1 or page.count(END) != 1:
-        raise ValueError("Missing or duplicate Instagram markers")
+def replace_posts(page, posts, now=None):
+    posts = select_posts(posts, now=now)
     cards = []
     for post in posts:
         link = html.escape(post["permalink"], quote=True)
@@ -109,9 +115,7 @@ def replace_posts(page, posts):
             '                            <span class="social-open" aria-hidden="true">Ver en Instagram ↗</span>\n'
             '                        </a>\n'
             '                    </article>')
-    before, rest = page.split(START)
-    _, after = rest.split(END)
-    return before + START + "".join(cards) + "\n                " + END + after
+    return replace_region(page, "instagram", "".join(cards) + "\n                ")
 
 def main():
     parser = argparse.ArgumentParser()
@@ -125,17 +129,28 @@ def main():
         if not token:
             raise ValueError("Add INSTAGRAM_ACCESS_TOKEN to GitHub Actions secrets; see docs/instagram.md")
         posts = fetch_posts(token)
+        fetched_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     index = ROOT / "index.html"
     result = replace_posts(index.read_text(encoding="utf-8"), posts)
-    # Only a minimal public allowlist is saved. Never tokens, paging URLs or raw responses.
-    snapshot = json.dumps({"username": TARGET, "posts": posts}, ensure_ascii=False, indent=2) + "\n"
-    cache.write_text(snapshot, encoding="utf-8", newline="\n")
-    index.write_text(result, encoding="utf-8", newline="\n")
-    print("Rendered three recent Instagram posts.")
+    outputs = {}
+    if not args.from_cache:
+        snapshot = {"username": TARGET, "posts": posts,
+                    "metadata": {"source": "meta-business-discovery", "fetched_at": fetched_at}}
+        outputs['data/instagram.json'] = json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n"
+    outputs['index.html'] = result
+    write_outputs(ROOT, outputs)
+    source = "local cache (no Meta request)" if args.from_cache else "Meta Business Discovery"
+    print(f"Instagram source: {source}")
+    for post in posts:
+        print(f"Selected post {post['id']} | {post['timestamp']} | {post['media_type']} | preview={bool(preview_url(post))}")
+    print("Rendered cached posts; snapshot bytes and provenance unchanged." if args.from_cache else "Updated Instagram snapshot and HTML. Actions deploys these files without committing them.")
 
 if __name__ == "__main__":
     try:
         main()
+    except RecoveryRequiredError as error:
+        print(str(error), file=sys.stderr)
+        sys.exit(1)
     except (ValueError, KeyError, RuntimeError, OSError):
         # Avoid echoing provider payloads or credentials on unexpected errors.
         print("Instagram update failed. Check INSTAGRAM_ACCESS_TOKEN, its expiry and permissions; published site unchanged.", file=sys.stderr)

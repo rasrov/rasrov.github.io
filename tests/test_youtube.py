@@ -1,12 +1,11 @@
-import importlib.util
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
 
-spec = importlib.util.spec_from_file_location("youtube", Path(__file__).resolve().parents[1] / "scripts/update_youtube.py")
-yt = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(yt)
+from scripts import update_youtube as yt
+
 
 def item(i, **overrides):
     value = {"id": f"video{i:06d}", "snippet": {
@@ -18,6 +17,11 @@ def item(i, **overrides):
     return value
 
 class YouTubeTests(unittest.TestCase):
+    def setUp(self):
+        clock = patch.object(yt, 'datetime', wraps=datetime)
+        self.addCleanup(clock.stop)
+        clock.start().now.return_value = datetime(2026, 9, 30, tzinfo=timezone.utc)
+
     def test_newest_six_unique_and_short_not_filtered(self):
         items = [item(i) for i in range(1, 9)]
         items[-1]["contentDetails"] = {"duration": "PT30S"}
@@ -67,9 +71,20 @@ class YouTubeTests(unittest.TestCase):
                 yt.api("videos", {}, "secret")
         self.assertNotIn("secret", str(result.exception))
 
-    def test_missing_markers_rejected(self):
+    def test_invalid_markers_rejected_with_valid_videos(self):
+        videos = yt.select_videos([item(i) for i in range(1, 7)])
+        for page in ('<html></html>', yt.START * 2 + yt.END, yt.START + yt.END * 2, yt.END + yt.START):
+            with self.subTest(page=page), self.assertRaisesRegex(ValueError, 'youtube'):
+                yt.replace_cards(page, videos)
+
+    def test_injected_clock_and_timezone_boundary(self):
+        now = datetime(2026, 9, 3, 12, tzinfo=timezone.utc)
+        items = [item(1), item(2, snippet={'publishedAt': '2026-09-03T14:00:00+02:00'}),
+                 item(3, snippet={'publishedAt': '2026-09-03T12:00:01Z'})]
+        self.assertEqual([v['id'] for v in yt.select_videos(items, now=now)], ['video000002', 'video000001'])
         with self.assertRaises(ValueError):
-            yt.replace_cards("<html></html>", [])
+            yt.published('2026-09-03T12:00:00')
+
 
 if __name__ == "__main__":
     unittest.main()

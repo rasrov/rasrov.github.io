@@ -6,3 +6,9 @@ __pycache__/
 _site/
 .env
 .env.*
+
+# Temporary staged builds
+.site-build-*/
+
+# Interrupted snapshot update journal and backups
+.snapshot-update/

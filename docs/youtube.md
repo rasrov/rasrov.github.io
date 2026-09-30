@@ -42,3 +42,7 @@ Para consultar la API, proporciona YOUTUBE_API_KEY mediante el entorno y ejecuta
 - https://developers.google.com/youtube/v3/docs/playlistItems/list
 - https://developers.google.com/youtube/v3/docs/videos/list
 - https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+
+## Procedencia y escritura
+
+Las nuevas consultas guardan metadata.source y metadata.fetched_at UTC. --from-cache conserva el JSON y solo regenera HTML. Los destinos se preparan con respaldos y restauración ante fallos. Comparación con publicado y recuperación de interrupciones: [Instantáneas](snapshots.md).

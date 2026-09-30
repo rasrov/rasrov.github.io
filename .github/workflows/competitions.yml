@@ -1,0 +1,46 @@
+name: Refresh IFBB competitions
+on:
+  schedule:
+    - cron: '17 7 * * 2'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: refresh-ifbb-competitions
+  cancel-in-progress: false
+jobs:
+  refresh:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate existing project
+        run: python scripts/validate.py --browser
+      - name: Refresh competitions from IFBB
+        run: python scripts/update_competitions.py
+      - name: Validate updated public artifact
+        run: python scripts/build.py
+      - name: Commit only the validated competitions snapshot
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          if git diff --quiet -- data/competitions.json; then
+            echo "No snapshot changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/competitions.json
+          git commit -m "chore: refresh IFBB competitions"
+          git push origin "HEAD:$DEFAULT_BRANCH"

@@ -1,5 +1,13 @@
 {
-  "checked_at": "2026-09-29",
+  "checked_at": "2026-09-30",
+  "metadata": {
+    "source": "https://www.ifbbpro.com/wp-json/tribe/events/v1/events",
+    "fetched_at": "2026-09-30T20:51:25.959293Z",
+    "query_start": "2026-01-01",
+    "query_end": "2027-10-01",
+    "fetched_total": 313,
+    "retained_missing_ids": []
+  },
   "events": [
     {
       "id": 21727,
@@ -9,7 +17,7 @@
       "city": "Columbus",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-arnold-classic-xxxviii/",
-      "description": "Men’s Bodybuilding \nMen’s Classic Physique \nMen’s Physique \nMen’s Wheelchair \nWomen’s Fitness \nWomen’s Bikini \nWomen’s Wellness",
+      "description": "Men’s Bodybuilding\nMen’s Classic Physique\nMen’s Physique\nMen’s Wheelchair\nWomen’s Fitness\nWomen’s Bikini\nWomen’s Wellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026arnoldclassic_030526.jpg"
     },
     {
@@ -20,7 +28,7 @@
       "city": "San Diego",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-fitworld-pro/",
-      "description": "Open Men’s Classic Physique \nMasters Men’s Classic Physique 40",
+      "description": "Open Men’s Classic Physique\nMasters Men’s Classic Physique 40",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026fitworldPRO_030726.jpg"
     },
     {
@@ -31,7 +39,7 @@
       "city": "Detroit",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-detroit-pro/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026detroitPRO_031426.jpg"
     },
     {
@@ -42,7 +50,7 @@
       "city": "Birmingham",
       "country": "United Kingdom",
       "url": "https://www.ifbbpro.com/competition/2026-arnold-classic-united-kingdom/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique \nOpen Men’s Wheelchair \nOpen Women’s Fitness \nOpen Women’s Bikini \nOpen Women’s Wellness",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique\nOpen Men’s Wheelchair\nOpen Women’s Fitness\nOpen Women’s Bikini\nOpen Women’s Wellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026arnoldclassicuk_032726.jpg"
     },
     {
@@ -53,7 +61,7 @@
       "city": "Salt Lake City",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-utah-cup-pro/",
-      "description": "Open Men’s Classic Physique \nMasters Men’s Classic Physique 40",
+      "description": "Open Men’s Classic Physique\nMasters Men’s Classic Physique 40",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026UtahCupPRO_032826.jpg"
     },
     {
@@ -75,7 +83,7 @@
       "city": "Columbus GA",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-tri-city-pro/",
-      "description": "Open Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Figure \nMasters Men’s Classic Physique 40/50 \nMasters Men’s Physique 40/50 \nMasters Women’s Figure 40/50",
+      "description": "Open Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Figure\nMasters Men’s Classic Physique 40/50\nMasters Men’s Physique 40/50\nMasters Women’s Figure 40/50",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2025tricityPRO_041126.jpg"
     },
     {
@@ -86,7 +94,7 @@
       "city": "Cologne",
       "country": "Germany",
       "url": "https://www.ifbbpro.com/competition/2026-fibo-germany-pro/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique \nOpen Women’s Figure \nOpen Women’s Bikini",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique\nOpen Women’s Figure\nOpen Women’s Bikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/FIBO_041726.jpg"
     },
     {
@@ -97,7 +105,7 @@
       "city": "San Juan",
       "country": "Puerto Rico",
       "url": "https://www.ifbbpro.com/competition/2026-puerto-rico-pro/",
-      "description": "Open Men’s Physique \nOpen Women’s Figure \nMasters Men’s Bodybuilding 40/45/50/55/60/70 \nMasters Men’s 212 Bodybuilding 40 \nMasters Men’s Classic Physique 40/45/50/55/60 \nMasters Men’s Physique 40/45/50/55/60 \nMasters Women’s Bodybuilding 40/50 \nMasters Women’s Figure 40/45/50/55/60 \nMasters Women’s Bikini 40/45/50/55/60 \nMasters Women’s Physique 40/45/50/55 \nMasters Women’s Wellness 40/45 \nMasters Women’s Fit Model 40",
+      "description": "Open Men’s Physique\nOpen Women’s Figure\nMasters Men’s Bodybuilding 40/45/50/55/60/70\nMasters Men’s 212 Bodybuilding 40\nMasters Men’s Classic Physique 40/45/50/55/60\nMasters Men’s Physique 40/45/50/55/60\nMasters Women’s Bodybuilding 40/50\nMasters Women’s Figure 40/45/50/55/60\nMasters Women’s Bikini 40/45/50/55/60\nMasters Women’s Physique 40/45/50/55\nMasters Women’s Wellness 40/45\nMasters Women’s Fit Model 40",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026puertoricoPRO_041826-v2.jpg"
     },
     {
@@ -108,7 +116,7 @@
       "city": "Shanghai",
       "country": "China",
       "url": "https://www.ifbbpro.com/competition/2026-huanji-china-pro/",
-      "description": "Open Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Bikini",
+      "description": "Open Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Bikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026huanjiPRO_041926-v2.jpg"
     },
     {
@@ -119,7 +127,7 @@
       "city": "Bellevue",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-emerald-cup-masters-pro/",
-      "description": "Masters Men’s Bodybuilding 40/50/60/70 \nMasters Men’s Classic Physique 35/40/50/60 \nMasters Men’s Physique 35/40/50/60 \nMasters Women’s Figure 35/40/50/55/60 \nMasters Women’s Bikini 35/40/50/55/60 \nMasters Women’s Physique 40 \nMasters Women’s Wellness 40 \nMasters Women’s Fit Model 40",
+      "description": "Masters Men’s Bodybuilding 40/50/60/70\nMasters Men’s Classic Physique 35/40/50/60\nMasters Men’s Physique 35/40/50/60\nMasters Women’s Figure 35/40/50/55/60\nMasters Women’s Bikini 35/40/50/55/60\nMasters Women’s Physique 40\nMasters Women’s Wellness 40\nMasters Women’s Fit Model 40",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026emeraldcupmastersPRO_042426.jpg"
     },
     {
@@ -130,7 +138,7 @@
       "city": "Sao Paulo",
       "country": "Brazil",
       "url": "https://www.ifbbpro.com/competition/2026-arnold-classic-south-america/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Wheelcahir Bodybuilding",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Wheelcahir Bodybuilding",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026arnoldsouthamericaPROPQ_042426.jpg"
     },
     {
@@ -152,7 +160,7 @@
       "city": "Alicante",
       "country": "Spain",
       "url": "https://www.ifbbpro.com/competition/2026-top-tan-spain-pro/",
-      "description": "Open Men’s Classic Physique \nOpen Women’s Bikini",
+      "description": "Open Men’s Classic Physique\nOpen Women’s Bikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026spainPRO_050326.jpg"
     },
     {
@@ -163,7 +171,7 @@
       "city": "Teaneck",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-new-york-pro/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s 212 Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Figure \nOpen Women’s Bikini \nOpen Women’s Physique \nOpen Women’s Wellness \nOpen Women’s Fit Model",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s 212 Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Figure\nOpen Women’s Bikini\nOpen Women’s Physique\nOpen Women’s Wellness\nOpen Women’s Fit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026newyorkPRO_050826.jpg"
     },
     {
@@ -174,7 +182,7 @@
       "city": "Tunis",
       "country": "Tunisia",
       "url": "https://www.ifbbpro.com/competition/2026-tunisian-pro-show/",
-      "description": "Men’s Classic Physique \nMen’s Physique",
+      "description": "Men’s Classic Physique\nMen’s Physique",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/02/2026tunisiaPRO_050926-1.jpg"
     },
     {
@@ -185,7 +193,7 @@
       "city": "Seoul",
       "country": "Korea, Republic of",
       "url": "https://www.ifbbpro.com/competition/2026-world-of-monsterzym-korea-pro/",
-      "description": "Men’s 212 Bodybuilding \nMen’s Classic Physique \nMen’s Physique \nWomen’s Bikini \nWomen’s Wellness \nWomen’s Fit Model",
+      "description": "Men’s 212 Bodybuilding\nMen’s Classic Physique\nMen’s Physique\nWomen’s Bikini\nWomen’s Wellness\nWomen’s Fit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/02/2026koreaPRO_050926.jpg"
     },
     {
@@ -196,7 +204,7 @@
       "city": "Pittsburgh",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-pittsburgh-power-fitness-festival/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Figure \nOpen Women’s Bikini \nOpen Women’s Physique \nOpen Women’s Wellness \nOpen Women’s Fit Model",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Figure\nOpen Women’s Bikini\nOpen Women’s Physique\nOpen Women’s Wellness\nOpen Women’s Fit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026pittsburghPRO_061626-v2.jpg"
     },
     {
@@ -207,7 +215,7 @@
       "city": "Paju City",
       "country": "Korea, Republic of",
       "url": "https://www.ifbbpro.com/competition/2026-agp-korea-pro/",
-      "description": "Open Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Bikini \nOpen Women’s Fit Model",
+      "description": "Open Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Bikini\nOpen Women’s Fit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026agpPRO_052326.jpg"
     },
     {
@@ -218,7 +226,7 @@
       "city": "Warsaw",
       "country": "Poland",
       "url": "https://www.ifbbpro.com/competition/2026-everest-poland-pro-muscle-games/",
-      "description": "Men’s Classic Physique \nMen’s Classic Physique 40+ \nWomen’s Bikini \nWomen’s Bikini 40+",
+      "description": "Men’s Classic Physique\nMen’s Classic Physique 40+\nWomen’s Bikini\nWomen’s Bikini 40+",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/02/2026polandPRO_052326.jpg"
     },
     {
@@ -229,7 +237,7 @@
       "city": "Paju City",
       "country": "Korea, Republic of",
       "url": "https://www.ifbbpro.com/competition/2026-agp-korea-natural-pro/",
-      "description": "Natural Men’s Classic Physique \nNatural Men’s Physique \nNatural Women’s Bikini",
+      "description": "Natural Men’s Classic Physique\nNatural Men’s Physique\nNatural Women’s Bikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026agpPRO_052426.jpg"
     },
     {
@@ -240,7 +248,7 @@
       "city": "Marrakesh",
       "country": "Morocco",
       "url": "https://www.ifbbpro.com/competition/2026-marrakech-pro/",
-      "description": "Men’s Classic Physique \nMen’s Physique",
+      "description": "Men’s Classic Physique\nMen’s Physique",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/02/2024marrakechPRO_052426.jpg"
     },
     {
@@ -251,7 +259,7 @@
       "city": "Madrid",
       "country": "Spain",
       "url": "https://www.ifbbpro.com/competition/2026-spanish-masters-pro/",
-      "description": "Masters Men’s Bodybuilding 40 \nMasters Men’s Classic Physique 40 \nMasters Men’s Physique 40 \nMasters Women’s Figure 40 \nMasters Women’s Bikini 40 \nMasters Women’s Physique 40 \nMasters Women’s Wellness 40",
+      "description": "Masters Men’s Bodybuilding 40\nMasters Men’s Classic Physique 40\nMasters Men’s Physique 40\nMasters Women’s Figure 40\nMasters Women’s Bikini 40\nMasters Women’s Physique 40\nMasters Women’s Wellness 40",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026spanishmastersPRO_052926.jpg"
     },
     {
@@ -262,7 +270,7 @@
       "city": "Reno",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-legion-sports-fest-pro/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Fitness \nOpen Women’s Bikini \nOpen Women’s Wellness",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Fitness\nOpen Women’s Bikini\nOpen Women’s Wellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026legionPRO_053026-v2.jpg"
     },
     {
@@ -284,7 +292,7 @@
       "city": "Shreveport",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-optimum-classic-pro/",
-      "description": "Open Men’s Classic Physique \nOpen Women’s Figure \nOpen Women’s Bikini \nOpen Women’s Physique \nOpen Women’s Wellness",
+      "description": "Open Men’s Classic Physique\nOpen Women’s Figure\nOpen Women’s Bikini\nOpen Women’s Physique\nOpen Women’s Wellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026optimumPRO_053026.jpg"
     },
     {
@@ -295,7 +303,7 @@
       "city": "Marseille",
       "country": "France",
       "url": "https://www.ifbbpro.com/competition/2026-france-pro/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique \nOpen Women’s Bikini",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique\nOpen Women’s Bikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026francePRO_060626-1.jpg"
     },
     {
@@ -306,7 +314,7 @@
       "city": "New Delhi",
       "country": "India",
       "url": "https://www.ifbbpro.com/competition/2026-bharat-india-pro/",
-      "description": "Open Men’s Classic Physique \nOpen Men’s Physique",
+      "description": "Open Men’s Classic Physique\nOpen Men’s Physique",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026indiaPRO_061226.jpg"
     },
     {
@@ -317,7 +325,7 @@
       "city": "Tulsa",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-oklahoma-pro/",
-      "description": "Open Men’s Classic Physique \nMasters Men’s Classic Physique 35/40/50/60",
+      "description": "Open Men’s Classic Physique\nMasters Men’s Classic Physique 35/40/50/60",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026oklahomaPRO_061326-v2.jpg"
     },
     {
@@ -328,7 +336,7 @@
       "city": "Toronto",
       "country": "Canada",
       "url": "https://www.ifbbpro.com/competition/2026-toronto-pro-supershow/",
-      "description": "Open & Masters 40 Men’s Bodybuilding \nOpen & Masters 40 Men’s 212 Bodybuilding \nOpen & Masters 40 Men’s Classic Physique \nOpen & Masters 40 Men’s Physique \nOpen Men’s Wheelchair Bodybuilding \nOpen & Masters 40 Women’s Bodybuilding \nOpen & Masters 40 Women’s Fitness \nOpen & Masters 40 Women’s Figure \nOpen & Masters 40 Women’s Bikini \nOpen & Masters 40 Women’s Physique \nOpen & Masters 40 Women’s Wellness \nOpen & Masters 40 Women’s Fit Model",
+      "description": "Open & Masters 40 Men’s Bodybuilding\nOpen & Masters 40 Men’s 212 Bodybuilding\nOpen & Masters 40 Men’s Classic Physique\nOpen & Masters 40 Men’s Physique\nOpen Men’s Wheelchair Bodybuilding\nOpen & Masters 40 Women’s Bodybuilding\nOpen & Masters 40 Women’s Fitness\nOpen & Masters 40 Women’s Figure\nOpen & Masters 40 Women’s Bikini\nOpen & Masters 40 Women’s Physique\nOpen & Masters 40 Women’s Wellness\nOpen & Masters 40 Women’s Fit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026torontoPRO_061426-1.jpg"
     },
     {
@@ -339,7 +347,7 @@
       "city": "Montgomery",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-body-be-1-classic-pro/",
-      "description": "Open Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Fitness \nOpen Women’s Figure \nMasters Men’s Physique 40/50 \nMasters Women’s Fitness 40/50 \nMasters Women’s Figure 40/50",
+      "description": "Open Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Fitness\nOpen Women’s Figure\nMasters Men’s Physique 40/50\nMasters Women’s Fitness 40/50\nMasters Women’s Figure 40/50",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026bodybe1PRO_062026.jpg"
     },
     {
@@ -350,7 +358,7 @@
       "city": "Alicante",
       "country": "Spain",
       "url": "https://www.ifbbpro.com/competition/2026-empro-classic-spain-pro/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s 212 Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique \nOpen Men’s Wheelchair Bodybuilding \nOpen Women’s Bodybuilding \nOpen Women’s Figure \nOpen Women’s Bikini \nOpen Women’s Physique \nOpen Women’s Wellness",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s 212 Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique\nOpen Men’s Wheelchair Bodybuilding\nOpen Women’s Bodybuilding\nOpen Women’s Figure\nOpen Women’s Bikini\nOpen Women’s Physique\nOpen Women’s Wellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026spainPRO_06226.jpg"
     },
     {
@@ -361,7 +369,7 @@
       "city": "Beijing",
       "country": "China",
       "url": "https://www.ifbbpro.com/competition/2026-huanji-china-pro-2/",
-      "description": "Open Men’s 212 Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Wellness",
+      "description": "Open Men’s 212 Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Wellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026huanjiPRO_062126.jpg"
     },
     {
@@ -372,7 +380,7 @@
       "city": "Salem",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-oregon-natural-pro/",
-      "description": "Natural Men’s Classic Physique \nNatural Women’s Figure",
+      "description": "Natural Men’s Classic Physique\nNatural Women’s Figure",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2025/12/2026oregonNATPRO_072726.jpg"
     },
     {
@@ -383,7 +391,7 @@
       "city": "Muncie",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-indy-pro-supershow/",
-      "description": "Open Men’s Classic Physique \nOpen Women’s Bikini \nMasters Men’s Classic Physique 40/50 \nMasters Women’s Bikini 40/50",
+      "description": "Open Men’s Classic Physique\nOpen Women’s Bikini\nMasters Men’s Classic Physique 40/50\nMasters Women’s Bikini 40/50",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026indyPRO_062726.jpg"
     },
     {
@@ -394,7 +402,7 @@
       "city": "Tokyo",
       "country": "Japan",
       "url": "https://www.ifbbpro.com/competition/2026-tokyo-pro/",
-      "description": "Classic Physique \nMen’s Physique \nBikini",
+      "description": "Classic Physique\nMen’s Physique\nBikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026japanPRO_062726.jpg"
     },
     {
@@ -405,7 +413,7 @@
       "city": "Milan",
       "country": "Italy",
       "url": "https://www.ifbbpro.com/competition/2026-flex-weekend-italy-pro/",
-      "description": "Open Men’s Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique",
+      "description": "Open Men’s Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/01/2026italyPRO_062826.jpg"
     },
     {
@@ -416,7 +424,7 @@
       "city": "Estoril",
       "country": "Portugal",
       "url": "https://www.ifbbpro.com/competition/2026-mr-big-evolution-portugal-pro/",
-      "description": "Men’s Bodybuilding \nMen’s 212 Bodybuilding \nMen’s Classic Physique \nMen’s Physique \nWomen’s Bodybuilding \nWomen’s Figure \nWomen’s Bikini \nWomen’s Physique \nWomen’s Wellness \nWomen’s Fit Model",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nMen’s Classic Physique\nMen’s Physique\nWomen’s Bodybuilding\nWomen’s Figure\nWomen’s Bikini\nWomen’s Physique\nWomen’s Wellness\nWomen’s Fit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026mrbigevolutionPRO_070526.jpg"
     },
     {
@@ -427,7 +435,7 @@
       "city": "Tijuana",
       "country": "Mexico",
       "url": "https://www.ifbbpro.com/competition/2026-xtreme-bodybuilding-mexico-pro/",
-      "description": "Classic Physique \nWellness",
+      "description": "Classic Physique\nWellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026mexicoPRO_070526.jpg"
     },
     {
@@ -449,7 +457,7 @@
       "city": "Rosemont",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-chicago-pro/",
-      "description": "Men’s Bodybuilding 40/45/50/55/60/70 \nMen’s 212 Bodybuilding Open + Masters 40 \nClassic Physique Open + Masters 40//45/50/55/60 \nMen’s Physique Open + Masters 40/45/50/55/60 \nWomen’s Bodybuilding 40/45/50/55/60 \nFitness Open \nFigure Open + Masters 40/45/50/55/60 \nBikini Open + Masters 40/45/50/55/60 \nWomen’s Physique Open + Masters 40/45/50/55 \nWellness Open + Masters 40/45",
+      "description": "Men’s Bodybuilding 40/45/50/55/60/70\nMen’s 212 Bodybuilding Open + Masters 40\nClassic Physique Open + Masters 40//45/50/55/60\nMen’s Physique Open + Masters 40/45/50/55/60\nWomen’s Bodybuilding 40/45/50/55/60\nFitness Open\nFigure Open + Masters 40/45/50/55/60\nBikini Open + Masters 40/45/50/55/60\nWomen’s Physique Open + Masters 40/45/50/55\nWellness Open + Masters 40/45",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/chicagoPQ_071726-v2.jpg"
     },
     {
@@ -460,7 +468,7 @@
       "city": "Curitiba",
       "country": "Brazil",
       "url": "https://www.ifbbpro.com/competition/2026-musclecontest-brazil-pro/",
-      "description": "Classic Physique \nMen’s Physique \nFigure \nWellness",
+      "description": "Classic Physique\nMen’s Physique\nFigure\nWellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/06/2026mcbrazil_071926.jpg"
     },
     {
@@ -482,7 +490,7 @@
       "city": "Kaohsiung",
       "country": "Taiwan",
       "url": "https://www.ifbbpro.com/competition/2026-taiwan-pro-show/",
-      "description": "Natural Men’s Physique \n Open Men’s 212 Bodybuilding \nOpen Men’s Classic Physique \nOpen Men’s Physique \nOpen Women’s Bikini",
+      "description": "Natural Men’s Physique\nOpen Men’s 212 Bodybuilding\nOpen Men’s Classic Physique\nOpen Men’s Physique\nOpen Women’s Bikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026taiwanPRO_071926.jpg"
     },
     {
@@ -493,7 +501,7 @@
       "city": "Richmond",
       "country": "Canada",
       "url": "https://www.ifbbpro.com/competition/2026-vancouver-pro-am-expo/",
-      "description": "Classic Physique Open & 40+ \nMen’s Physique Open & 40+ \nBikini Open & 40+ \nWellness OPen & 40+ \nFit Model Open & 40+",
+      "description": "Classic Physique Open & 40+\nMen’s Physique Open & 40+\nBikini Open & 40+\nWellness OPen & 40+\nFit Model Open & 40+",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026vanproshowPRO_072426.jpg"
     },
     {
@@ -504,7 +512,7 @@
       "city": "Medellin",
       "country": "Colombia",
       "url": "https://www.ifbbpro.com/competition/2026-gomeisa-ultimate-battle-pro/",
-      "description": "Classic Physique \nMen’s Physique \nFigure \nBikini \nWellness",
+      "description": "Classic Physique\nMen’s Physique\nFigure\nBikini\nWellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/06/2026colombiaPRO_072426.jpg"
     },
     {
@@ -515,7 +523,7 @@
       "city": "Chengdu",
       "country": "China",
       "url": "https://www.ifbbpro.com/competition/2026-huanji-china-pro-3/",
-      "description": "Men’s Bodybuilding \nMen’s 212 Bodybuilding \nClassic Physique \nMen’s Physique \nFigure \nBikini \nWellness",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nFigure\nBikini\nWellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026huanjiPRO_072526-v2.jpg"
     },
     {
@@ -526,7 +534,7 @@
       "city": "Tampa",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-tampa-pro/",
-      "description": "Men’s Bodybuilding Open + Masters 40/45/50/55/60/70 \nMen’s 212 Bodybuilding Open + Masters 40 \nClassic Physique Open + Masters 40/45/50/55/60 \nMen’s Physique Open + Masters 40/45/50/55/60 \nWomen’s Bodybuilding Open + Masters 40/45/50/55/60 \nFigure Open + Masters 40/45/50/55/60 \nBikini Open + Masteers 40/45/50/55/60 \nWomen’s Physique Open + Masters 40/45/50/55 \nWellness Open + Masters 40/45 \nFit Model Open + Masters 40/45/50",
+      "description": "Men’s Bodybuilding Open + Masters 40/45/50/55/60/70\nMen’s 212 Bodybuilding Open + Masters 40\nClassic Physique Open + Masters 40/45/50/55/60\nMen’s Physique Open + Masters 40/45/50/55/60\nWomen’s Bodybuilding Open + Masters 40/45/50/55/60\nFigure Open + Masters 40/45/50/55/60\nBikini Open + Masteers 40/45/50/55/60\nWomen’s Physique Open + Masters 40/45/50/55\nWellness Open + Masters 40/45\nFit Model Open + Masters 40/45/50",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026tampaPRO_073026.jpg"
     },
     {
@@ -537,7 +545,7 @@
       "city": "Grays",
       "country": "United Kingdom",
       "url": "https://www.ifbbpro.com/competition/24305/",
-      "description": "Classic Physique \nMen’s Physique",
+      "description": "Classic Physique\nMen’s Physique",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/06/2026ukPRO_080126.jpg"
     },
     {
@@ -548,7 +556,7 @@
       "city": "Toronto",
       "country": "Canada",
       "url": "https://www.ifbbpro.com/competition/2026-natural-canada-pro-show/",
-      "description": "Men’s Bodybuilding \nClassic Physique \nMen’s Physique \nFitness \nFigure \nBikini \nWomen’s Physique \nWellness \nFit Model",
+      "description": "Men’s Bodybuilding\nClassic Physique\nMen’s Physique\nFitness\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026canadaNATPRO_080226.jpg"
     },
     {
@@ -559,7 +567,7 @@
       "city": "Atlanta",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-lenda-murray-atl-pro-supershow/",
-      "description": "Men’s Bodybuilding \nMen’s 212 Bodybuilding \nClassic Physique \nMen’s Physique \nWomen’s Bodybuilding \nFitness \nFigure \nBikini \nWomen’s Physique \nWellness \nFit Model",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nWomen’s Bodybuilding\nFitness\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026atlPRO_080826.jpg"
     },
     {
@@ -570,7 +578,7 @@
       "city": "Irving",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-texas-pro/",
-      "description": "Men’s Bodybuilding \nMen’s 212 Bodybuilding \nClassic Physique \nMen’s Physique \nMen’s Wheelchair \nFigure \nBikini \nWomen’s Physique \nWellness \nFit Model",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nMen’s Wheelchair\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026texasPRO_081426-v2.jpg"
     },
     {
@@ -581,7 +589,7 @@
       "city": "Fort Walton Beach",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-maxfit-classic-pro/",
-      "description": "Men’s Bodybuilding 35/40/45/50/55/60 \nMen’s 212 Bodybuilding 40 \nClassic Physique 35/40/45/50/55/60 \nMen’s Physique 35/40/45/50/55/60 \nFigure 35/40/45/50/55/60 \nBikini 35/40/45/50/55/60 \nWomen’s Physique 35/40/45/50/55/60 \nWellness 35/40/45/50 \nFit Model 35/40/45/50",
+      "description": "Men’s Bodybuilding 35/40/45/50/55/60\nMen’s 212 Bodybuilding 40\nClassic Physique 35/40/45/50/55/60\nMen’s Physique 35/40/45/50/55/60\nFigure 35/40/45/50/55/60\nBikini 35/40/45/50/55/60\nWomen’s Physique 35/40/45/50/55/60\nWellness 35/40/45/50\nFit Model 35/40/45/50",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026maxfitPRO_081526-v2.jpg"
     },
     {
@@ -603,7 +611,7 @@
       "city": "Harbin",
       "country": "China",
       "url": "https://www.ifbbpro.com/competition/2026-huanji-china-pro-4/",
-      "description": "Classic Physique \nMen’s Physique \nBikini",
+      "description": "Classic Physique\nMen’s Physique\nBikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026huanjiPRO_081626.jpg"
     },
     {
@@ -614,7 +622,7 @@
       "city": "Vienna",
       "country": "Austria",
       "url": "https://www.ifbbpro.com/competition/2026-austrian-oak/",
-      "description": "Men’s Bodybuilding \nClassic Physique \nFigure \nBikini",
+      "description": "Men’s Bodybuilding\nClassic Physique\nFigure\nBikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026austriaPRO_082226.jpg"
     },
     {
@@ -625,7 +633,7 @@
       "city": "Fortaleza",
       "country": "Brazil",
       "url": "https://www.ifbbpro.com/competition/2026-musclecontest-experience-pro/",
-      "description": "Classic Physique \nMen’s Physique",
+      "description": "Classic Physique\nMen’s Physique",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/06/2026mcnordestefitexpoPRO_082226.jpg"
     },
     {
@@ -636,7 +644,7 @@
       "city": "Seoul",
       "country": "Korea, Republic of",
       "url": "https://www.ifbbpro.com/competition/2026-world-of-monsterzym-asian-pro-championships/",
-      "description": "Men’s 212 Bodybuilding \nClassic Physique \nMen’s Physique \nFigure \nBikini \nWellness \nFit Model",
+      "description": "Men’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nFigure\nBikini\nWellness\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/06/2026asianPQPRO_082226.jpg"
     },
     {
@@ -647,7 +655,7 @@
       "city": "Houston",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-houston-pro/",
-      "description": "Classic Physique Open & 40+ \nMen’s Physique Open & 40+ \nFigure Open & 40+ \nBikini Open & 40+ \nWellness Open & 40+",
+      "description": "Classic Physique Open & 40+\nMen’s Physique Open & 40+\nFigure Open & 40+\nBikini Open & 40+\nWellness Open & 40+",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026houstonPRO_082926.jpg"
     },
     {
@@ -658,7 +666,7 @@
       "city": "Raleigh",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-golds-gym-classic/",
-      "description": "Classic Physique Open + Masters 40+ \nMen’s Physique Open + Masters 40+ \nBikini Open + Masters 40+ \nFit Model Open + Masters 40+",
+      "description": "Classic Physique Open + Masters 40+\nMen’s Physique Open + Masters 40+\nBikini Open + Masters 40+\nFit Model Open + Masters 40+",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/06/2026goldsgymPRO_082926.jpg"
     },
     {
@@ -669,7 +677,7 @@
       "city": "Seoul",
       "country": "Korea, Republic of",
       "url": "https://www.ifbbpro.com/competition/2026-world-of-monsterzym-natural-pro/",
-      "description": "Classic Physique \nMen’s Physique \nBikini \nFit Model",
+      "description": "Classic Physique\nMen’s Physique\nBikini\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/07/2026monsterzymNATPQPRO_090526.jpg"
     },
     {
@@ -680,7 +688,7 @@
       "city": "Pittsburgh",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-pro-masters-world-championships/",
-      "description": "Men’s Bodybuilding 40/50/60/70/80/90 \nMen’s 212 Bodybuilding 40/50/60 \nClassic Physique 40/50/60/70 \nMen’s Physique 40/50/60/70 \nWomen’s Bodybuilding 40/50/60/70 \nFitness 40 \nFigure 40/50/60 \nBikini 40/50/60 \nWomen’s Physique 40/50/60 \nWellness 40/50 \nFit Model 40/50",
+      "description": "Men’s Bodybuilding 40/50/60/70/80/90\nMen’s 212 Bodybuilding 40/50/60\nClassic Physique 40/50/60/70\nMen’s Physique 40/50/60/70\nWomen’s Bodybuilding 40/50/60/70\nFitness 40\nFigure 40/50/60\nBikini 40/50/60\nWomen’s Physique 40/50/60\nWellness 40/50\nFit Model 40/50",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026promastersworld_090626.jpg"
     },
     {
@@ -691,7 +699,7 @@
       "city": "Santo Domingo",
       "country": "Dominican Republic",
       "url": "https://www.ifbbpro.com/competition/2026-dominican-republic-pro/",
-      "description": "Classic Physique \nMen’s Physique \nFigure \nBikini \nWellness",
+      "description": "Classic Physique\nMen’s Physique\nFigure\nBikini\nWellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/07/2026domrepPRO_091126.jpg"
     },
     {
@@ -702,7 +710,7 @@
       "city": "San Antonio",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-san-antonio-pro/",
-      "description": "Classic Physique Open + Masters 40/45/50/55/60 \nMen’s Physique Open + Masters 40/45/50/55/60 \nFigure Open + Masters 40/45/50/55/60 \nBikini Open + Masters 40/45/50/55/60",
+      "description": "Classic Physique Open + Masters 40/45/50/55/60\nMen’s Physique Open + Masters 40/45/50/55/60\nFigure Open + Masters 40/45/50/55/60\nBikini Open + Masters 40/45/50/55/60",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026sanantonioPRO_091226.jpg"
     },
     {
@@ -713,7 +721,7 @@
       "city": "Xi'an",
       "country": "China",
       "url": "https://www.ifbbpro.com/competition/2026-huanji-china-pro-5/",
-      "description": "Men’s 212 Bodybuilding \nClassic Physique \nMen’s Physique \nBikini",
+      "description": "Men’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nBikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026huanjiPRO_091226.jpg"
     },
     {
@@ -724,7 +732,7 @@
       "city": "Offenbach",
       "country": "Germany",
       "url": "https://www.ifbbpro.com/competition/2026-europa-pro-show/",
-      "description": "Men’s Bodybuilding \nMen’s 212 Bodybuilding \nClassic Physique \nMen’s Physique \nWomen’s Bodybuilding \nFitness \nFigure \nBikini \nWomen’s Physique \nWellness \nFit Model",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nWomen’s Bodybuilding\nFitness\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/05/2026europaPRO_091326.jpg"
     },
     {
@@ -735,7 +743,7 @@
       "city": "Carrollton",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-battle-of-west-georgia-natural-pro/",
-      "description": "Classic Physique \nBikini \nWellness",
+      "description": "Classic Physique\nBikini\nWellness",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/07/2026westgeorgiaNATPRO_091926_3.jpg"
     },
     {
@@ -746,7 +754,7 @@
       "city": "Ixmir",
       "country": "Turkey",
       "url": "https://www.ifbbpro.com/competition/2026-turkey-pro-show/",
-      "description": "212 Bodybuilding \nClassic Physique \nMen’s Physique \nBikini",
+      "description": "212 Bodybuilding\nClassic Physique\nMen’s Physique\nBikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026turkeyPQPRO_092026-1.jpg"
     },
     {
@@ -757,7 +765,7 @@
       "city": "Las Vegas",
       "country": "United States",
       "url": "https://www.ifbbpro.com/competition/2026-joe-weiders-olympia-fitness-performance-weekend/",
-      "description": "Men’s Bodybuilding \n212 Bodybuilding \nClassic Physique \nMen’s Physique \nWheelchair Bodybuilding \nWomen’s Bodybuilding \nFitness \nFigure \nBikini \nWomen’s Physique \nWellness \nFit Model",
+      "description": "Men’s Bodybuilding\n212 Bodybuilding\nClassic Physique\nMen’s Physique\nWheelchair Bodybuilding\nWomen’s Bodybuilding\nFitness\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/07/2026olympia_list.jpg"
     },
     {
@@ -768,7 +776,7 @@
       "city": "Seoul",
       "country": "Korea, Republic of",
       "url": "https://www.ifbbpro.com/competition/2026-agp-natural-pro/",
-      "description": "Men’s Bodybuilding \nClassic Physique \nMen’s Physique \nBikini",
+      "description": "Men’s Bodybuilding\nClassic Physique\nMen’s Physique\nBikini",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026agpNATPRO_092626.jpg"
     },
     {
@@ -779,7 +787,7 @@
       "city": "Seoul",
       "country": "Korea, Republic of",
       "url": "https://www.ifbbpro.com/competition/2026-agp-pro-all-stars/",
-      "description": "Men’s 212 Bodybuilding \nClassic Physique \nMen’s Physique \nFigure \nBikini \nWellness \nFit Model",
+      "description": "Men’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nFigure\nBikini\nWellness\nFit Model",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026agpPROallstars_092626.jpg"
     },
     {
@@ -790,8 +798,338 @@
       "city": "Daytona Beach",
       "country": "",
       "url": "https://www.ifbbpro.com/competition/2026-daytona-masters-pro/",
-      "description": "Masters Men’s Bodybuilding 40/50/60/70 \nMasters Classic Physique 40/50/60 \nMasters Men’s Physique 40/50/60/70 \nMasters Figure 40/45/50/55 \nMasters Bikini 40/45/50/60 \nMasters Women’s Physique 40/45/50/55 \nMasters Fit Model 40/45/50",
+      "description": "Masters Men’s Bodybuilding 40/50/60/70\nMasters Classic Physique 40/50/60\nMasters Men’s Physique 40/50/60/70\nMasters Figure 40/45/50/55\nMasters Bikini 40/45/50/60\nMasters Women’s Physique 40/45/50/55\nMasters Fit Model 40/45/50",
       "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/05/2026daytonaPRO_092626.jpg"
+    },
+    {
+      "id": 23139,
+      "name": "2026 Tsunami Nutrition Toulouse Championship",
+      "start": "2026-10-03",
+      "end": "2026-10-03",
+      "city": "Toulouse-Labege",
+      "country": "France",
+      "url": "https://www.ifbbpro.com/competition/2026-tsunami-nutrition-toulouse-championship/",
+      "description": "Classic Physique\nMen’s Physique\nWellness",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026francePRO_100326.jpg"
+    },
+    {
+      "id": 23459,
+      "name": "2026 Southern Muscle Showdown Pro",
+      "start": "2026-10-03",
+      "end": "2026-10-03",
+      "city": "Dalton",
+      "country": "United States",
+      "url": "https://www.ifbbpro.com/competition/2026-southern-muscle-showdown-pro/",
+      "description": "Classic Physique Open & Masters 40\nBikini Open & Masters 40/50/60",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026southernmusclePRO_100326.jpg"
+    },
+    {
+      "id": 24056,
+      "name": "2026 Pharlabs Mexico Pro",
+      "start": "2026-10-04",
+      "end": "2026-10-04",
+      "city": "Nuevo Vallarta Nayarit",
+      "country": "Mexico",
+      "url": "https://www.ifbbpro.com/competition/2026-pharlabs-mexico-pro/",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nWomen’s Bodybuilding\nFigure\nBikini\nWomen’s Physique\nWellness",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/05/2026mexicoPRO_100426.jpg"
+    },
+    {
+      "id": 24760,
+      "name": "2026 EVLS Prague Pro",
+      "start": "2026-10-11",
+      "end": "2026-10-11",
+      "city": "Prague",
+      "country": "Czech Republic",
+      "url": "https://www.ifbbpro.com/competition/2026-evls-prague-pro/",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nFigure\nBikini\nWellness",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/07/2025evlsPRO_101126.jpg"
+    },
+    {
+      "id": 23217,
+      "name": "2026 Hurricane Pro",
+      "start": "2026-10-16",
+      "end": "2026-10-17",
+      "city": "St. Petersburg",
+      "country": "",
+      "url": "https://www.ifbbpro.com/competition/2026-hurricane-pro/",
+      "description": "Men’s Bodybuilding 40/45/50/55/60/70\nMen’s 212 Bodybuilding Masters 40\nClassic Physique Open + Masters 40/45/50/55/60\nMen’s Physique Open + Masters 40/45/50/55/60\nFigure Open + Masters 40/45/50/55/60\nBikini Open + Masters 40/45/50/55/60",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026hurricanePRO_101626.jpg"
+    },
+    {
+      "id": 25147,
+      "name": "2026 Musclecontest Brazil Pro",
+      "start": "2026-10-16",
+      "end": "2026-10-18",
+      "city": "Sao Paulo",
+      "country": "Brazil",
+      "url": "https://www.ifbbpro.com/competition/2026-musclecontest-brazil-pro-2/",
+      "description": "Men’s 212 Bodybuilding\nClassic Physique\nBikini",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/08/2026AObrazilPQPRO_101626.jpg"
+    },
+    {
+      "id": 23152,
+      "name": "2026 Fitparade Pro",
+      "start": "2026-10-18",
+      "end": "2026-10-18",
+      "city": "Budapest",
+      "country": "Hungary",
+      "url": "https://www.ifbbpro.com/competition/2026-fitparade-pro/",
+      "description": "Classic Physique\nBikini",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026fitparadePRO_101826.jpg"
+    },
+    {
+      "id": 23161,
+      "name": "2026 Tsunami Nutrition Natural Championship",
+      "start": "2026-10-24",
+      "end": "2026-10-24",
+      "city": "Marseille",
+      "country": "France",
+      "url": "https://www.ifbbpro.com/competition/2026-tsunami-nutrition-natural-championship/",
+      "description": "Men’s Bodybuilding\nClassic Physique\nMen’s Physique\nFitness\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026francenatpro_102426.jpg"
+    },
+    {
+      "id": 23972,
+      "name": "2026 Moscow Showdown Pro",
+      "start": "2026-10-24",
+      "end": "2026-10-24",
+      "city": "Moscow",
+      "country": "Russian Federation",
+      "url": "https://www.ifbbpro.com/competition/2026-moscow-showdown-pro/",
+      "description": "Classic Physique\nWellness",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/05/2026russiaPRO_102426-v2.jpg"
+    },
+    {
+      "id": 23170,
+      "name": "2026 365 Grand Prix Pro",
+      "start": "2026-10-25",
+      "end": "2026-10-25",
+      "city": "Kosice",
+      "country": "Slovakia (Slovak Republic)",
+      "url": "https://www.ifbbpro.com/competition/2026-365-grand-prix-pro/",
+      "description": "Men’s Bodybuilding\nClassic Physique\nMen’s Physique\nBikini",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/365GrandPrixPRO_102526.jpg"
+    },
+    {
+      "id": 23184,
+      "name": "2026 Euronaturals Pro",
+      "start": "2026-10-30",
+      "end": "2026-11-01",
+      "city": "Madrid",
+      "country": "Spain",
+      "url": "https://www.ifbbpro.com/competition/2026-euronaturals-pro/",
+      "description": "Men’s Bodybuilding\nClassic Physique\nMen’s Physique\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026spainNATPRO_110126.jpg"
+    },
+    {
+      "id": 23180,
+      "name": "2026 Spain Pro",
+      "start": "2026-11-01",
+      "end": "2026-11-01",
+      "city": "Alicante",
+      "country": "Spain",
+      "url": "https://www.ifbbpro.com/competition/2026-spain-pro/",
+      "description": "212 Bodybuilding\nClassic Physique\nBikini\nWellness",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026spainPRO_110126-update.jpg"
+    },
+    {
+      "id": 25360,
+      "name": "2026 Kuwait Pro",
+      "start": "2026-11-06",
+      "end": "2026-11-07",
+      "city": "Kuwait City",
+      "country": "Kuwait",
+      "url": "https://www.ifbbpro.com/competition/2026-kuwait-pro/",
+      "description": "Classic Physique\nMen’s Physique",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/09/2026kuwaitPRO_110626.jpg"
+    },
+    {
+      "id": 23767,
+      "name": "2026 Romania Muscle Fest Pro",
+      "start": "2026-11-07",
+      "end": "2026-11-08",
+      "city": "Bucharest",
+      "country": "Romania",
+      "url": "https://www.ifbbpro.com/competition/2026-romania-muscle-fest-pro/",
+      "description": "Men’s Bodybuilding\nMen’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nWomen’s Bodybuilding\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026romaniaPQPRO_110725-v2.jpg"
+    },
+    {
+      "id": 24011,
+      "name": "2026 Steve Karr Las Vegas Classic Pro",
+      "start": "2026-11-07",
+      "end": "2026-11-07",
+      "city": "Las Vegas",
+      "country": "United States",
+      "url": "https://www.ifbbpro.com/competition/2026-steve-karr-las-vegas-classic-pro/",
+      "description": "Men’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nWomen’s Bodybuilding\nWomen’s Physique\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/05/2026stevekarrPRO_110726.jpg"
+    },
+    {
+      "id": 24879,
+      "name": "2026 Moe’s Muscles Pro",
+      "start": "2026-11-07",
+      "end": "2026-11-07",
+      "city": "Auckland",
+      "country": "New Zealand",
+      "url": "https://www.ifbbpro.com/competition/2026-moes-muscles-pro/",
+      "description": "Classic Physique",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/07/2026nzPRO_110726.jpg"
+    },
+    {
+      "id": 25578,
+      "name": "2026 Musclecontet FitPira Pro",
+      "start": "2026-11-07",
+      "end": "2026-11-08",
+      "city": "Piracicaba",
+      "country": "Brazil",
+      "url": "https://www.ifbbpro.com/competition/2026-musclecontet-fitpira-pro/",
+      "description": "Classic Physique\nMen’s Physique\nBikini",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/09/2026fitpiraPRO_110726.jpg"
+    },
+    {
+      "id": 23743,
+      "name": "2026 Ben Weider Natural Pro",
+      "start": "2026-11-13",
+      "end": "2026-11-15",
+      "city": "Alexandria",
+      "country": "United States",
+      "url": "https://www.ifbbpro.com/competition/2026-ben-weider-natural-pro/",
+      "description": "Men’s Bodybuilding\nClassic Physique\nMen’s Physique\nFitness\nFigure\nBikini\nWomen’s Physique\nWellness\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026benweiderPQPRO_111326.jpg"
+    },
+    {
+      "id": 23189,
+      "name": "2026 Spanish Grand Prix Pro",
+      "start": "2026-11-20",
+      "end": "2026-11-22",
+      "city": "Madrid",
+      "country": "Spain",
+      "url": "https://www.ifbbpro.com/competition/2026-spanish-grand-prix-pro/",
+      "description": "Classic Physique\nMen’s Physique\nFigure\nBikini\nWellness\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026spainPRO_112026.jpg"
+    },
+    {
+      "id": 23193,
+      "name": "2026 Mr Big Evolution Natural Pro Championships",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "city": "Carcavelos",
+      "country": "Portugal",
+      "url": "https://www.ifbbpro.com/competition/2026-mr-big-evolution-natural-pro-championships/",
+      "description": "Men’s Bodybuilding\nClassic Physique\nMen’s Physique\nFigure\nBikini\nWellness",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026portugalNATPRO_112126.jpg"
+    },
+    {
+      "id": 23463,
+      "name": "2026 Southern Natural Pro",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "city": "Lawrenceville",
+      "country": "United States",
+      "url": "https://www.ifbbpro.com/competition/2026-southern-natural-pro/",
+      "description": "Classic Physique + Masters 40\nMen’s Physique + Masters 40",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026southernNATPRO_112126.jpg"
+    },
+    {
+      "id": 23692,
+      "name": "2026 Maryland Night of Champions Pro",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "city": "Towson",
+      "country": "United States",
+      "url": "https://www.ifbbpro.com/competition/2026-maryland-night-of-champions-pro/",
+      "description": "Classic Physique 40\nMen’s Physique 40\nFigure 40\nBikini 40\nFit Model 40",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/04/2026marylandPRO_112126.jpg"
+    },
+    {
+      "id": 25522,
+      "name": "2026 Thailand Pro",
+      "start": "2026-11-21",
+      "end": "2026-11-21",
+      "city": "Bangkok",
+      "country": "Thailand",
+      "url": "https://www.ifbbpro.com/competition/2026-thailand-pro-2/",
+      "description": "Classic Physique",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/09/2026thailandPRO_112126_new.jpg"
+    },
+    {
+      "id": 25694,
+      "name": "2026 Atlantic Coast Pro",
+      "start": "2026-11-21",
+      "end": "2026-11-22",
+      "city": "Fort Lauderdale",
+      "country": "",
+      "url": "https://www.ifbbpro.com/competition/2026-atlantic-coast-pro/",
+      "description": "Masters Men’s Bodybuilding 40/45/50/55/60/70\nMen’s 212 Bodybuilding 40\nOpen & Masters Classic Physique 40/45/50/55/60\nOpen & Masters Men’s Physique 40/45/50/55/60\nOpen & Masters Figure 40/45/50/55/60\nOpen & Masters Bikini 40/45/50/55/60\nOpen & Masters Women’s Physique 40/45/50/55",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/09/2026atlanticcoastPRO_112126.jpg"
+    },
+    {
+      "id": 23197,
+      "name": "2026 Mr Big Evolution Pro Portugal Masters",
+      "start": "2026-11-22",
+      "end": "2026-11-22",
+      "city": "Carcavelos",
+      "country": "Portugal",
+      "url": "https://www.ifbbpro.com/competition/2026-mr-big-evolution-pro-portugal-masters/",
+      "description": "Men’s Bodybuilding 40\nMen’s 212 Bodybuilding 40\nClassic Physique 40\nMen’s Physique 40\nWomen’s Bodybuilding 40\nFigure 40\nBikini 40\nWomen’s Physique 40\nWellness 40",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026portugalPRO_112226.jpg"
+    },
+    {
+      "id": 23266,
+      "name": "2026 Huanji China Natural Pro",
+      "start": "2026-11-29",
+      "end": "2026-11-29",
+      "city": "Hangzhou",
+      "country": "China",
+      "url": "https://www.ifbbpro.com/competition/2026-huanji-china-natural-pro-2/",
+      "description": "Classic Physique\nMen’s Physique\nBikini\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026huanjiNATPRO_112826.jpg"
+    },
+    {
+      "id": 23271,
+      "name": "2026 Huanji China Pro",
+      "start": "2026-11-29",
+      "end": "2026-11-29",
+      "city": "Hangzhou",
+      "country": "China",
+      "url": "https://www.ifbbpro.com/competition/2026-huanji-china-pro-6/",
+      "description": "Classic Physique\nMen’s Physique",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026huanjiPRO_112926.jpg"
+    },
+    {
+      "id": 25276,
+      "name": "2026 Taiwan Pro Grand Finale",
+      "start": "2026-12-04",
+      "end": "2026-12-06",
+      "city": "Kaohsiung",
+      "country": "Taiwan",
+      "url": "https://www.ifbbpro.com/competition/2026-taiwan-pro-grand-finale/",
+      "description": "Men’s 212 Bodybuilding\nClassic Physique\nMen’s Physique\nFigure\nBikini\nWellness\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/08/2026taiwanPQPRO_120426.jpg"
+    },
+    {
+      "id": 23276,
+      "name": "2026 Huanji China Pro",
+      "start": "2026-12-12",
+      "end": "2026-12-13",
+      "city": "Beijing",
+      "country": "China",
+      "url": "https://www.ifbbpro.com/competition/2026-huanji-china-pro-7/",
+      "description": "Classic Physique\nMen’s Physique\nFigure\nBikini\nFit Model",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/03/2026chinaPQPRO_121226.jpg"
+    },
+    {
+      "id": 25592,
+      "name": "2026 Musclecontest Austria Pro",
+      "start": "2026-12-13",
+      "end": "2026-12-13",
+      "city": "Schwechat",
+      "country": "Austria",
+      "url": "https://www.ifbbpro.com/competition/2026-musclecontest-austria-pro/",
+      "description": "Classic Physique\nClassic Physique 40+",
+      "image_url": "https://www.ifbbpro.com/wp-content/uploads/2026/09/2026austriaPQPRO_121326.jpg"
     }
   ]
 }

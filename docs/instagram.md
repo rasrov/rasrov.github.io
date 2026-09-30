@@ -42,3 +42,15 @@ Sin --from-cache se requiere INSTAGRAM_ACCESS_TOKEN en el entorno. Las imágenes
 
 Referencia: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/business_discovery/
 Tokens: https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/
+
+## Diagnóstico del 30/09/2026
+
+La web pública y su JSON incluían Dd4YSdnj51O, ausente de la instantánea local. Actions genera datos durante el despliegue y no los guarda en Git; localhost no consulta Meta por sí mismo. Se sincronizó la copia local con la instantánea pública validada.
+
+Pages estaba en build_type legacy (publicación desde rama) a la vez que existía el workflow de actualización. Se cambió a workflow para evitar que una publicación desde rama sirva la instantánea antigua. No se demostró que este conflicto causara una regresión concreta; sí se verificó la configuración duplicada.
+
+Para refrescar localmente desde Meta, proporcionar INSTAGRAM_ACCESS_TOKEN en el entorno y ejecutar python scripts/update_instagram.py. --from-cache solo regenera con datos guardados. Los logs muestran IDs, fechas, tipo y disponibilidad de portada, sin tokens ni URLs temporales de medios.
+
+## Procedencia y escritura
+
+Las nuevas consultas guardan metadata.source y metadata.fetched_at UTC. --from-cache conserva el JSON y solo regenera HTML. Los destinos se preparan con respaldos y restauración ante fallos. Comparación con publicado y recuperación de interrupciones: [Instantáneas](snapshots.md).

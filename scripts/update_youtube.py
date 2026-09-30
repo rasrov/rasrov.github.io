@@ -12,6 +12,13 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
+if __package__:
+    from .generated_regions import replace_region
+    from .snapshot_write import RecoveryRequiredError, write_outputs
+else:
+    from generated_regions import replace_region
+    from snapshot_write import RecoveryRequiredError, write_outputs
+
 ROOT = Path(__file__).resolve().parents[1]
 CHANNEL_ID = "UCEqAjtwYKSwKDN4BENhvc6A"
 COUNT = 6
@@ -103,11 +110,8 @@ def render(videos):
     return "".join(cards) + "\n                "
 
 def replace_cards(page, videos):
-    if page.count(START) != 1 or page.count(END) != 1:
-        raise ValueError("Missing or duplicate YouTube generation markers")
-    before, rest = page.split(START)
-    _, after = rest.split(END)
-    return before + START + render(videos) + END + after
+    return replace_region(page, 'youtube', render(videos))
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -121,17 +125,24 @@ def main():
         if not key:
             raise ValueError("Add the YOUTUBE_API_KEY repository secret. See docs/youtube.md")
         videos = fetch_videos(key)
+        fetched_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     index = ROOT / "index.html"
     result = replace_cards(index.read_text(encoding="utf-8"), videos)
-    snapshot = json.dumps({"channelId": CHANNEL_ID, "videos": videos}, ensure_ascii=False, indent=2) + "\n"
-    # Validate before touching outputs. Failed workflow runs never deploy.
-    cache.write_text(snapshot, encoding="utf-8", newline="\n")
-    index.write_text(result, encoding="utf-8", newline="\n")
+    outputs = {}
+    if not args.from_cache:
+        snapshot = {"channelId": CHANNEL_ID, "videos": videos,
+                    "metadata": {"source": "youtube-data-api", "fetched_at": fetched_at}}
+        outputs['data/youtube.json'] = json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n"
+    outputs['index.html'] = result
+    write_outputs(ROOT, outputs)
     print(f"Rendered {len(videos)} public uploads, newest first.")
 
 if __name__ == "__main__":
     try:
         main()
+    except RecoveryRequiredError as error:
+        print(str(error), file=sys.stderr)
+        sys.exit(1)
     except (ValueError, KeyError, RuntimeError, OSError) as error:
         print(f"YouTube update failed: {error}", file=sys.stderr)
         sys.exit(1)

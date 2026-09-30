@@ -4,25 +4,32 @@ import json
 import re
 from datetime import date
 from pathlib import Path
+if __package__:
+    from .generated_regions import replace_region
+else:
+    from generated_regions import replace_region
+
 ROOT = Path(__file__).resolve().parents[1]
 START = '<!-- calendar:generated:start -->'
 END = '<!-- calendar:generated:end -->'
-def render(events, participation, logos):
+def render(events, participation, logos, root=None):
+    root = Path(root) if root is not None else ROOT
     cards = []
     seen = set()
     for event in sorted(events, key=lambda e: (e['start'], str(e['id']))):
+        key = str(event['id'])
+        if key in seen:
+            raise ValueError('Duplicate event ID')
+        seen.add(key)
         classic_lines = ' '.join(line for line in event.get('description', '').splitlines() if 'classic physique' in line.lower())
         if re.search(r'\bnaturals?\b', event['name'] + ' ' + classic_lines, re.I):
             continue
-        key = str(event['id'])
-        if key in seen: raise ValueError('Duplicate event ID')
-        seen.add(key)
         start, end = date.fromisoformat(event['start']), date.fromisoformat(event['end'])
         if end < start: raise ValueError('Invalid date range')
         status = participation.get(key, {}).get('status', 'pending')
         if status not in ('pending', 'confirmed', 'absent'): raise ValueError('Invalid participation status')
         logo = logos.get(key, '')
-        if logo and (not logo.startswith('img/calendar/') or '..' in logo or not (ROOT / logo).is_file()): raise ValueError('Invalid logo')
+        if logo and (not logo.startswith('img/calendar/') or '..' in logo or not (root / logo).is_file()): raise ValueError('Invalid logo')
         url = event['url']
         if not url.startswith('https://www.ifbbpro.com/competition/'): raise ValueError('Invalid source URL')
         esc = lambda value: html.escape(str(value), quote=True)
@@ -37,13 +44,15 @@ def render(events, participation, logos):
 <h3>{esc(event['name'])}</h3><p>{esc(location)}</p><p>{esc(division)}</p><span class="calendar-status {status}">{label}</span>
 </article>''')
     return '\n'.join(cards)
+def replace_calendar(page, output):
+    return replace_region(page, 'calendar', '\n' + output + '\n')
+
+
 def main():
     read = lambda name: json.loads((ROOT / 'data' / name).read_text(encoding='utf-8'))
     output = render(read('competitions.json')['events'], read('competition-participation.json'), read('competition-logos.json'))
     path = ROOT / 'index.html'
     page = path.read_text(encoding='utf-8')
-    if page.count(START) != 1 or page.count(END) != 1: raise ValueError('Calendar markers missing')
-    before, rest = page.split(START); _, after = rest.split(END)
-    path.write_text(before + START + '\n' + output + '\n' + END + after, encoding='utf-8', newline='\n')
+    path.write_text(replace_calendar(page, output), encoding='utf-8', newline='\n')
     print('Calendar rendered.')
 if __name__ == '__main__': main()

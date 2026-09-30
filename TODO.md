@@ -128,5 +128,13 @@ Comprobación en Edge con móvil emulado: menú, cierre al navegar, dimensiones 
 - [x] Estados editoriales independientes, todos inicialmente PENDIENTE; logos disponibles y respaldo morado.
 - [x] Generar HTML durante el despliegue desde datos locales; instrucciones en docs/calendar.md.
 - [x] Incorporar la imagen genérica proporcionada por el usuario, también como respaldo si falla un logo.
-- [ ] Revisar el texto NPC PRO QUALIFIER de la imagen genérica: el calendario incluye eventos PRO.
-- [ ] Implementar consulta periódica de fuentes, validación de cambios y conservación de estados manuales.
+- [x] Sustituir el texto de la imagen genérica por PRO CHAMPIONSHIP; imagen actualizada por el usuario y comprobada.
+- [x] Implementar consulta periódica de IFBB, validación de cambios y conservación de estados manuales: scripts/update_competitions.py y workflow de los martes a las 07:17 UTC; horizonte anual hasta el siguiente 1 de octubre, inicialmente 2027. Primera actualización local: 102 eventos.
+- [ ] Subir y activar el workflow Refresh IFBB competitions en la rama predeterminada; comprobar su primera ejecución, commit del JSON y posterior publicación de Pages.
+- [ ] Evaluar como posible opción un catálogo propio de campeonatos con identidad interna, nombres normalizados y alias revisados para asociar logos locales independientemente del ID de IFBB. **Propuesta aplazada, no elegida ni autorizada para implementar:** las coincidencias por nombre pueden ser frágiles ante cambios de denominación, homónimos, ediciones, categorías y ubicaciones. Antes de decidir, comprobar las garantías reales de los IDs externos y comparar alternativas. Si se adopta, reservar la coincidencia aproximada para sugerencias; los casos desconocidos o ambiguos deben conservar la imagen genérica y requerir revisión manual. Separar la identidad del campeonato de cada edición para no trasladar participación de Kim entre años; admitir logos específicos por edición. Validar la propuesta con casos reales y pruebas antes de automatizar asociaciones.
+
+## Revisión técnica — 30/09/2026
+
+- [ ] Resolver el backlog de estructura, naming, convenciones, generación, frontend y pruebas de [TODO de revisión técnica](docs/TODO-revision-tecnica.md). Incluye 34 tareas con evidencia y criterios de cierre. Implementadas siete tandas: AUD-01 a AUD-10, AUD-12 a AUD-14, AUD-19 a AUD-22, AUD-24, AUD-26, AUD-27 y AUD-34; 77 pruebas correctas, frontend organizado, constructor validado y actualizadores con recuperación y metadatos. Pendiente ejecutar el workflow actualizado en GitHub y continuar el resto del backlog.
+
+Protocolo vigente de validación manual: [usabilidad y accesibilidad](docs/accessibility.md). AUD-23 y AUD-25 conservan pendientes reales de móvil, zoom y lector de pantalla.
