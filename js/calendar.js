@@ -1,6 +1,7 @@
 (() => {
     const site = window.KimSite ||= {};
     const initialized = new WeakSet();
+    const defaultLogo = 'img/calendar/default-championship.png';
     site.initCalendar = function () {
         const section = document.querySelector('#calendario');
         if (!section || initialized.has(section)) return;
@@ -99,6 +100,21 @@
             event.focus({ preventScroll: true });
             event.scrollIntoView({ block: 'nearest', behavior: 'auto' });
         }
+        function appendEventLogo(tile, event, className) {
+        const fallback = defaultLogo;
+        const logo = document.createElement('img');
+        let usingFallback = !event.dataset.logo;
+        logo.alt = ''; logo.className = className;
+        tile.classList.toggle('missing-logo', usingFallback);
+        logo.addEventListener('error', () => {
+            if (usingFallback) { logo.remove(); return; }
+            usingFallback = true;
+            tile.classList.add('missing-logo');
+            logo.src = fallback;
+        });
+        logo.src = event.dataset.logo || fallback;
+        tile.append(logo);
+        }
         function eventTile(event, day) {
             const tile = document.createElement('button');
             tile.type = 'button';
@@ -107,19 +123,7 @@
             tile.setAttribute('aria-label', `${day} ${format.format(month)}. ${event.querySelector('h3').textContent}. Kim: ${label}. Ver detalles`);
             tile.title = tile.getAttribute('aria-label');
             tile.setAttribute('aria-controls', event.id);
-            const fallback = 'img/calendar/default-championship.png';
-            const logo = document.createElement('img');
-            let usingFallback = !event.dataset.logo;
-            logo.alt = ''; logo.className = 'calendar-day-logo';
-            tile.classList.toggle('missing-logo', usingFallback);
-            logo.addEventListener('error', () => {
-                if (usingFallback) { logo.remove(); return; }
-                usingFallback = true;
-                tile.classList.add('missing-logo');
-                logo.src = fallback;
-            });
-            logo.src = event.dataset.logo || fallback;
-            tile.append(logo);
+            appendEventLogo(tile, event, 'calendar-day-logo');
             const strip = document.createElement('span'); strip.className = 'calendar-day-status'; strip.setAttribute('aria-hidden', 'true');
             const text = document.createElement('span'); text.className = 'calendar-status-label'; text.textContent = label;
             strip.append(text); tile.append(strip);
@@ -199,7 +203,8 @@
                         cell.type = 'button';
                         cell.classList.add('has-event', 'multiple-events');
                         cell.replaceChildren();
-                        cell.innerHTML = '<img class="calendar-championship-icon" src="img/calendar/multiple-championships-v2.png" alt="" aria-hidden="true">';
+                        const previewEvent = matches.find(event => event.dataset.logo && event.dataset.logo !== defaultLogo) || matches[0];
+                        appendEventLogo(cell, previewEvent, 'calendar-championship-icon');
                         const countLabel = document.createElement('span'); countLabel.textContent = `+${matches.length}`; cell.append(countLabel);
                         cell.setAttribute('aria-label', `${day} ${format.format(month)}: ${matches.length} competiciones. Mostrar opciones`);
                         cell.setAttribute('aria-haspopup', 'dialog');

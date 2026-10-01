@@ -42,6 +42,13 @@ class CalendarTests(unittest.TestCase):
         self.assertIn('competition-3', output)
         self.assertIn('competition-4', output)
 
+    def test_natural_substring_in_name_is_excluded(self):
+        for name in ('2026 Euronaturals Pro', '2026 EURONATURALS PRO', 'Natural Pro', 'Naturals Championship'):
+            item = event()
+            item['name'] = name
+            with self.subTest(name=name):
+                self.assertEqual(calendar.render([item], {}, {}), '')
+
     def test_duplicate_ids_including_filtered_events(self):
         for name in ('Example Pro', 'Natural Pro'):
             item = event()

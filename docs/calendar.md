@@ -47,8 +47,10 @@ Para activar la programación, estos cambios deben estar en la rama predetermina
 - data/competition-logos.json: asociación ID/ruta local. Un evento sin asociación usa img/calendar/default-championship.png; también se usa si falla el logo en el navegador. No se utilizan automáticamente los carteles image_url de IFBB como logos.
 - Para cambiar una decisión o logo, editar su JSON y ejecutar python scripts/build.py. Para regenerar deliberadamente el index.html fuente, ejecutar python scripts/render_calendar.py.
 
-Los eventos Natural/Naturals se conservan en los datos para auditoría, pero el renderizador los excluye si se identifican en el nombre o las líneas de Classic Physique. Masters no se excluye. No se infiere ausencia de Kim por no aparecer en listas provisionales.
+Los eventos naturales se conservan en los datos para auditoría, pero el renderizador excluye cualquier nombre que contenga natural, sin distinguir mayúsculas (incluye Euronaturals). También excluye Natural/Naturals como palabra completa en las líneas de Classic Physique; una mención en otra división no basta para excluir el evento. Masters no se excluye. No se infiere ausencia de Kim por no aparecer en listas provisionales.
 
 ## Procedencia y primera ejecución
 
 El histórico inicial contenía 72 eventos consultados hasta el 29/09/2026; se conserva su auditoría en docs/ifbb-2026-audit.md y docs/ifbb-2026-audit.json. La consulta completa del 30/09/2026, hasta 01/10/2027, recibió 313 eventos y seleccionó 102 profesionales con Classic Physique: 30 incorporaciones y 66 fichas actualizadas, incluidas normalizaciones de texto. No faltó ningún ID previo. Estos recuentos describen esa ejecución, no valores fijos para futuras importaciones.
+
+En días con varias competiciones, la celda muestra el primer logo propio disponible en el orden de la agenda (se omiten asociaciones vacías y la imagen genérica); si ninguno tiene logo propio, se usa default-championship.png, con opacidad 0,38 y el contador +N encima. Comparte el respaldo de imagen genérica con las celdas individuales; al pulsar se mantiene el selector de todas las competiciones del día.

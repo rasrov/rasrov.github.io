@@ -149,6 +149,39 @@ for (const [status, label] of [['pending','Pendiente'],['confirmed','Participa']
 }
 """, styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8'))
 
+    def test_multiple_day_uses_first_event_logo_and_preserves_counter(self):
+        first = card(1, '2026-09-26', '2026-09-26')
+        second = card(2, '2026-09-26', '2026-09-26').replace('/%3E', '/%3E#second')
+        self.check_page(SHELL.format(events=first + second), """
+const tile = document.querySelector('.multiple-events');
+const logo = tile.querySelector('img');
+check(logo.getAttribute('src') === document.querySelector('#competition-1').dataset.logo, 'First event logo not used');
+check(tile.querySelector('span').textContent === '+2', 'Competition count changed');
+check(getComputedStyle(logo).opacity === '0.38', 'Multiple-event opacity changed');
+logo.dispatchEvent(new Event('error'));
+check(logo.getAttribute('src') === 'img/calendar/default-championship.png', 'Missing logo fallback failed');
+logo.dispatchEvent(new Event('error'));
+check(!tile.querySelector('img') && tile.querySelector('span').textContent === '+2', 'Fallback failure lost count');
+tile.click();
+check(document.querySelectorAll('.calendar-popup-tiles .calendar-day').length === 2, 'Competition selector changed');
+""", styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8'))
+
+    def test_multiple_day_prefers_first_custom_logo_or_default(self):
+        import re
+        fallback = 'img/calendar/default-championship.png'
+        for logos, expected in [(['', 'own', 'own2'], 'own'), ([fallback, 'own', 'own2'], 'own'), (['', fallback, ''], fallback)]:
+            with self.subTest(logos=logos):
+                sources = [value if value in ('', fallback) else "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E#" + value for value in logos]
+                markup = ''.join(re.sub(r'data-logo="[^"]*"', 'data-logo="' + source + '"', card(i, '2026-09-26', '2026-09-26')) for i, source in enumerate(sources))
+                expected_src = fallback if expected == fallback else sources[1]
+                self.check_page(SHELL.format(events=markup), """
+const tile = document.querySelector('.multiple-events');
+check(tile.querySelector('img').getAttribute('src') === """ + repr(expected_src) + """, 'Wrong shared-day preview');
+check(tile.querySelector('span').textContent === '+3', 'Count changed');
+tile.click();
+check(document.querySelectorAll('.calendar-popup-tiles .calendar-day').length === 3, 'Selector lost events');
+""")
+
 
 if __name__ == '__main__':
     unittest.main()

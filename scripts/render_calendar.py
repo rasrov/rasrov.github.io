@@ -22,7 +22,7 @@ def render(events, participation, logos, root=None):
             raise ValueError('Duplicate event ID')
         seen.add(key)
         classic_lines = ' '.join(line for line in event.get('description', '').splitlines() if 'classic physique' in line.lower())
-        if re.search(r'\bnaturals?\b', event['name'] + ' ' + classic_lines, re.I):
+        if 'natural' in event['name'].casefold() or re.search(r'\bnaturals?\b', classic_lines, re.I):
             continue
         start, end = date.fromisoformat(event['start']), date.fromisoformat(event['end'])
         if end < start: raise ValueError('Invalid date range')
@@ -37,7 +37,6 @@ def render(events, participation, logos, root=None):
         location = ' · '.join(filter(None, [event.get('city'), event.get('country')])) or 'Ubicación por confirmar'
         divisions = [line.strip() for line in event.get('description', '').splitlines() if 'classic physique' in line.lower()]
         division = ' · '.join(divisions) or 'Classic Physique'
-        if 'natural' in event['name'].lower() and 'natural' not in division.lower(): division += ' · Natural'
         label = {'pending': 'PENDIENTE', 'confirmed': 'PARTICIPA', 'absent': 'NO PARTICIPA'}[status]
         cards.append(f'''<article class="calendar-event" data-date="{start}" data-end="{end}" data-status="{status}" data-logo="{esc(logo)}" id="competition-{esc(key)}">
 <div class="calendar-event-top"><time datetime="{start}">{dates}</time><a href="{esc(url)}" target="_blank" rel="noopener noreferrer">Programa oficial ↗</a></div>
