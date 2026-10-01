@@ -154,3 +154,16 @@ check([...document.querySelectorAll('.calendar-event')].every(e => !e.hidden && 
 document.querySelector('.nav-toggle').click();
 check(document.querySelector('.nav-toggle').getAttribute('aria-expanded') === 'true', 'Missing hero script blocked menu');
 """, scripts=['mobile-navigation', 'main'], bootstrap='')
+
+    def test_hero_keeps_section_snapping_without_canceling_wheel(self):
+        self.run_page('<main><div class="hero-section"></div><section class="about-section">About</section></main>', """
+for (const deltaY of [100, 100, -100]) {
+    const event = new WheelEvent('wheel', {deltaY, bubbles:true, cancelable:true});
+    document.querySelector('.hero-section').dispatchEvent(event);
+    check(!event.defaultPrevented, 'Hero still blocks wheel scrolling');
+}
+check(getComputedStyle(document.querySelector('.hero-section')).scrollSnapAlign === 'start', 'Hero snap target missing');
+check(getComputedStyle(document.querySelector('.about-section')).scrollSnapAlign === 'none', 'About still captures scroll');
+check(getComputedStyle(document.querySelector('.hero-section')).scrollSnapStop === 'normal', 'Forced scroll stop remained');
+check(document.documentElement.classList.contains('hero-ready'), 'Hero animation not initialized');
+""", styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8'), setup="const nativeMatchMedia = window.matchMedia.bind(window); window.matchMedia = query => query.includes('pointer: coarse') ? {matches:false} : nativeMatchMedia(query);")

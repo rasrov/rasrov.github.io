@@ -8,4 +8,5 @@
     site?.initHallGallery?.();
     site?.initCalendar?.();
     site?.enhanceNavigationControls?.();
+    site?.initCardEntrances?.();
 })();

@@ -138,3 +138,9 @@ Comprobación en Edge con móvil emulado: menú, cierre al navegar, dimensiones 
 - [ ] Resolver el backlog de estructura, naming, convenciones, generación, frontend y pruebas de [TODO de revisión técnica](docs/TODO-revision-tecnica.md). Incluye 34 tareas con evidencia y criterios de cierre. Implementadas siete tandas: AUD-01 a AUD-10, AUD-12 a AUD-14, AUD-19 a AUD-22, AUD-24, AUD-26, AUD-27 y AUD-34; 77 pruebas correctas, frontend organizado, constructor validado y actualizadores con recuperación y metadatos. Pendiente ejecutar el workflow actualizado en GitHub y continuar el resto del backlog.
 
 Protocolo vigente de validación manual: [usabilidad y accesibilidad](docs/accessibility.md). AUD-23 y AUD-25 conservan pendientes reales de móvil, zoom y lector de pantalla.
+
+## Animaciones de entrada — propuesta 01/10/2026
+
+- [x] Definir e implementar un estándar común de entrada para tarjetas de Instagram, vídeos de YouTube y tarjetas de clasificaciones (Hall of Fame). Un único módulo y estilos compartidos: 80 px desde abajo, sin cambios de opacidad, 600 ms y 200 ms entre tarjetas que entran juntas, una sola vez por tarjeta. Reutilización mediante data-entry-group y variables CSS; sin duplicar lógica en generadores. Respeta movimiento reducido y foco, y mantiene el contenido visible sin JavaScript. Pruebas y contrato en docs/frontend.md. Revisado en Edge a 390 y 1440 px; publicación pendiente.
+
+Ajuste de entrada: las tarjetas se preparan con el desplazamiento inicial antes de observar su entrada. Permanecen opacas durante la espera y el movimiento; solo se anima la traslación hasta su posición final. Movimiento reducido, foco e impresión eliminan también el desplazamiento preparado.

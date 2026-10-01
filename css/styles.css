@@ -35,9 +35,9 @@ html::-webkit-scrollbar {
 }
 
 .next-section {
-    width: 100%;
+    scroll-snap-stop: normal;
     scroll-snap-align: start;
-    scroll-snap-stop: always;
+    width: 100%;
     padding-top: var(--nav-height);
     height: auto;
     min-height: 100vh;
@@ -83,11 +83,11 @@ html::-webkit-scrollbar {
 /* Hero and navigation */
 
 .hero-section {
+    scroll-snap-stop: normal;
+    scroll-snap-align: start;
     width: 100%;
     height: 100vh;
     height: 100dvh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
 }
 
 .hero {
@@ -411,12 +411,12 @@ html:not(.navigation-ready) .hero-nav .nav-links {
 /* About */
 
 .about-section {
+    scroll-snap-align: none;
     min-height: 100dvh;
     padding-top: var(--nav-height);
     background: #f7f7f4;
     color: #202020;
     font-family: Arial, sans-serif;
-    scroll-snap-align: start;
 }
 
 .about-layout {
@@ -547,12 +547,12 @@ html:not(.navigation-ready) .hero-nav .nav-links {
 /* Hall of Fame and viewer */
 
 .hall-section {
+    scroll-snap-align: start;
     min-height: 100dvh;
     padding-block: calc(var(--nav-height) + 40px) 72px;
     background: #f7f7f4;
     color: #202020;
     font-family: Arial, sans-serif;
-    scroll-snap-align: start;
 }
 
 .hall-category {
@@ -1548,6 +1548,7 @@ html.hall-viewer-open {
 /* YouTube */
 
 .youtube-section {
+    scroll-snap-align: start;
     min-height: 100dvh;
     display: flex;
     align-items: center;
@@ -1555,7 +1556,6 @@ html.hall-viewer-open {
     background: #efefea;
     color: #202020;
     font-family: Arial, sans-serif;
-    scroll-snap-align: start;
 }
 
 .youtube-grid {
@@ -2223,4 +2223,52 @@ a:focus-visible {
 button:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 4px;
+}
+
+/* Shared card entrances: opt-in groups; content remains visible by default. */
+[data-entry-group] {
+    --entry-distance: 80px;
+    --entry-duration: 600ms;
+    --entry-stagger: 200ms;
+    --entry-easing: cubic-bezier(0, 0, 0.2, 1);
+}
+
+[data-entry-group] > .is-entry-ready {
+    transform: translateY(var(--entry-distance));
+}
+
+@keyframes card-entry {
+    from {
+        transform: translateY(var(--entry-distance));
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+[data-entry-group] > .is-entering {
+    animation: card-entry var(--entry-duration) var(--entry-easing) both;
+    animation-delay: calc(var(--entry-index, 0) * var(--entry-stagger));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-entry-group] > .is-entry-ready,
+    [data-entry-group] > .is-entering {
+        transform: none;
+        animation: none;
+    }
+}
+
+[data-entry-group] > .is-entry-ready:focus-within,
+[data-entry-group] > .is-entering:focus-within {
+    transform: none;
+    animation: none;
+}
+
+@media print {
+    [data-entry-group] > .is-entry-ready,
+    [data-entry-group] > .is-entering {
+        transform: none;
+        animation: none;
+    }
 }

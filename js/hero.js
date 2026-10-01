@@ -11,7 +11,6 @@
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         const sectionLinks = [...document.querySelectorAll('.section-indicator a')];
         let framePending = false;
-        let wheelLockedUntil = 0;
 
         function updateHero() {
             const viewportHeight = intro.offsetHeight;
@@ -48,27 +47,6 @@
                 requestAnimationFrame(updateHero);
             }
         }
-
-        // One wheel gesture moves between the two full-screen sections.
-        window.addEventListener('wheel', (event) => {
-            if (window.matchMedia('(max-width: 900px), (pointer: coarse)').matches || document.querySelector('dialog[open]')) return;
-            if (event.ctrlKey || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-            if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
-            // Allow normal scrolling inside a section taller than the viewport.
-            if (window.scrollY > content.offsetTop + 2) return;
-            const now = performance.now();
-            if (now < wheelLockedUntil) {
-                event.preventDefault();
-                wheelLockedUntil = Math.max(wheelLockedUntil, now + 160);
-                return;
-            }
-            const goingDown = event.deltaY > 0;
-            const target = goingDown ? content.offsetTop : 0;
-            if ((goingDown && window.scrollY >= target - 1) || (!goingDown && window.scrollY <= 1)) return;
-            event.preventDefault();
-            wheelLockedUntil = now + 1000;
-            window.scrollTo({ top: target, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
-        }, { passive: false });
 
         window.addEventListener('scroll', scheduleUpdate, { passive: true });
         window.addEventListener('resize', scheduleUpdate);
