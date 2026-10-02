@@ -12,3 +12,6 @@ _site/
 
 # Interrupted snapshot update journal and backups
 .snapshot-update/
+
+# Python formatter cache
+.ruff_cache/

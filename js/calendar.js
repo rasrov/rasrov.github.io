@@ -26,8 +26,8 @@
             const width = eventList.getBoundingClientRect().width;
             if (!width) return;
             let height = 0;
-            // Measure natural content at the current width, including hidden pages.
-            for (const event of monthEvents) {
+            // Insert all samples before reading geometry to avoid one layout per event.
+            const samples = monthEvents.map(event => {
                 const sample = event.cloneNode(true);
                 sample.removeAttribute('id');
                 sample.removeAttribute('tabindex');
@@ -35,10 +35,13 @@
                 sample.setAttribute('aria-hidden', 'true');
                 sample.inert = true;
                 sample.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;width:${width}px;height:auto;min-height:0;`;
-                agenda.append(sample);
+                return sample;
+            });
+            agenda.append(...samples);
+            for (const sample of samples) {
                 height = Math.max(height, sample.getBoundingClientRect().height);
-                sample.remove();
             }
+            samples.forEach(sample => sample.remove());
             eventList.style.setProperty('--agenda-card-height', `${Math.ceil(height)}px`);
             eventList.style.minHeight = `${Math.ceil(height) * Math.min(pageSize, monthEvents.length)}px`;
         }

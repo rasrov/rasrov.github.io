@@ -21,19 +21,40 @@ class BuildTests(unittest.TestCase):
             (self.root / name).mkdir()
         for name in build.PUBLIC_FILES:
             (self.root / name).write_text(name, encoding='utf-8')
-        page = 'Manual introduction\n<link rel="canonical" href="https://example.test/">' + ''.join(
-            f'<!-- {name}:generated:start -->old<!-- {name}:generated:end -->'
-            for name in ('youtube', 'instagram', 'calendar')) + '\nManual footer'
+        page = (
+            'Manual introduction\n<link rel="canonical" href="https://example.test/">'
+            + ''.join(
+                f'<!-- {name}:generated:start -->old<!-- {name}:generated:end -->'
+                for name in ('youtube', 'instagram', 'calendar')
+            )
+            + '\nManual footer'
+        )
         (self.root / 'index.html').write_text(page, encoding='utf-8')
-        videos = [dict(id=f'video{i:06d}', title=f'Video {i}', publishedAt='2020-01-01T12:00:00Z') for i in range(6)]
-        posts = [dict(id=str(i), permalink=f'https://www.instagram.com/p/post{i}/',
-                      media_type='IMAGE', timestamp='2020-01-01T12:00:00Z') for i in range(3)]
-        for name, value in {'youtube.json': {'channelId': update_youtube.CHANNEL_ID, 'videos': videos}, 'instagram.json': {'username': update_instagram.TARGET, 'posts': posts},
-                            'competitions.json': {'checked_at': '2026-09-30', 'events': []}, 'competition-logos.json': {},
-                            'competition-participation.json': {}}.items():
+        videos = [
+            dict(id=f'video{i:06d}', title=f'Video {i}', publishedAt='2020-01-01T12:00:00Z')
+            for i in range(6)
+        ]
+        posts = [
+            dict(
+                id=str(i),
+                permalink=f'https://www.instagram.com/p/post{i}/',
+                media_type='IMAGE',
+                timestamp='2020-01-01T12:00:00Z',
+            )
+            for i in range(3)
+        ]
+        for name, value in {
+            'youtube.json': {'channelId': update_youtube.CHANNEL_ID, 'videos': videos},
+            'instagram.json': {'username': update_instagram.TARGET, 'posts': posts},
+            'competitions.json': {'checked_at': '2026-09-30', 'events': []},
+            'competition-logos.json': {},
+            'competition-participation.json': {},
+        }.items():
             (self.root / 'data' / name).write_text(json.dumps(value), encoding='utf-8')
         (self.root / 'img/image-manifest.json').write_text('{}')
-        (self.root / 'sitemap.xml').write_text('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://example.test/</loc></url></urlset>')
+        (self.root / 'sitemap.xml').write_text(
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://example.test/</loc></url></urlset>'
+        )
         (self.root / 'google-verification.html').write_text('verification')
         (self.root / 'CNAME').write_text('example.test')
         (self.root / '.env').write_text('PRIVATE_TEST_VALUE')
@@ -43,7 +64,9 @@ class BuildTests(unittest.TestCase):
             clock = patch.object(module, 'datetime', wraps=datetime)
             self.addCleanup(clock.stop)
             clock.start().now.return_value = datetime(2026, 9, 30, tzinfo=timezone.utc)
-            network = patch.object(module, 'urlopen', side_effect=AssertionError('Offline build used network'))
+            network = patch.object(
+                module, 'urlopen', side_effect=AssertionError('Offline build used network')
+            )
             network.start()
             self.addCleanup(network.stop)
 
@@ -52,8 +75,11 @@ class BuildTests(unittest.TestCase):
         output = build.build(self.root)
         first = files(output)
         self.assertEqual({name: (self.root / name).read_bytes() for name in before}, before)
-        self.assertEqual(set(p.name for p in output.iterdir()),
-                         set(build.PUBLIC_FILES + build.PUBLIC_DIRECTORIES) | {'.nojekyll', 'CNAME', 'google-verification.html'})
+        self.assertEqual(
+            set(p.name for p in output.iterdir()),
+            set(build.PUBLIC_FILES + build.PUBLIC_DIRECTORIES)
+            | {'.nojekyll', 'CNAME', 'google-verification.html'},
+        )
         html = (output / 'index.html').read_text(encoding='utf-8')
         self.assertTrue(html.startswith('Manual introduction\n'))
         self.assertTrue(html.endswith('\nManual footer'))

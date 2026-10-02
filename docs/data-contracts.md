@@ -40,7 +40,7 @@ Las URLs externas, data: y otros esquemas no se descargan. Los fragmentos SVG, C
 
 ## Mantenimiento
 
-Al renombrar una imagen, actualizar sus consumidores, manifiesto y sitemap, y ejecutar el validador. Si cambia un recurso inventariado, regenerar sus metadatos y variantes; no modificar bytes a ciegas para silenciar el error. Automatizar la optimización sigue pendiente en AUD-11.
+Al renombrar una imagen, actualizar sus consumidores, manifiesto y sitemap, y ejecutar el validador. Si cambia un recurso inventariado, regenerar sus metadatos y variantes; no modificar bytes a ciegas para silenciar el error. La optimización reproducible de AUD-11 está implementada en `scripts/optimize_images.py` y su Action manual; comandos y política en [Imágenes](images.md).
 
 ## Procedencia de las instantáneas
 

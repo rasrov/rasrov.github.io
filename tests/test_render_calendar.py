@@ -7,10 +7,16 @@ from unittest.mock import patch
 from scripts import render_calendar as calendar
 
 
-
 def event(event_id=1, **changes):
-    return dict(id=event_id, name='Example Pro', start='2026-09-01', end='2026-09-02',
-                url='https://www.ifbbpro.com/competition/example/', description='Classic Physique', **changes)
+    return dict(
+        id=event_id,
+        name='Example Pro',
+        start='2026-09-01',
+        end='2026-09-02',
+        url='https://www.ifbbpro.com/competition/example/',
+        description='Classic Physique',
+        **changes,
+    )
 
 
 class CalendarTests(unittest.TestCase):
@@ -43,7 +49,12 @@ class CalendarTests(unittest.TestCase):
         self.assertIn('competition-4', output)
 
     def test_natural_substring_in_name_is_excluded(self):
-        for name in ('2026 Euronaturals Pro', '2026 EURONATURALS PRO', 'Natural Pro', 'Naturals Championship'):
+        for name in (
+            '2026 Euronaturals Pro',
+            '2026 EURONATURALS PRO',
+            'Natural Pro',
+            'Naturals Championship',
+        ):
             item = event()
             item['name'] = name
             with self.subTest(name=name):
@@ -71,19 +82,37 @@ class CalendarTests(unittest.TestCase):
             (root / 'img/calendar').mkdir(parents=True)
             (root / 'img/calendar/logo.svg').write_text('<svg/>')
             with patch.object(calendar, 'ROOT', root):
-                self.assertIn('img/calendar/logo.svg', calendar.render([event()], {}, {'1': 'img/calendar/logo.svg'}))
-                for path in ('img/calendar/missing.png', 'img/calendar/../logo.svg', 'https://evil.test/logo.svg'):
+                self.assertIn(
+                    'img/calendar/logo.svg',
+                    calendar.render([event()], {}, {'1': 'img/calendar/logo.svg'}),
+                )
+                for path in (
+                    'img/calendar/missing.png',
+                    'img/calendar/../logo.svg',
+                    'https://evil.test/logo.svg',
+                ):
                     with self.subTest(path=path), self.assertRaises(ValueError):
                         calendar.render([event()], {}, {'1': path})
 
     def test_replacement_preserves_other_sections_and_is_idempotent(self):
-        page = 'before<!-- youtube:generated:start -->video<!-- youtube:generated:end -->' + calendar.START + 'old' + calendar.END + 'after'
+        page = (
+            'before<!-- youtube:generated:start -->video<!-- youtube:generated:end -->'
+            + calendar.START
+            + 'old'
+            + calendar.END
+            + 'after'
+        )
         output = calendar.replace_calendar(page, 'new')
         self.assertEqual(output, page.replace('old', '\nnew\n'))
         self.assertEqual(calendar.replace_calendar(output, 'new'), output)
 
     def test_invalid_markers(self):
-        for page in ('none', calendar.START, calendar.START * 2 + calendar.END, calendar.END + calendar.START):
+        for page in (
+            'none',
+            calendar.START,
+            calendar.START * 2 + calendar.END,
+            calendar.END + calendar.START,
+        ):
             with self.subTest(page=page), self.assertRaises(ValueError):
                 calendar.replace_calendar(page, 'new')
 

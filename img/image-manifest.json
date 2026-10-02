@@ -1,1075 +1,1075 @@
 {
-  "img/web_main_image_raw.png": {
+  "img/hero-background.png": {
     "width": 2200,
     "height": 1600,
     "bytes": 811841,
     "variants": [
       {
-        "src": "img/optimized/web_main_image_raw-480w.webp",
+        "src": "img/optimized/hero-background-480w.webp",
         "width": 480,
         "height": 349,
         "bytes": 22082
       },
       {
-        "src": "img/optimized/web_main_image_raw-960w.webp",
+        "src": "img/optimized/hero-background-960w.webp",
         "width": 960,
         "height": 698,
         "bytes": 51476
       },
       {
-        "src": "img/optimized/web_main_image_raw-1440w.webp",
+        "src": "img/optimized/hero-background-1440w.webp",
         "width": 1440,
         "height": 1047,
         "bytes": 82032
       },
       {
-        "src": "img/optimized/web_main_image_raw-2200w.webp",
+        "src": "img/optimized/hero-background-2200w.webp",
         "width": 2200,
         "height": 1600,
         "bytes": 130598
       }
     ]
   },
-  "img/web_main_kim.png": {
+  "img/kim-angel-hero.png": {
     "width": 600,
     "height": 1220,
     "bytes": 653302,
     "variants": [
       {
-        "src": "img/optimized/web_main_kim-480w.webp",
+        "src": "img/optimized/kim-angel-hero-480w.webp",
         "width": 480,
         "height": 976,
         "bytes": 64802
       },
       {
-        "src": "img/optimized/web_main_kim-600w.webp",
+        "src": "img/optimized/kim-angel-hero-600w.webp",
         "width": 600,
         "height": 1220,
         "bytes": 69362
       }
     ]
   },
-  "img/web_main_kim_logo.png": {
+  "img/kim-angel-logo.png": {
     "width": 1254,
     "height": 1254,
     "bytes": 852208,
     "variants": [
       {
-        "src": "img/optimized/web_main_kim_logo-96w.webp",
+        "src": "img/optimized/kim-angel-logo-96w.webp",
         "width": 96,
         "height": 96,
         "bytes": 4830
       },
       {
-        "src": "img/optimized/web_main_kim_logo-192w.webp",
+        "src": "img/optimized/kim-angel-logo-192w.webp",
         "width": 192,
         "height": 192,
         "bytes": 12796
       },
       {
-        "src": "img/optimized/web_main_kim_logo-320w.webp",
+        "src": "img/optimized/kim-angel-logo-320w.webp",
         "width": 320,
         "height": 320,
         "bytes": 27296
       }
     ]
   },
-  "img/web_main_about_kim.png": {
+  "img/kim-angel-about.png": {
     "width": 2365,
     "height": 2820,
     "bytes": 602937,
     "variants": [
       {
-        "src": "img/optimized/web_main_about_kim-480w.webp",
+        "src": "img/optimized/kim-angel-about-480w.webp",
         "width": 480,
         "height": 572,
         "bytes": 6020
       },
       {
-        "src": "img/optimized/web_main_about_kim-960w.webp",
+        "src": "img/optimized/kim-angel-about-960w.webp",
         "width": 960,
         "height": 1145,
         "bytes": 18512
       },
       {
-        "src": "img/optimized/web_main_about_kim-1440w.webp",
+        "src": "img/optimized/kim-angel-about-1440w.webp",
         "width": 1440,
         "height": 1717,
         "bytes": 36666
       },
       {
-        "src": "img/optimized/web_main_about_kim-2200w.webp",
+        "src": "img/optimized/kim-angel-about-2200w.webp",
         "width": 2200,
         "height": 2623,
         "bytes": 74258
       }
     ]
   },
-  "img/hall_of_fame/olympia_2025/kim-angel-olympia-2025-01.jpg": {
+  "img/hall-of-fame/olympia-2025/kim-angel-olympia-2025-01.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 174466,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-01-320w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-01-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 34596
       },
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-01-600w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-01-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 75290
       }
     ]
   },
-  "img/hall_of_fame/olympia_2025/kim-angel-olympia-2025-02.jpg": {
+  "img/hall-of-fame/olympia-2025/kim-angel-olympia-2025-02.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 178710,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-02-320w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-02-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 35170
       },
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-02-600w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-02-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 77840
       }
     ]
   },
-  "img/hall_of_fame/olympia_2025/kim-angel-olympia-2025-03.jpg": {
+  "img/hall-of-fame/olympia-2025/kim-angel-olympia-2025-03.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 171831,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-03-320w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-03-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 32296
       },
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-03-600w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-03-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 73076
       }
     ]
   },
-  "img/hall_of_fame/olympia_2025/kim-angel-olympia-2025-04.jpg": {
+  "img/hall-of-fame/olympia-2025/kim-angel-olympia-2025-04.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 184976,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-04-320w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-04-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 35800
       },
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-04-600w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-04-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 81164
       }
     ]
   },
-  "img/hall_of_fame/olympia_2025/kim-angel-olympia-2025-05.jpg": {
+  "img/hall-of-fame/olympia-2025/kim-angel-olympia-2025-05.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 173796,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-05-320w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-05-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 34044
       },
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-05-600w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-05-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 75840
       }
     ]
   },
-  "img/hall_of_fame/olympia_2025/kim-angel-olympia-2025-06.jpg": {
+  "img/hall-of-fame/olympia-2025/kim-angel-olympia-2025-06.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 171179,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-06-320w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-06-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 33772
       },
       {
-        "src": "img/optimized/hall_of_fame/olympia_2025/kim-angel-olympia-2025-06-600w.webp",
+        "src": "img/optimized/hall-of-fame/olympia-2025/kim-angel-olympia-2025-06-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 75492
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-01.jpg": {
+  "img/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-01.jpg": {
     "width": 1440,
     "height": 1920,
     "bytes": 1165790,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-01-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-01-320w.webp",
         "width": 320,
         "height": 427,
         "bytes": 32286
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-01-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-01-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 105874
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-01-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-01-960w.webp",
         "width": 960,
         "height": 1280,
         "bytes": 237274
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-01-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-01-1440w.webp",
         "width": 1440,
         "height": 1920,
         "bytes": 767744
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-02.jpg": {
+  "img/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-02.jpg": {
     "width": 1440,
     "height": 1920,
     "bytes": 1026235,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-02-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-02-320w.webp",
         "width": 320,
         "height": 427,
         "bytes": 26076
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-02-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-02-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 87698
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-02-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-02-960w.webp",
         "width": 960,
         "height": 1280,
         "bytes": 209988
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-02-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-02-1440w.webp",
         "width": 1440,
         "height": 1920,
         "bytes": 630002
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-03.jpg": {
+  "img/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-03.jpg": {
     "width": 1440,
     "height": 1920,
     "bytes": 1066336,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-03-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-03-320w.webp",
         "width": 320,
         "height": 427,
         "bytes": 29606
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-03-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-03-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 98120
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-03-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-03-960w.webp",
         "width": 960,
         "height": 1280,
         "bytes": 225668
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-03-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-03-1440w.webp",
         "width": 1440,
         "height": 1920,
         "bytes": 655542
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-04.jpg": {
+  "img/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-04.jpg": {
     "width": 1440,
     "height": 1920,
     "bytes": 1161378,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-04-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-04-320w.webp",
         "width": 320,
         "height": 427,
         "bytes": 30208
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-04-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-04-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 100742
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-04-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-04-960w.webp",
         "width": 960,
         "height": 1280,
         "bytes": 223610
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-04-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-04-1440w.webp",
         "width": 1440,
         "height": 1920,
         "bytes": 755670
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-05.jpg": {
+  "img/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-05.jpg": {
     "width": 1440,
     "height": 1920,
     "bytes": 1020525,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-05-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-05-320w.webp",
         "width": 320,
         "height": 427,
         "bytes": 28176
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-05-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-05-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 89722
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-05-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-05-960w.webp",
         "width": 960,
         "height": 1280,
         "bytes": 206184
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-05-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-05-1440w.webp",
         "width": 1440,
         "height": 1920,
         "bytes": 604218
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-06.jpg": {
+  "img/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-06.jpg": {
     "width": 1440,
     "height": 1920,
     "bytes": 975438,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-06-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-06-320w.webp",
         "width": 320,
         "height": 427,
         "bytes": 30618
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-06-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-06-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 95840
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-06-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-06-960w.webp",
         "width": 960,
         "height": 1280,
         "bytes": 200250
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_uk_2026/kim-angel-arnold-classic-uk-2026-06-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-uk-2026/kim-angel-arnold-classic-uk-2026-06-1440w.webp",
         "width": 1440,
         "height": 1920,
         "bytes": 548918
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-01.jpg": {
+  "img/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-01.jpg": {
     "width": 1440,
     "height": 1919,
     "bytes": 834976,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-01-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-01-320w.webp",
         "width": 320,
         "height": 426,
         "bytes": 24850
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-01-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-01-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 68516
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-01-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-01-960w.webp",
         "width": 960,
         "height": 1279,
         "bytes": 146740
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-01-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-01-1440w.webp",
         "width": 1440,
         "height": 1919,
         "bytes": 420826
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-02.jpg": {
+  "img/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-02.jpg": {
     "width": 1440,
     "height": 1919,
     "bytes": 851143,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-02-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-02-320w.webp",
         "width": 320,
         "height": 426,
         "bytes": 25070
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-02-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-02-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 69896
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-02-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-02-960w.webp",
         "width": 960,
         "height": 1279,
         "bytes": 155770
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-02-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-02-1440w.webp",
         "width": 1440,
         "height": 1919,
         "bytes": 431744
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-03.jpg": {
+  "img/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-03.jpg": {
     "width": 1440,
     "height": 1919,
     "bytes": 847834,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-03-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-03-320w.webp",
         "width": 320,
         "height": 426,
         "bytes": 23786
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-03-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-03-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 66736
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-03-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-03-960w.webp",
         "width": 960,
         "height": 1279,
         "bytes": 148784
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-03-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-03-1440w.webp",
         "width": 1440,
         "height": 1919,
         "bytes": 433688
       }
     ]
   },
-  "img/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-04.jpg": {
+  "img/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-04.jpg": {
     "width": 1440,
     "height": 1919,
     "bytes": 829066,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-04-320w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-04-320w.webp",
         "width": 320,
         "height": 426,
         "bytes": 24720
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-04-640w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-04-640w.webp",
         "width": 640,
         "height": 853,
         "bytes": 68404
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-04-960w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-04-960w.webp",
         "width": 960,
         "height": 1279,
         "bytes": 149844
       },
       {
-        "src": "img/optimized/hall_of_fame/arnold_classic_usa_2026/kim-angel-arnold-classic-usa-2026-04-1440w.webp",
+        "src": "img/optimized/hall-of-fame/arnold-classic-usa-2026/kim-angel-arnold-classic-usa-2026-04-1440w.webp",
         "width": 1440,
         "height": 1919,
         "bytes": 420668
       }
     ]
   },
-  "img/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-01.jpg": {
+  "img/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-01.jpg": {
     "width": 1440,
     "height": 1800,
     "bytes": 195357,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-01-320w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-01-320w.webp",
         "width": 320,
         "height": 400,
         "bytes": 19492
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-01-640w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-01-640w.webp",
         "width": 640,
         "height": 800,
         "bytes": 48158
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-01-960w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-01-960w.webp",
         "width": 960,
         "height": 1200,
         "bytes": 81762
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-01-1440w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-01-1440w.webp",
         "width": 1440,
         "height": 1800,
         "bytes": 137800
       }
     ]
   },
-  "img/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-02.jpg": {
+  "img/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-02.jpg": {
     "width": 1440,
     "height": 1800,
     "bytes": 183513,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-02-320w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-02-320w.webp",
         "width": 320,
         "height": 400,
         "bytes": 18186
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-02-640w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-02-640w.webp",
         "width": 640,
         "height": 800,
         "bytes": 43710
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-02-960w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-02-960w.webp",
         "width": 960,
         "height": 1200,
         "bytes": 72978
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-02-1440w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-02-1440w.webp",
         "width": 1440,
         "height": 1800,
         "bytes": 130332
       }
     ]
   },
-  "img/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-03.jpg": {
+  "img/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-03.jpg": {
     "width": 1440,
     "height": 1800,
     "bytes": 201357,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-03-320w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-03-320w.webp",
         "width": 320,
         "height": 400,
         "bytes": 19588
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-03-640w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-03-640w.webp",
         "width": 640,
         "height": 800,
         "bytes": 49738
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-03-960w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-03-960w.webp",
         "width": 960,
         "height": 1200,
         "bytes": 85316
       },
       {
-        "src": "img/optimized/hall_of_fame/evls_prague_pro_25/kim-angel-evls-prague-pro-2025-03-1440w.webp",
+        "src": "img/optimized/hall-of-fame/evls-prague-pro-2025/kim-angel-evls-prague-pro-2025-03-1440w.webp",
         "width": 1440,
         "height": 1800,
         "bytes": 148394
       }
     ]
   },
-  "img/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-01.jpg": {
+  "img/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-01.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 174168,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-01-320w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-01-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 30506
       },
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-01-600w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-01-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 71964
       }
     ]
   },
-  "img/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-02.jpg": {
+  "img/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-02.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 172466,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-02-320w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-02-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 30226
       },
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-02-600w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-02-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 71316
       }
     ]
   },
-  "img/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-03.jpg": {
+  "img/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-03.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 167488,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-03-320w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-03-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 29918
       },
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-03-600w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-03-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 68302
       }
     ]
   },
-  "img/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-04.jpg": {
+  "img/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-04.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 176543,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-04-320w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-04-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 31054
       },
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-04-600w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-04-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 74124
       }
     ]
   },
-  "img/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-05.jpg": {
+  "img/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-05.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 176686,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-05-320w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-05-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 31096
       },
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-05-600w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-05-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 73476
       }
     ]
   },
-  "img/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-06.jpg": {
+  "img/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-06.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 175961,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-06-320w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-06-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 31280
       },
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-06-600w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-06-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 72640
       }
     ]
   },
-  "img/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-07.jpg": {
+  "img/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-07.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 173335,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-07-320w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-07-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 30240
       },
       {
-        "src": "img/optimized/hall_of_fame/atlanta_pro_2025/kim-angel-atlanta-pro-2025-07-600w.webp",
+        "src": "img/optimized/hall-of-fame/atlanta-pro-2025/kim-angel-atlanta-pro-2025-07-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 72056
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-01.jpg": {
+  "img/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-01.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 165196,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-01-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-01-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 30636
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-01-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-01-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 67308
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-02.jpg": {
+  "img/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-02.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 166735,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-02-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-02-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 31108
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-02-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-02-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 68614
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-03.jpg": {
+  "img/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-03.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 165618,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-03-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-03-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 30706
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-03-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-03-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 67744
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-04.jpg": {
+  "img/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-04.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 165556,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-04-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-04-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 30416
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-04-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-04-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 67338
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-05.jpg": {
+  "img/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-05.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 163805,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-05-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-05-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 30194
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-05-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-05-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 66658
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-06.jpg": {
+  "img/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-06.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 161609,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-06-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-06-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 29834
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2025/kim-angel-tupelo-pro-2025-06-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2025/kim-angel-tupelo-pro-2025-06-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 65318
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-01.jpg": {
+  "img/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-01.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 198493,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-01-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-01-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 38338
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-01-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-01-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 84564
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-02.jpg": {
+  "img/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-02.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 200514,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-02-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-02-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 38392
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-02-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-02-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 85022
       }
     ]
   },
-  "img/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-03.jpg": {
+  "img/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-03.jpg": {
     "width": 600,
     "height": 900,
     "bytes": 196594,
     "variants": [
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-03-320w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-03-320w.webp",
         "width": 320,
         "height": 480,
         "bytes": 37730
       },
       {
-        "src": "img/optimized/hall_of_fame/tupelo_pro_2024/kim-angel-tupelo-pro-2024-03-600w.webp",
+        "src": "img/optimized/hall-of-fame/tupelo-pro-2024/kim-angel-tupelo-pro-2024-03-600w.webp",
         "width": 600,
         "height": 900,
         "bytes": 81712
       }
     ]
   },
-  "img/sponsors/web_main_amix_logo.png": {
+  "img/sponsors/amix-logo.png": {
     "width": 315,
     "height": 300,
     "bytes": 27775,
     "variants": [
       {
-        "src": "img/optimized/sponsors/web_main_amix_logo-96w.webp",
+        "src": "img/optimized/sponsors/amix-logo-96w.webp",
         "width": 96,
         "height": 91,
         "bytes": 3058
       },
       {
-        "src": "img/optimized/sponsors/web_main_amix_logo-192w.webp",
+        "src": "img/optimized/sponsors/amix-logo-192w.webp",
         "width": 192,
         "height": 183,
         "bytes": 6888
       },
       {
-        "src": "img/optimized/sponsors/web_main_amix_logo-315w.webp",
+        "src": "img/optimized/sponsors/amix-logo-315w.webp",
         "width": 315,
         "height": 300,
         "bytes": 8312
       }
     ]
   },
-  "img/sponsors/web_main_biowell_labs_logo.png": {
+  "img/sponsors/biowell-labs-logo.png": {
     "width": 315,
     "height": 300,
     "bytes": 17916,
     "variants": [
       {
-        "src": "img/optimized/sponsors/web_main_biowell_labs_logo-96w.webp",
+        "src": "img/optimized/sponsors/biowell-labs-logo-96w.webp",
         "width": 96,
         "height": 91,
         "bytes": 2956
       },
       {
-        "src": "img/optimized/sponsors/web_main_biowell_labs_logo-192w.webp",
+        "src": "img/optimized/sponsors/biowell-labs-logo-192w.webp",
         "width": 192,
         "height": 183,
         "bytes": 6042
       },
       {
-        "src": "img/optimized/sponsors/web_main_biowell_labs_logo-315w.webp",
+        "src": "img/optimized/sponsors/biowell-labs-logo-315w.webp",
         "width": 315,
         "height": 300,
         "bytes": 7106
       }
     ]
   },
-  "img/sponsors/web_main_carmelo_puche_logo.png": {
+  "img/sponsors/carmelo-puche-logo.png": {
     "width": 315,
     "height": 300,
     "bytes": 73502,
     "variants": [
       {
-        "src": "img/optimized/sponsors/web_main_carmelo_puche_logo-96w.webp",
+        "src": "img/optimized/sponsors/carmelo-puche-logo-96w.webp",
         "width": 96,
         "height": 91,
         "bytes": 3694
       },
       {
-        "src": "img/optimized/sponsors/web_main_carmelo_puche_logo-192w.webp",
+        "src": "img/optimized/sponsors/carmelo-puche-logo-192w.webp",
         "width": 192,
         "height": 183,
         "bytes": 9788
       },
       {
-        "src": "img/optimized/sponsors/web_main_carmelo_puche_logo-315w.webp",
+        "src": "img/optimized/sponsors/carmelo-puche-logo-315w.webp",
         "width": 315,
         "height": 300,
         "bytes": 15290
       }
     ]
   },
-  "img/sponsors/web_main_etenon_logo.png": {
+  "img/sponsors/etenon-logo.png": {
     "width": 315,
     "height": 300,
     "bytes": 13375,
     "variants": [
       {
-        "src": "img/optimized/sponsors/web_main_etenon_logo-96w.webp",
+        "src": "img/optimized/sponsors/etenon-logo-96w.webp",
         "width": 96,
         "height": 91,
         "bytes": 2118
       },
       {
-        "src": "img/optimized/sponsors/web_main_etenon_logo-192w.webp",
+        "src": "img/optimized/sponsors/etenon-logo-192w.webp",
         "width": 192,
         "height": 183,
         "bytes": 5378
       },
       {
-        "src": "img/optimized/sponsors/web_main_etenon_logo-315w.webp",
+        "src": "img/optimized/sponsors/etenon-logo-315w.webp",
         "width": 315,
         "height": 300,
         "bytes": 7524
       }
     ]
   },
-  "img/sponsors/web_main_gymreapers_logo.png": {
+  "img/sponsors/gymreapers-logo.png": {
     "width": 315,
     "height": 300,
     "bytes": 32188,
     "variants": [
       {
-        "src": "img/optimized/sponsors/web_main_gymreapers_logo-96w.webp",
+        "src": "img/optimized/sponsors/gymreapers-logo-96w.webp",
         "width": 96,
         "height": 91,
         "bytes": 4128
       },
       {
-        "src": "img/optimized/sponsors/web_main_gymreapers_logo-192w.webp",
+        "src": "img/optimized/sponsors/gymreapers-logo-192w.webp",
         "width": 192,
         "height": 183,
         "bytes": 9550
       },
       {
-        "src": "img/optimized/sponsors/web_main_gymreapers_logo-315w.webp",
+        "src": "img/optimized/sponsors/gymreapers-logo-315w.webp",
         "width": 315,
         "height": 300,
         "bytes": 11144
       }
     ]
   },
-  "img/sponsors/web_main_rp_strenght_logo.png": {
+  "img/sponsors/rp-strength-logo.png": {
     "width": 315,
     "height": 300,
     "bytes": 41289,
     "variants": [
       {
-        "src": "img/optimized/sponsors/web_main_rp_strenght_logo-96w.webp",
+        "src": "img/optimized/sponsors/rp-strength-logo-96w.webp",
         "width": 96,
         "height": 91,
         "bytes": 4154
       },
       {
-        "src": "img/optimized/sponsors/web_main_rp_strenght_logo-192w.webp",
+        "src": "img/optimized/sponsors/rp-strength-logo-192w.webp",
         "width": 192,
         "height": 183,
         "bytes": 9448
       },
       {
-        "src": "img/optimized/sponsors/web_main_rp_strenght_logo-315w.webp",
+        "src": "img/optimized/sponsors/rp-strength-logo-315w.webp",
         "width": 315,
         "height": 300,
         "bytes": 11270

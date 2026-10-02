@@ -1,4 +1,5 @@
 """Browser regressions for the shared card entrance component."""
+
 import os
 import subprocess
 import tempfile
@@ -25,8 +26,14 @@ class CardEntranceTests(unittest.TestCase):
     check_page = calendar_tests.CalendarBrowserTests.check_page
 
     def run_page(self, assertions, setup=OBSERVER, markup=MARKUP):
-        self.check_page(markup, assertions, scripts=['card-entrances'],
-                        bootstrap='KimSite.initCardEntrances();', setup=setup, styles=STYLES)
+        self.check_page(
+            markup,
+            assertions,
+            scripts=['card-entrances'],
+            bootstrap='KimSite.initCardEntrances();',
+            setup=setup,
+            styles=STYLES,
+        )
 
     def test_order_stagger_idempotence_focus_and_single_entry(self):
         self.run_page("""
@@ -49,7 +56,8 @@ check(observers[0].targets.has(added) && observers.length === 1, 'Dynamic group 
 """)
 
     def test_reduced_motion_change_finishes_running_animation(self):
-        self.run_page("""
+        self.run_page(
+            """
 const a = document.querySelector('#a');
 observers[0].callback([{target:a,isIntersecting:true}]);
 check(a.classList.contains('is-entering'), 'Animation did not start');
@@ -58,15 +66,24 @@ check(!document.querySelector('.is-entering, .is-entry-ready'), 'Motion preferen
 const b = document.querySelector('#b');
 observers[0].callback([{target:b,isIntersecting:true}]);
 check(!b.classList.contains('is-entering'), 'Motion preference ignored');
-""", setup=OBSERVER + "window.preference = {matches:false, addEventListener:(name, callback)=>preference.changed=callback}; window.matchMedia=()=>preference;")
+""",
+            setup=OBSERVER
+            + 'window.preference = {matches:false, addEventListener:(name, callback)=>preference.changed=callback}; window.matchMedia=()=>preference;',
+        )
 
     def test_no_observer_or_reduced_motion_leaves_content_visible(self):
-        for setup in ['window.IntersectionObserver=undefined;', "window.matchMedia=()=>({matches:true});"]:
+        for setup in [
+            'window.IntersectionObserver=undefined;',
+            'window.matchMedia=()=>({matches:true});',
+        ]:
             with self.subTest(setup=setup):
-                self.run_page("""
+                self.run_page(
+                    """
 check(!document.querySelector('.is-entering'), 'Fallback started animation');
 check([...document.querySelectorAll('[data-entry-group] > *')].every(e => getComputedStyle(e).opacity === '1'), 'Fallback hides content');
-""", setup=setup)
+""",
+                    setup=setup,
+                )
 
     def test_real_observer_reveals_after_scroll(self):
         # Real compositor frames are needed: dump-dom's virtual clock can outrun IO.
@@ -105,6 +122,26 @@ window.runFrameChecks = async () => {
 """
         with tempfile.TemporaryDirectory(prefix='card-frames-') as folder:
             page = Path(folder) / 'test.html'
-            page.write_text('<!doctype html><meta charset="utf-8"><style>' + STYLES + '</style>' + markup + '<script>' + source + checks + '</script>', encoding='utf-8')
-            result = subprocess.run(['node', str(ROOT / 'tests/browser_frames.mjs'), page.as_uri(), str(Path(folder) / 'profile')], capture_output=True, text=True, timeout=25)
+            page.write_text(
+                '<!doctype html><meta charset="utf-8"><style>'
+                + STYLES
+                + '</style>'
+                + markup
+                + '<script>'
+                + source
+                + checks
+                + '</script>',
+                encoding='utf-8',
+            )
+            result = subprocess.run(
+                [
+                    'node',
+                    str(ROOT / 'tests/browser_frames.mjs'),
+                    page.as_uri(),
+                    str(Path(folder) / 'profile'),
+                ],
+                capture_output=True,
+                text=True,
+                timeout=25,
+            )
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)

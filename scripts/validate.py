@@ -1,4 +1,5 @@
 """Validate locally without credentials or edits to tracked source files."""
+
 import argparse
 import ast
 import os
@@ -28,8 +29,11 @@ def manual_content(page):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--browser', action='store_true', help='Require Chrome/Edge calendar regression tests')
+    parser.add_argument(
+        '--browser', action='store_true', help='Require Chrome/Edge calendar regression tests'
+    )
     args = parser.parse_args()
+    run(sys.executable, '-B', 'scripts/check_format.py')
     for directory in ('scripts', 'tests'):
         for path in sorted((ROOT / directory).rglob('*.py')):
             ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
@@ -40,10 +44,14 @@ def main():
         run(node, '--check', str(path))
     env = os.environ.copy()
     if args.browser:
-        candidates = [env.get('BROWSER_BIN'), shutil.which('google-chrome'), shutil.which('chromium'),
-                      shutil.which('chromium-browser'),
-                      r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
-                      r'C:\Program Files\Google\Chrome\Application\chrome.exe']
+        candidates = [
+            env.get('BROWSER_BIN'),
+            shutil.which('google-chrome'),
+            shutil.which('chromium'),
+            shutil.which('chromium-browser'),
+            r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
+            r'C:\Program Files\Google\Chrome\Application\chrome.exe',
+        ]
         browser = next((str(p) for p in candidates if p and Path(p).is_file()), None)
         if not browser:
             raise RuntimeError('Chrome/Edge not found. Set BROWSER_BIN to its executable path.')
@@ -52,7 +60,9 @@ def main():
     with tempfile.TemporaryDirectory(prefix='website-validation-') as folder:
         target = Path(folder)
         for directory in ('scripts', 'data', 'css', 'js', 'img'):
-            shutil.copytree(ROOT / directory, target / directory, ignore=shutil.ignore_patterns('__pycache__'))
+            shutil.copytree(
+                ROOT / directory, target / directory, ignore=shutil.ignore_patterns('__pycache__')
+            )
         for name in ('index.html', 'robots.txt', 'sitemap.xml', 'favicon.ico'):
             shutil.copy2(ROOT / name, target / name)
         source_paths = [target / 'index.html', *sorted((target / 'data').glob('*.json'))]

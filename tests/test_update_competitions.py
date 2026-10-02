@@ -1,4 +1,5 @@
 """IFBB refresh regressions with deterministic time and no network access."""
+
 from datetime import date, datetime, timezone
 import json
 from pathlib import Path
@@ -17,11 +18,17 @@ NOW = datetime(2026, 9, 30, tzinfo=timezone.utc)
 
 
 def event(key=90001):
-    return {'id': key, 'title': '2027 Test &amp; Pro',
-            'description': '<p>Men&#8217;s Classic Physique<br>Masters Classic Physique</p>',
-            'categories': [{'slug': 'professional'}], 'start_date': '2027-09-30 00:00:00',
-            'end_date': '2027-10-01 23:59:59', 'venue': {'city': 'Madrid'}, 'image': False,
-            'url': 'https://www.ifbbpro.com/competition/2027-test-pro/'}
+    return {
+        'id': key,
+        'title': '2027 Test &amp; Pro',
+        'description': '<p>Men&#8217;s Classic Physique<br>Masters Classic Physique</p>',
+        'categories': [{'slug': 'professional'}],
+        'start_date': '2027-09-30 00:00:00',
+        'end_date': '2027-10-01 23:59:59',
+        'venue': {'city': 'Madrid'},
+        'image': False,
+        'url': 'https://www.ifbbpro.com/competition/2027-test-pro/',
+    }
 
 
 def response(rows):
@@ -30,9 +37,14 @@ def response(rows):
 
 class CompetitionFetchTests(unittest.TestCase):
     def test_horizon_initial_and_yearly_rollover(self):
-        for day, expected in [('2026-09-30', '2027-10-01'), ('2026-10-01', '2027-10-01'),
-                              ('2027-09-30', '2027-10-01'), ('2027-10-01', '2028-10-01'),
-                              ('2028-02-29', '2028-10-01'), ('2028-10-01', '2029-10-01')]:
+        for day, expected in [
+            ('2026-09-30', '2027-10-01'),
+            ('2026-10-01', '2027-10-01'),
+            ('2027-09-30', '2027-10-01'),
+            ('2027-10-01', '2028-10-01'),
+            ('2028-02-29', '2028-10-01'),
+            ('2028-10-01', '2029-10-01'),
+        ]:
             with self.subTest(day=day):
                 self.assertEqual(updater.scope_end(date.fromisoformat(day)).isoformat(), expected)
 
@@ -42,10 +54,12 @@ class CompetitionFetchTests(unittest.TestCase):
         rows[1]['description'] = 'Bodybuilding only'
         rows[2]['title'] = 'Natural Masters Test'
         urls = []
+
         def fetch(url):
             urls.append(url)
             page = int(parse_qs(urlsplit(url).query)['page'][0])
-            return {'events': rows[(page-1)*50:page*50], 'total': 51, 'total_pages': 2}
+            return {'events': rows[(page - 1) * 50 : page * 50], 'total': 51, 'total_pages': 2}
+
         selected, total = updater.fetch_events(date(2027, 10, 1), fetch)
         self.assertEqual((len(selected), total, len(urls)), (49, 51, 2))
         self.assertEqual(selected[0]['name'], 'Natural Masters Test')
@@ -56,8 +70,12 @@ class CompetitionFetchTests(unittest.TestCase):
         self.assertEqual(parse_qs(urlsplit(urls[0]).query)['end_date'], ['2027-10-01'])
 
     def test_reject_empty_partial_duplicate_or_changing_pages(self):
-        cases = [response([]), {'events': [event()], 'total': 2, 'total_pages': 1},
-                 response([event(), event()]), {'events': [event()], 'total': 1, 'total_pages': 2}]
+        cases = [
+            response([]),
+            {'events': [event()], 'total': 2, 'total_pages': 1},
+            response([event(), event()]),
+            {'events': [event()], 'total': 1, 'total_pages': 2},
+        ]
         for payload in cases:
             with self.subTest(payload=payload), self.assertRaises(ValueError):
                 updater.fetch_events(date(2027, 10, 1), lambda url: payload)
@@ -67,19 +85,30 @@ class CompetitionFetchTests(unittest.TestCase):
             updater.fetch_events(date(2027, 10, 1), unittest.mock.Mock(side_effect=[first, second]))
 
     def test_reject_invalid_event_and_outside_scope(self):
-        for field, value in [('id', True), ('categories', None), ('description', None),
-                             ('start_date', '2027-02-30 00:00:00'), ('start_date', '2028-01-01 00:00:00'),
-                             ('venue', 'invalid')]:
-            row = event(); row[field] = value
+        for field, value in [
+            ('id', True),
+            ('categories', None),
+            ('description', None),
+            ('start_date', '2027-02-30 00:00:00'),
+            ('start_date', '2028-01-01 00:00:00'),
+            ('venue', 'invalid'),
+        ]:
+            row = event()
+            row[field] = value
             with self.subTest(field=field, value=value), self.assertRaises(ValueError):
                 updater.fetch_events(date(2027, 10, 1), lambda url: response([row]))
 
     def test_network_retries_are_bounded(self):
-        with patch.object(updater, 'urlopen', side_effect=URLError('offline')) as request, patch.object(updater.time, 'sleep'):
+        with (
+            patch.object(updater, 'urlopen', side_effect=URLError('offline')) as request,
+            patch.object(updater.time, 'sleep'),
+        ):
             with self.assertRaises(RuntimeError):
                 updater.request_json(updater.API)
             self.assertEqual(request.call_count, 3)
-        with patch.object(updater, 'urlopen', side_effect=HTTPError(updater.API, 404, 'missing', {}, None)) as request:
+        with patch.object(
+            updater, 'urlopen', side_effect=HTTPError(updater.API, 404, 'missing', {}, None)
+        ) as request:
             with self.assertRaises(RuntimeError):
                 updater.request_json(updater.API)
             self.assertEqual(request.call_count, 1)
@@ -110,20 +139,31 @@ class CompetitionRefreshTests(unittest.TestCase):
 
     def test_dry_run_does_not_write(self):
         updater.refresh(self.root, NOW, lambda url: response([event()]), dry_run=True)
-        self.assertEqual((self.root / 'data/competitions.json').read_bytes(), self.before['competitions.json'])
+        self.assertEqual(
+            (self.root / 'data/competitions.json').read_bytes(), self.before['competitions.json']
+        )
 
     def test_invalid_candidate_and_network_failure_preserve_snapshot(self):
-        row = event(); row['url'] = 'https://example.com/competition/wrong/'
-        for fetch in [lambda url: response([row]), unittest.mock.Mock(side_effect=RuntimeError('offline'))]:
+        row = event()
+        row['url'] = 'https://example.com/competition/wrong/'
+        for fetch in [
+            lambda url: response([row]),
+            unittest.mock.Mock(side_effect=RuntimeError('offline')),
+        ]:
             with self.assertRaises((ValueError, RuntimeError)):
                 updater.refresh(self.root, NOW, fetch)
-            self.assertEqual((self.root / 'data/competitions.json').read_bytes(), self.before['competitions.json'])
+            self.assertEqual(
+                (self.root / 'data/competitions.json').read_bytes(),
+                self.before['competitions.json'],
+            )
 
     def test_write_failure_preserves_snapshot(self):
         with patch('scripts.snapshot_write.os.replace', side_effect=OSError('disk failure')):
             with self.assertRaises(OSError):
                 updater.refresh(self.root, NOW, lambda url: response([event()]))
-        self.assertEqual((self.root / 'data/competitions.json').read_bytes(), self.before['competitions.json'])
+        self.assertEqual(
+            (self.root / 'data/competitions.json').read_bytes(), self.before['competitions.json']
+        )
 
     def test_metadata_rejects_unknown_retained_ids(self):
         snapshot, _ = updater.refresh(self.root, NOW, lambda url: response([event()]), dry_run=True)

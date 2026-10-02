@@ -17,7 +17,10 @@ class DataValidationTests(unittest.TestCase):
         self.root = Path(temporary.name)
         (self.root / 'data').mkdir()
         (self.root / 'img/calendar').mkdir(parents=True)
-        self.snapshots = {path.name: json.loads(path.read_text(encoding='utf-8')) for path in (ROOT / 'data').glob('*.json')}
+        self.snapshots = {
+            path.name: json.loads(path.read_text(encoding='utf-8'))
+            for path in (ROOT / 'data').glob('*.json')
+        }
         for logo in self.snapshots['competition-logos.json'].values():
             (self.root / logo).write_bytes(b'fixture')
         self.write()
@@ -58,7 +61,10 @@ class DataValidationTests(unittest.TestCase):
             validate_data(self.root)
 
     def test_orphan_status_and_logo(self):
-        for filename, value in [('competition-participation.json', {'status': 'pending'}), ('competition-logos.json', 'img/calendar/logo.png')]:
+        for filename, value in [
+            ('competition-participation.json', {'status': 'pending'}),
+            ('competition-logos.json', 'img/calendar/logo.png'),
+        ]:
             with self.subTest(filename=filename):
                 self.snapshots[filename]['999999'] = value
                 self.write()
@@ -85,12 +91,18 @@ class DataValidationTests(unittest.TestCase):
             (lambda: posts[1].update(id=posts[0]['id']), 'duplicate ID'),
             (lambda: posts[0].update(timestamp='2026-09-30T00:00:00'), 'timezone'),
             (lambda: posts[0].update(access_token='test-private'), 'unexpected public field'),
-            (lambda: posts[0].update(media_url='https://cdninstagram.com.evil.test/a.jpg'), 'preview host'),
+            (
+                lambda: posts[0].update(media_url='https://cdninstagram.com.evil.test/a.jpg'),
+                'preview host',
+            ),
         ]:
             posts[:] = copy.deepcopy(original)
             mutation()
             self.write()
-            with self.subTest(error=error), self.assertRaisesRegex(ValueError, 'instagram.json.*' + error):
+            with (
+                self.subTest(error=error),
+                self.assertRaisesRegex(ValueError, 'instagram.json.*' + error),
+            ):
                 validate_data(self.root)
         posts[:] = original
         self.snapshots['youtube.json']['videos'].pop()
@@ -101,7 +113,9 @@ class DataValidationTests(unittest.TestCase):
     def test_duplicate_json_keys_are_not_silently_overwritten(self):
         path = self.root / 'data/competition-participation.json'
         path.write_text('{"123": {}, "123": {}}')
-        with self.assertRaisesRegex(ValueError, 'competition-participation.json.*duplicate JSON key'):
+        with self.assertRaisesRegex(
+            ValueError, 'competition-participation.json.*duplicate JSON key'
+        ):
             read_json(path)
 
     def test_nonfinite_json_numbers_are_rejected(self):

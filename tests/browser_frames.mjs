@@ -3,7 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawn} from 'node:child_process';
 import {once} from 'node:events';
-const [url, profile] = process.argv.slice(2);
+const [url, profile, entry = 'runFrameChecks', width = '390', cpu = '1'] = process.argv.slice(2);
+if (!/^[A-Za-z_$][\w$]*$/.test(entry)) throw new Error('Invalid entry function');
 const child = spawn(process.env.BROWSER_BIN, ['--headless', '--disable-gpu', '--no-first-run', '--disable-extensions', '--disable-background-networking', '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], {windowsHide: true, stdio: 'ignore'});
 const exited = once(child, 'exit');
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -40,13 +41,20 @@ try {
         else pending.resolve(message.result);
     };
     await call('Page.enable');
-    await call('Emulation.setDeviceMetricsOverride', {width: 390, height: 900, deviceScaleFactor: 1, mobile: false});
+    await call('Emulation.setDeviceMetricsOverride', {width: Number(width), height: 900, deviceScaleFactor: 1, mobile: false});
+    if (entry !== 'runFrameChecks') {
+        await call('Network.enable');
+        await call('Network.setBlockedURLs', {urls: ['http://*', 'https://*']});
+        await call('Emulation.setCPUThrottlingRate', {rate: Number(cpu)});
+    }
     await call('Page.navigate', {url});
     for (let i = 0; i < 100; i++) {
-        if (await evaluate("document.readyState === 'complete' && typeof runFrameChecks === 'function'")) break;
+        if (await evaluate(`document.readyState === 'complete' && typeof ${entry} === 'function'`)) break;
         await sleep(50);
     }
-    if (await evaluate('runFrameChecks()') !== true) throw new Error('Frame checks did not pass');
+    const result = await evaluate(`${entry}()`);
+    if (entry === 'runFrameChecks' && result !== true) throw new Error('Frame checks did not pass');
+    if (entry !== 'runFrameChecks') console.log(JSON.stringify(result));
 } finally {
     if (ws?.readyState === WebSocket.OPEN) {
         await call('Browser.close').catch(() => {});

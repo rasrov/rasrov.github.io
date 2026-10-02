@@ -64,3 +64,5 @@ Referencia de movimiento: [Material Design, duración y curvas](https://m1.mater
 Desplazamiento libre: hero.js observa el scroll de forma pasiva para actualizar la portada, sin interceptar la rueda ni aplicar bloqueos temporales. Se conserva el ajuste nativo a secciones mediante scroll-snap en escritorio; sigue desactivado hasta 900 px o con puntero táctil. Las entradas de tarjetas se mantienen independientes del desplazamiento.
 
 Ajuste de scroll: Sobre Kim queda excluido de los puntos de scroll-snap para evitar que los movimientos cortos vuelvan a anclar la página en esa sección. Las demás secciones mantienen sus puntos de ajuste, sin scroll-snap-stop obligatorio. El enlace #sobre-kim continúa funcionando.
+
+Perfil del calendario y alcance de la optimización de medición de tarjetas: [AUD-33](calendar-performance.md). La medición en teléfono real sigue pendiente.

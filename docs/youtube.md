@@ -2,36 +2,31 @@
 
 La web muestra seis publicaciones públicas recientes del canal Kim Angel, ordenadas por fecha. La API consulta los uploads sin filtrar por duración: admite vídeos y Shorts. No se etiqueta un vídeo como Short basándose solo en su duración.
 
-Se excluyen privados, no insertables, publicaciones futuras y directos en emisión. Los seis iniciales proceden del feed público real; su disponibilidad no se ha comprobado aún mediante la API.
+Se excluyen privados, no insertables, publicaciones futuras y directos en emisión. La selección inicial procedía del feed público; posteriormente el usuario confirmó el funcionamiento de la API y la automatización. Esto no certifica la disponibilidad actual de cada vídeo ni sustituye la comprobación de reproducción publicada pendiente en el [TODO general](../TODO.md).
 
-## Activación (una sola vez)
+## Credencial para una instalación nueva o su renovación
 
 1. En https://console.cloud.google.com/ crea o selecciona un proyecto y activa YouTube Data API v3.
 2. En APIs y servicios → Credenciales crea una clave de API. Restringe su uso a YouTube Data API v3. Se utiliza desde GitHub Actions: no uses restricciones por referente HTTP de una web.
 3. En el repositorio: Settings → Secrets and variables → Actions → New repository secret. Crea YOUTUBE_API_KEY con esa clave. No la incluyas en archivos ni la envíes por el chat.
-4. Sube los cambios a main, incluido .github/workflows/pages.yml.
-5. En Settings → Pages → Build and deployment → Source, cambia Deploy from a branch por GitHub Actions.
-6. En Actions → Publish website and refresh YouTube → Run workflow, ejecuta el flujo y comprueba que build y deploy terminan correctamente.
 
-Mantén la publicación actual hasta tener preparada la clave y el workflow. Esta tarea no ha cambiado la configuración remota.
+La activación de Pages y la ejecución del workflow compartido se describen una sola vez en [Publicación y secretos](../README.md#publicación-y-secretos). Su nombre actual es **Publish website and refresh social feeds**. La configuración anterior ya fue confirmada; no es una nueva tarea pendiente de activación de YouTube.
 
 ## Funcionamiento
 
-- Cada push a main, manualmente y cada seis horas (00:23, 06:23, 12:23 y 18:23 UTC). GitHub puede retrasar ejecuciones programadas.
-- En repositorios públicos GitHub puede desactivar el horario tras 60 días sin actividad; revisar Actions si deja de actualizarse.
-- Genera HTML estático y data/youtube.json durante el despliegue. No crea commits: la instantánea local puede ser anterior a la publicada. Cada despliegue consulta YouTube de nuevo.
+- Disparadores y horario en la [tabla de workflows](../README.md#publicación-y-secretos); los PR solo validan. Revisar los registros de Actions si no se actualiza la selección.
+- Genera HTML estático y data/youtube.json durante el despliegue. No crea commits: la instantánea local puede ser anterior a la publicada. Cada ejecución del job build de Pages consulta YouTube de nuevo.
 - Consulta hasta cuatro páginas de uploads, de 50 elementos, cuando necesita saltar contenido no disponible para obtener seis.
 - Los iframes conservan youtube-nocookie, carga diferida y referrerpolicy. Cada tarjeta enlaza también a YouTube por si existen restricciones regionales o del reproductor.
 - Si falta la clave, falla la API o no hay seis resultados válidos, el job falla antes de publicar y la web anterior permanece disponible. Revisar Actions.
-- El paquete público incluye index, css, js, img, data, robots, sitemap, verificación Google y CNAME si existe; excluye scripts, tests y credenciales.
-- Utiliza deploy-pages: los commits realizados con GITHUB_TOKEN no disparan por sí solos la publicación clásica de Pages.
+- Construcción y contenido público documentados en [README](../README.md#construcción-offline).
 - No requiere acceso a la cuenta del atleta.
 
 ## Desarrollo local
 
-Python 3.12 o posterior, sin dependencias:
+El actualizador utiliza la biblioteca estándar de Python 3.12 o posterior. La validación completa requiere las dependencias indicadas en el [README](../README.md#validación-antes-de-publicar). Para probar únicamente este módulo y regenerar desde datos guardados:
 
-    python -m unittest discover -s tests -v
+    python -B -m unittest discover -s tests -p test_update_youtube.py -v
     python scripts/update_youtube.py --from-cache
 
 Para consultar la API, proporciona YOUTUBE_API_KEY mediante el entorno y ejecuta sin --from-cache. Nunca guardes la clave en el repositorio.

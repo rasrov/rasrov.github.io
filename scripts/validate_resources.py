@@ -1,4 +1,5 @@
 """Check public HTML/CSS/static JS paths, the image inventory and sitemap offline."""
+
 from html.parser import HTMLParser
 from pathlib import Path
 import re
@@ -68,10 +69,21 @@ def validate_resources(root=ROOT):
         document.feed(path.read_text(encoding='utf-8'))
         documents[path] = document
     index = documents.get(root / 'index.html')
-    require(index is not None and len(index.canonicals) == 1, 'index.html.canonical', 'expected one canonical URL')
+    require(
+        index is not None and len(index.canonicals) == 1,
+        'index.html.canonical',
+        'expected one canonical URL',
+    )
     canonical = urlsplit(index.canonicals[0])
-    require(canonical.scheme == 'https' and bool(canonical.netloc) and canonical.path == '/' and not canonical.query and not canonical.fragment,
-            'index.html.canonical', 'expected an HTTPS site-root URL')
+    require(
+        canonical.scheme == 'https'
+        and bool(canonical.netloc)
+        and canonical.path == '/'
+        and not canonical.query
+        and not canonical.fragment,
+        'index.html.canonical',
+        'expected an HTTPS site-root URL',
+    )
     origin = canonical.netloc
 
     def reference(value, source, location, page_url=False):
@@ -84,8 +96,11 @@ def validate_resources(root=ROOT):
         path = url.path or ('/' if url.netloc else Path(source).name)
         target = local_file(root, path, source, location)
         if url.fragment and target.suffix.lower() == '.html':
-            require(target in documents and unquote(url.fragment) in documents[target].ids,
-                    location, f'missing HTML fragment {url.fragment!r}')
+            require(
+                target in documents and unquote(url.fragment) in documents[target].ids,
+                location,
+                f'missing HTML fragment {url.fragment!r}',
+            )
 
     for path, document in documents.items():
         for value, location in document.references:
@@ -99,7 +114,9 @@ def validate_resources(root=ROOT):
             if not value.startswith('#'):
                 reference(value, name, name + '.url')
     for path in sorted((root / 'js').rglob('*.js')):
-        for value in re.findall(r"['\"]((?:img|css|js)/[^'\"]+)['\"]", path.read_text(encoding='utf-8')):
+        for value in re.findall(
+            r"['\"]((?:img|css|js)/[^'\"]+)['\"]", path.read_text(encoding='utf-8')
+        ):
             reference(value, 'index.html', path.relative_to(root).as_posix() + '.static-path')
     manifest_path = root / 'img/image-manifest.json'
     manifest = read_json(manifest_path)
@@ -107,11 +124,19 @@ def validate_resources(root=ROOT):
     variants_seen = set()
     for original, entry in manifest.items():
         loc = f'img/image-manifest.json[{original}]'
-        require(isinstance(entry, dict) and isinstance(entry.get('variants'), list), loc, 'expected dimensions and variants array')
+        require(
+            isinstance(entry, dict) and isinstance(entry.get('variants'), list),
+            loc,
+            'expected dimensions and variants array',
+        )
         records = [(original, entry)]
         for number, variant in enumerate(entry['variants']):
             vloc = f'{loc}.variants[{number}]'
-            require(isinstance(variant, dict) and isinstance(variant.get('src'), str), vloc, 'expected a variant with src')
+            require(
+                isinstance(variant, dict) and isinstance(variant.get('src'), str),
+                vloc,
+                'expected a variant with src',
+            )
             require(variant['src'] not in variants_seen, vloc + '.src', 'duplicate variant path')
             variants_seen.add(variant['src'])
             records.append((variant['src'], variant))
@@ -120,8 +145,16 @@ def validate_resources(root=ROOT):
             require(value.startswith('img/'), mloc, 'expected an img/ path')
             asset = local_file(root, value, 'index.html', mloc)
             for field in ('width', 'height', 'bytes'):
-                require(type(metadata.get(field)) is int and metadata[field] > 0, mloc + '.' + field, 'expected a positive integer')
-            require(asset.stat().st_size == metadata['bytes'], mloc + '.bytes', 'file size differs from inventory')
+                require(
+                    type(metadata.get(field)) is int and metadata[field] > 0,
+                    mloc + '.' + field,
+                    'expected a positive integer',
+                )
+            require(
+                asset.stat().st_size == metadata['bytes'],
+                mloc + '.bytes',
+                'file size differs from inventory',
+            )
     try:
         sitemap = ET.parse(root / 'sitemap.xml').getroot()
     except (ET.ParseError, OSError):
@@ -135,13 +168,21 @@ def validate_resources(root=ROOT):
     for number, page in enumerate(pages):
         loc = f'sitemap.xml.url[{number}]'
         value = page.findtext(namespace + 'loc', '')
-        require(urlsplit(value).scheme == 'https' and bool(urlsplit(value).netloc), loc, 'expected absolute HTTPS URL')
+        require(
+            urlsplit(value).scheme == 'https' and bool(urlsplit(value).netloc),
+            loc,
+            'expected absolute HTTPS URL',
+        )
         require(value not in seen, loc, 'duplicate page URL')
         seen.add(value)
         reference(value, 'index.html', loc, page_url=True)
         for image in page.findall(image_namespace + 'image'):
             value = image.findtext(image_namespace + 'loc', '')
-            require(urlsplit(value).scheme == 'https' and bool(urlsplit(value).netloc), loc + '.image', 'expected absolute HTTPS image URL')
+            require(
+                urlsplit(value).scheme == 'https' and bool(urlsplit(value).netloc),
+                loc + '.image',
+                'expected absolute HTTPS image URL',
+            )
             reference(value, 'index.html', loc + '.image')
     return len(documents)
 

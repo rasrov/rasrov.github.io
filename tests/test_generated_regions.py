@@ -5,7 +5,9 @@ from scripts.generated_regions import replace_region
 
 class GeneratedRegionTests(unittest.TestCase):
     def test_exact_surroundings_and_idempotence(self):
-        page = 'before\r\n<!-- youtube:generated:start -->old<!-- youtube:generated:end -->\r\nafter'
+        page = (
+            'before\r\n<!-- youtube:generated:start -->old<!-- youtube:generated:end -->\r\nafter'
+        )
         result = replace_region(page, 'youtube', 'new\n')
         self.assertEqual(result, page.replace('old', 'new\n'))
         self.assertEqual(replace_region(result, 'youtube', 'new\n'), result)
@@ -19,7 +21,9 @@ class GeneratedRegionTests(unittest.TestCase):
                     replace_region(page, name, 'new')
 
     def test_other_regions_are_preserved(self):
-        page = ''.join(f'<!-- {name}:generated:start -->{name}<!-- {name}:generated:end -->'
-                       for name in ('youtube', 'instagram', 'calendar'))
+        page = ''.join(
+            f'<!-- {name}:generated:start -->{name}<!-- {name}:generated:end -->'
+            for name in ('youtube', 'instagram', 'calendar')
+        )
         result = replace_region(page, 'instagram', 'replacement')
         self.assertEqual(result, page.replace('-->instagram<!--', '-->replacement<!--'))

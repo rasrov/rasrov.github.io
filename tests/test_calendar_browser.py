@@ -1,4 +1,5 @@
 """Real-browser regressions. Run validate.py --browser to require these tests."""
+
 import os
 from pathlib import Path
 import subprocess
@@ -19,11 +20,15 @@ def card(key, start, end):
         <h3>Event {key}</h3></article>'''
 
 
-@unittest.skipUnless(BROWSER, 'Use python scripts/validate.py --browser for Chrome/Edge regressions')
+@unittest.skipUnless(
+    BROWSER, 'Use python scripts/validate.py --browser for Chrome/Edge regressions'
+)
 class CalendarBrowserTests(unittest.TestCase):
     def check_page(self, markup, assertions, scripts=None, bootstrap=None, setup='', styles=''):
         scripts = ['navigation-controls', 'calendar'] if scripts is None else scripts
-        source = '\n'.join((ROOT / 'js' / (name + '.js')).read_text(encoding='utf-8') for name in scripts)
+        source = '\n'.join(
+            (ROOT / 'js' / (name + '.js')).read_text(encoding='utf-8') for name in scripts
+        )
         if bootstrap is None:
             bootstrap = 'window.KimSite.initCalendar();'
         source += '\n' + bootstrap
@@ -31,12 +36,15 @@ class CalendarBrowserTests(unittest.TestCase):
         page += "<script>window.testErrors = []; addEventListener('error', e => testErrors.push(e.message));</script>"
         page += '<style>' + styles + '</style><script>' + setup + '</script>'
         page += '<script>' + source + '</script>'
-        page += """<script>
+        page += (
+            """<script>
 function check(condition, message) { if (!condition) throw new Error(message); }
 (async () => {
 try {
     check(testErrors.length === 0, testErrors.join('; '));
-""" + assertions + """
+"""
+            + assertions
+            + """
     check(testErrors.length === 0, testErrors.join('; '));
     document.body.dataset.tests = 'passed';
 } catch (error) {
@@ -45,23 +53,84 @@ try {
  }
 })();
 </script></body></html>"""
+        )
         with tempfile.TemporaryDirectory(prefix='calendar-browser-') as folder:
             file = Path(folder) / 'test.html'
             file.write_text(page, encoding='utf-8')
-            result = subprocess.run([
-                BROWSER, '--headless', '--disable-gpu', '--no-first-run', '--no-default-browser-check',
-                '--disable-background-networking', '--disable-extensions',
-                '--user-data-dir=' + str(Path(folder) / 'profile'),
-                '--dump-dom', '--virtual-time-budget=3000', '--timeout=10000', file.as_uri(),
-            ], capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=30)
+            result = subprocess.run(
+                [
+                    BROWSER,
+                    '--headless',
+                    '--disable-gpu',
+                    '--no-first-run',
+                    '--no-default-browser-check',
+                    '--disable-background-networking',
+                    '--disable-extensions',
+                    '--user-data-dir=' + str(Path(folder) / 'profile'),
+                    '--dump-dom',
+                    '--virtual-time-budget=3000',
+                    '--timeout=10000',
+                    file.as_uri(),
+                ],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
+                errors='replace',
+                timeout=30,
+            )
             self.assertEqual(result.returncode, 0, result.stderr[-1500:])
             self.assertTrue('data-tests="passed"' in result.stdout, result.stdout[-2500:])
 
+    def test_agenda_height_includes_hidden_pages_and_updates_on_resize(self):
+        markup = ''.join(card(i, '2026-09-26', '2026-09-26') for i in range(5))
+        markup = markup.replace(
+            '<h3>Event 4</h3>', '<h3>' + 'Long competition title ' * 30 + '</h3>'
+        )
+        self.check_page(
+            SHELL.format(events=markup),
+            """
+const list = document.querySelector('.calendar-event-list');
+const agenda = document.querySelector('.calendar-agenda');
+function naturalMax() {
+    let maximum = 0;
+    for (const event of list.children) {
+        const clone = event.cloneNode(true);
+        clone.hidden = false;
+        clone.style.cssText = `position:absolute;width:${list.getBoundingClientRect().width}px;height:auto;min-height:0`;
+        agenda.append(clone);
+        maximum = Math.max(maximum, clone.getBoundingClientRect().height);
+        clone.remove();
+    }
+    return Math.ceil(maximum);
+}
+const firstHeight = Number.parseFloat(list.style.getPropertyValue('--agenda-card-height'));
+check(firstHeight === naturalMax(), 'Hidden page height was not included');
+check(agenda.querySelectorAll('.calendar-event').length === 5, 'Measurement clones leaked');
+document.querySelector('.calendar-pagination button:last-child').click();
+check(Number.parseFloat(list.style.getPropertyValue('--agenda-card-height')) === firstHeight, 'Paging changed height');
+list.style.width = '180px';
+window.dispatchEvent(new Event('resize'));
+const narrowHeight = Number.parseFloat(list.style.getPropertyValue('--agenda-card-height'));
+check(narrowHeight === naturalMax() && narrowHeight > firstHeight, 'Resize did not remeasure text');
+check(agenda.querySelectorAll('.calendar-event').length === 5, 'Resize clones leaked');
+document.querySelector('#calendar-next').click();
+check(list.style.minHeight === '0px', 'Empty month retained agenda height');
+""",
+            setup='window.ResizeObserver = undefined;',
+            styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8')
+            + '\n.calendar-event-list {width: 400px}',
+        )
+
     def test_absent_section(self):
-        self.check_page('<p>Page without calendar</p>', "check(!document.querySelector('.calendar-event-list'), 'Unexpected initialization');")
+        self.check_page(
+            '<p>Page without calendar</p>',
+            "check(!document.querySelector('.calendar-event-list'), 'Unexpected initialization');",
+        )
 
     def test_empty_calendar_can_change_month(self):
-        self.check_page(SHELL.format(events=''), """
+        self.check_page(
+            SHELL.format(events=''),
+            """
 KimSite.initCalendar();
 check(document.querySelectorAll('.calendar-event-list').length === 1, 'Duplicate calendar initialization');
 check(!document.querySelector('.calendar-empty').hidden, 'Empty message missing');
@@ -72,11 +141,18 @@ document.querySelector('#calendar-next').click();
 check(document.querySelector('#calendar-month').textContent !== initial, 'Next month failed');
 document.querySelector('#calendar-prev').click();
 check(document.querySelector('#calendar-month').textContent === initial, 'Previous month failed');
-""")
+""",
+        )
 
     def test_multiday_labels_popup_and_selection(self):
-        events = card(1, '2026-09-24', '2026-09-27') + card(2, '2026-09-26', '2026-09-26') + card(3, '2026-08-31', '2026-09-01')
-        self.check_page(SHELL.format(events=events), """
+        events = (
+            card(1, '2026-09-24', '2026-09-27')
+            + card(2, '2026-09-26', '2026-09-26')
+            + card(3, '2026-08-31', '2026-09-01')
+        )
+        self.check_page(
+            SHELL.format(events=events),
+            """
 const tiles = [...document.querySelectorAll('.calendar-days > button')];
 check(!document.querySelector('.calendar-days > button.is-empty'), 'Padding cell must not be focusable');
 const labels = tiles.map(tile => tile.getAttribute('aria-label'));
@@ -98,11 +174,14 @@ check(document.activeElement.id === 'competition-2', 'Selected event did not rec
 check(!document.activeElement.hidden, 'Selected event hidden');
 document.querySelector('#calendar-next').click();
 check(!document.querySelector('.calendar-empty').hidden, 'Empty next month missing');
-""")
+""",
+        )
 
     def test_popover_fallback_close_focus_and_selection(self):
         events = card(1, '2026-09-26', '2026-09-26') + card(2, '2026-09-26', '2026-09-26')
-        self.check_page(SHELL.format(events=events) + '<button id="outside">Outside</button>', """
+        self.check_page(
+            SHELL.format(events=events) + '<button id="outside">Outside</button>',
+            """
 const trigger = document.querySelector('.multiple-events');
 const popup = document.querySelector('#calendar-day-popup');
 check(popup.hidden, 'Fallback visible before opening');
@@ -120,11 +199,15 @@ check(popup.hidden && document.activeElement.id === 'competition-1', 'Fallback s
 trigger.click();
 popup.querySelector('.calendar-popup-header button').click();
 check(popup.hidden && document.activeElement === trigger, 'Close button focus failed');
-""", setup="HTMLElement.prototype.showPopover = undefined; HTMLElement.prototype.hidePopover = undefined; window.ResizeObserver = undefined;")
+""",
+            setup='HTMLElement.prototype.showPopover = undefined; HTMLElement.prototype.hidePopover = undefined; window.ResizeObserver = undefined;',
+        )
 
     def test_agenda_pagination_boundaries(self):
         events = ''.join(card(i, '2026-09-26', '2026-09-26') for i in range(5))
-        self.check_page(SHELL.format(events=events), """
+        self.check_page(
+            SHELL.format(events=events),
+            """
 const [previous, next] = document.querySelectorAll('.calendar-pagination button');
 const visible = () => [...document.querySelectorAll('.calendar-event')].filter(e => !e.hidden);
 check(visible().length === 3 && previous.getAttribute('aria-disabled') === 'true', 'First page invalid');
@@ -134,11 +217,19 @@ next.click();
 check(visible().length === 2 && document.activeElement === next, 'Boundary lost page/focus');
 previous.click();
 check(visible().length === 3, 'Previous page failed');
-""")
+""",
+        )
 
     def test_participation_uses_text_and_complete_accessible_labels(self):
-        events = ''.join(card(i, f'2026-09-{20+i}', f'2026-09-{20+i}').replace('data-status="pending"', f'data-status="{status}"') for i, status in enumerate(['pending', 'confirmed', 'absent']))
-        self.check_page(SHELL.format(events=events), """
+        events = ''.join(
+            card(i, f'2026-09-{20 + i}', f'2026-09-{20 + i}').replace(
+                'data-status="pending"', f'data-status="{status}"'
+            )
+            for i, status in enumerate(['pending', 'confirmed', 'absent'])
+        )
+        self.check_page(
+            SHELL.format(events=events),
+            """
 check(!document.querySelector('.calendar-legend, .calendar-status-symbol'), 'Unexpected legend or symbols');
 for (const [status, label] of [['pending','Pendiente'],['confirmed','Participa'],['absent','No participa']]) {
     const tile = document.querySelector('.calendar-days .' + status);
@@ -147,12 +238,16 @@ for (const [status, label] of [['pending','Pendiente'],['confirmed','Participa']
     const style = getComputedStyle(tile.querySelector('.calendar-status-label'));
     check(style.display !== 'none' && style.textTransform === 'uppercase' && parseFloat(style.letterSpacing) > 0, 'State text styling missing');
 }
-""", styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8'))
+""",
+            styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8'),
+        )
 
     def test_multiple_day_uses_first_event_logo_and_preserves_counter(self):
         first = card(1, '2026-09-26', '2026-09-26')
         second = card(2, '2026-09-26', '2026-09-26').replace('/%3E', '/%3E#second')
-        self.check_page(SHELL.format(events=first + second), """
+        self.check_page(
+            SHELL.format(events=first + second),
+            """
 const tile = document.querySelector('.multiple-events');
 const logo = tile.querySelector('img');
 check(logo.getAttribute('src') === document.querySelector('#competition-1').dataset.logo, 'First event logo not used');
@@ -164,23 +259,47 @@ logo.dispatchEvent(new Event('error'));
 check(!tile.querySelector('img') && tile.querySelector('span').textContent === '+2', 'Fallback failure lost count');
 tile.click();
 check(document.querySelectorAll('.calendar-popup-tiles .calendar-day').length === 2, 'Competition selector changed');
-""", styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8'))
+""",
+            styles=(ROOT / 'css/styles.css').read_text(encoding='utf-8'),
+        )
 
     def test_multiple_day_prefers_first_custom_logo_or_default(self):
         import re
+
         fallback = 'img/calendar/default-championship.png'
-        for logos, expected in [(['', 'own', 'own2'], 'own'), ([fallback, 'own', 'own2'], 'own'), (['', fallback, ''], fallback)]:
+        for logos, expected in [
+            (['', 'own', 'own2'], 'own'),
+            ([fallback, 'own', 'own2'], 'own'),
+            (['', fallback, ''], fallback),
+        ]:
             with self.subTest(logos=logos):
-                sources = [value if value in ('', fallback) else "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E#" + value for value in logos]
-                markup = ''.join(re.sub(r'data-logo="[^"]*"', 'data-logo="' + source + '"', card(i, '2026-09-26', '2026-09-26')) for i, source in enumerate(sources))
+                sources = [
+                    value
+                    if value in ('', fallback)
+                    else "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E#" + value
+                    for value in logos
+                ]
+                markup = ''.join(
+                    re.sub(
+                        r'data-logo="[^"]*"',
+                        'data-logo="' + source + '"',
+                        card(i, '2026-09-26', '2026-09-26'),
+                    )
+                    for i, source in enumerate(sources)
+                )
                 expected_src = fallback if expected == fallback else sources[1]
-                self.check_page(SHELL.format(events=markup), """
+                self.check_page(
+                    SHELL.format(events=markup),
+                    """
 const tile = document.querySelector('.multiple-events');
-check(tile.querySelector('img').getAttribute('src') === """ + repr(expected_src) + """, 'Wrong shared-day preview');
+check(tile.querySelector('img').getAttribute('src') === """
+                    + repr(expected_src)
+                    + """, 'Wrong shared-day preview');
 check(tile.querySelector('span').textContent === '+3', 'Count changed');
 tile.click();
 check(document.querySelectorAll('.calendar-popup-tiles .calendar-day').length === 3, 'Selector lost events');
-""")
+""",
+                )
 
 
 if __name__ == '__main__':

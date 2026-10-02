@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install format checker
+        run: python -m pip install -r requirements-dev.txt
       - name: Validate existing project
         run: python scripts/validate.py --browser
       - name: Refresh competitions from IFBB

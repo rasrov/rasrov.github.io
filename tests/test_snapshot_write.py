@@ -31,10 +31,12 @@ class SnapshotWriteTests(unittest.TestCase):
 
     def test_second_preparation_failure_leaves_originals(self):
         original = Path.write_bytes
+
         def fail(path, value):
             if path.name == '1.next':
                 raise OSError('full disk')
             return original(path, value)
+
         with patch.object(Path, 'write_bytes', fail), self.assertRaises(OSError):
             writer.write_outputs(self.root, self.outputs)
         self.assert_originals()
@@ -42,10 +44,12 @@ class SnapshotWriteTests(unittest.TestCase):
 
     def test_second_install_failure_restores_exact_bytes(self):
         original = writer.os.replace
+
         def fail(source, target):
             if Path(source).name == '1.next':
                 raise OSError('write denied')
             return original(source, target)
+
         with patch.object(writer.os, 'replace', fail), self.assertRaises(OSError):
             writer.write_outputs(self.root, self.outputs)
         self.assert_originals()
@@ -53,25 +57,34 @@ class SnapshotWriteTests(unittest.TestCase):
 
     def test_failed_restore_keeps_journal_and_blocks_retry(self):
         original = writer.os.replace
+
         def fail(source, target):
             if Path(source).name in ('1.next', '0.restore'):
                 raise OSError('disk unavailable')
             return original(source, target)
-        with patch.object(writer.os, 'replace', fail), self.assertRaises(writer.RecoveryRequiredError):
+
+        with (
+            patch.object(writer.os, 'replace', fail),
+            self.assertRaises(writer.RecoveryRequiredError),
+        ):
             writer.write_outputs(self.root, self.outputs)
         folder = self.root / '.snapshot-update'
         self.assertEqual((folder / '0.previous').read_bytes(), b'old-json\r\n')
-        self.assertEqual(json.loads((folder / 'recovery.json').read_text())[0]['path'], 'data/youtube.json')
+        self.assertEqual(
+            json.loads((folder / 'recovery.json').read_text())[0]['path'], 'data/youtube.json'
+        )
         with self.assertRaises(writer.RecoveryRequiredError):
             writer.write_outputs(self.root, self.outputs)
 
     def test_created_file_is_removed_on_rollback(self):
         self.cache.unlink()
         original = writer.os.replace
+
         def fail(source, target):
             if Path(source).name == '1.next':
                 raise OSError('write denied')
             return original(source, target)
+
         with patch.object(writer.os, 'replace', fail), self.assertRaises(OSError):
             writer.write_outputs(self.root, self.outputs)
         self.assertFalse(self.cache.exists())

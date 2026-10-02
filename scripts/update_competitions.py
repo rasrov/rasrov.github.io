@@ -1,4 +1,5 @@
 """Refresh the IFBB snapshot; preserve editorial decisions and missing historical events."""
+
 import argparse
 from datetime import date, datetime, timezone
 from html.parser import HTMLParser
@@ -48,8 +49,9 @@ def plain_text(value):
     parser = PlainText()
     parser.feed(value)
     parser.close()
-    return '\n'.join(line for part in ''.join(parser.parts).splitlines()
-                     if (line := ' '.join(part.split())))
+    return '\n'.join(
+        line for part in ''.join(parser.parts).splitlines() if (line := ' '.join(part.split()))
+    )
 
 
 def scope_end(today):
@@ -61,7 +63,9 @@ def scope_end(today):
 def request_json(url):
     for attempt in range(3):
         try:
-            request = Request(url, headers={'User-Agent': 'KimAngelWebsite/1.0', 'Accept': 'application/json'})
+            request = Request(
+                url, headers={'User-Agent': 'KimAngelWebsite/1.0', 'Accept': 'application/json'}
+            )
             with urlopen(request, timeout=30) as response:
                 raw = response.read(10_000_001)
             if len(raw) > 10_000_000:
@@ -82,7 +86,9 @@ def normalize_event(row):
     if not isinstance(row, dict) or type(row.get('id')) is not int or row['id'] <= 0:
         raise ValueError('Invalid IFBB event ID')
     categories = row.get('categories')
-    if not isinstance(categories, list) or any(not isinstance(c, dict) or not isinstance(c.get('slug'), str) for c in categories):
+    if not isinstance(categories, list) or any(
+        not isinstance(c, dict) or not isinstance(c.get('slug'), str) for c in categories
+    ):
         raise ValueError('Invalid IFBB categories')
     if not any(c['slug'] == 'professional' for c in categories):
         return None
@@ -103,24 +109,49 @@ def normalize_event(row):
     dates = []
     for field in ('start_date', 'end_date'):
         value = row.get(field)
-        if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}', value):
+        if not isinstance(value, str) or not re.fullmatch(
+            r'\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}', value
+        ):
             raise ValueError('Invalid IFBB event date')
         dates.append(datetime.strptime(value, '%Y-%m-%d %H:%M:%S').date().isoformat())
-    return {'id': row['id'], 'name': plain_text(row.get('title')), 'start': dates[0], 'end': dates[1],
-            'city': plain_text(venue.get('city', '')), 'country': plain_text(venue.get('country', '')),
-            'url': row.get('url'), 'description': description, 'image_url': image.get('url', '')}
+    return {
+        'id': row['id'],
+        'name': plain_text(row.get('title')),
+        'start': dates[0],
+        'end': dates[1],
+        'city': plain_text(venue.get('city', '')),
+        'country': plain_text(venue.get('country', '')),
+        'url': row.get('url'),
+        'description': description,
+        'image_url': image.get('url', ''),
+    }
 
 
 def fetch_events(end, fetch=request_json):
     rows, seen, totals = [], set(), None
     for page in range(1, MAX_PAGES + 1):
-        url = API + '?' + urlencode({'start_date': START.isoformat(), 'end_date': end.isoformat(),
-                                    'per_page': PAGE_SIZE, 'page': page})
+        url = (
+            API
+            + '?'
+            + urlencode(
+                {
+                    'start_date': START.isoformat(),
+                    'end_date': end.isoformat(),
+                    'per_page': PAGE_SIZE,
+                    'page': page,
+                }
+            )
+        )
         payload = fetch(url)
         if not isinstance(payload, dict):
             raise ValueError('Invalid IFBB response')
         total, pages = payload.get('total'), payload.get('total_pages')
-        if type(total) is not int or total <= 0 or type(pages) is not int or not 1 <= pages <= MAX_PAGES:
+        if (
+            type(total) is not int
+            or total <= 0
+            or type(pages) is not int
+            or not 1 <= pages <= MAX_PAGES
+        ):
             raise ValueError('Empty or invalid IFBB pagination; snapshot preserved')
         if pages != (total + PAGE_SIZE - 1) // PAGE_SIZE:
             raise ValueError('Inconsistent IFBB page count')
@@ -162,29 +193,55 @@ def refresh(root=ROOT, now=None, fetch=request_json, dry_run=False):
     incoming = {row['id']: row for row in events}
     retained = sorted(previous.keys() - incoming.keys())
     merged = previous | incoming
-    report = {'added': len(incoming.keys() - previous.keys()),
-              'updated': sum(previous[key] != incoming[key] for key in previous.keys() & incoming.keys()),
-              'retained_missing_ids': retained}
-    snapshot = {'checked_at': now.date().isoformat(),
-                'metadata': {'source': API, 'fetched_at': now.isoformat().replace('+00:00', 'Z'),
-                             'query_start': START.isoformat(), 'query_end': end.isoformat(),
-                             'fetched_total': fetched_count, 'retained_missing_ids': retained},
-                'events': sorted(merged.values(), key=lambda row: (row['start'], row['id']))}
+    report = {
+        'added': len(incoming.keys() - previous.keys()),
+        'updated': sum(previous[key] != incoming[key] for key in previous.keys() & incoming.keys()),
+        'retained_missing_ids': retained,
+    }
+    snapshot = {
+        'checked_at': now.date().isoformat(),
+        'metadata': {
+            'source': API,
+            'fetched_at': now.isoformat().replace('+00:00', 'Z'),
+            'query_start': START.isoformat(),
+            'query_end': end.isoformat(),
+            'fetched_total': fetched_count,
+            'retained_missing_ids': retained,
+        },
+        'events': sorted(merged.values(), key=lambda row: (row['start'], row['id'])),
+    }
     validate_data(root, competitions=snapshot)
     if not dry_run:
-        write_outputs(root, {'data/competitions.json': json.dumps(snapshot, ensure_ascii=False, indent=2) + '\n'})
+        write_outputs(
+            root,
+            {'data/competitions.json': json.dumps(snapshot, ensure_ascii=False, indent=2) + '\n'},
+        )
     return snapshot, report
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--dry-run', action='store_true', help='Fetch and validate without writing files')
+    parser.add_argument(
+        '--dry-run', action='store_true', help='Fetch and validate without writing files'
+    )
     args = parser.parse_args()
     snapshot, report = refresh(dry_run=args.dry_run)
     if report['retained_missing_ids']:
-        print(f"Warning: {len(report['retained_missing_ids'])} previous events absent from the eligible response were retained for review.")
-    print(json.dumps({'dry_run': args.dry_run, 'scope_end': snapshot['metadata']['query_end'],
-                      'events': len(snapshot['events']), **report}, ensure_ascii=False, indent=2))
+        print(
+            f'Warning: {len(report["retained_missing_ids"])} previous events absent from the eligible response were retained for review.'
+        )
+    print(
+        json.dumps(
+            {
+                'dry_run': args.dry_run,
+                'scope_end': snapshot['metadata']['query_end'],
+                'events': len(snapshot['events']),
+                **report,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+    )
 
 
 if __name__ == '__main__':

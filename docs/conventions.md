@@ -1,6 +1,6 @@
 # Convenciones del proyecto
 
-Estas reglas se aplican al código nuevo y a las partes que se modifiquen. Los nombres históricos de imágenes y las zonas de código pendientes de formato se migrarán en cambios separados para poder revisar las referencias y el comportamiento.
+Estas reglas se aplican al código nuevo y a las partes que se modifiquen. Los cambios de nombres y de formato se mantienen separados de los cambios funcionales para facilitar su revisión.
 
 ## Estructura y fuentes
 
@@ -8,7 +8,7 @@ Estas reglas se aplican al código nuevo y a las partes que se modifiquen. Los n
 - data/ contiene los snapshots y las decisiones editoriales. La participación y los logos se mantienen separados de los eventos importados.
 - scripts/ contiene comandos y utilidades Python importables. tests/ contiene sus regresiones; docs/ contiene las instrucciones y auditorías.
 - _site/ es una salida descartable, ignorada por Git. No editarla ni guardar archivos manuales en ella: cada construcción sustituye su contenido completo. Las carpetas .site-build-* son temporales de construcción.
-- El constructor offline lee las fuentes y genera _site/; los actualizadores de redes son los únicos comandos que consultan proveedores, cuando se ejecutan sin --from-cache. Sin --from-cache, los actualizadores reescriben JSON e index del checkout; con --from-cache, solo index. Usarlos intencionadamente y de forma secuencial.
+- El constructor offline lee las fuentes y genera _site/; los actualizadores de YouTube e Instagram consultan proveedores sin --from-cache; update_competitions.py consulta IFBB también en modo --dry-run (solo evita la escritura). Sin --from-cache, los actualizadores reescriben JSON e index del checkout; con --from-cache, solo index. Usarlos intencionadamente y de forma secuencial.
 
 ## Nombres e idioma
 
@@ -24,13 +24,27 @@ Estas reglas se aplican al código nuevo y a las partes que se modifiquen. Los n
 
 Código y comentarios técnicos en inglés; interfaz y documentación de uso en español. Conservar los campos de APIs externas tal como los define el proveedor. No renombrar anclas públicas, URLs de imágenes o claves JSON sin actualizar y validar todos sus consumidores.
 
-Los nombres antiguos con guiones bajos, años abreviados o erratas se mantienen hasta la migración de AUD-15. Los módulos de prueba históricos test_youtube.py y test_instagram.py conservan sus nombres hasta AUD-18.
+Las imágenes usan kebab-case, nombres descriptivos y años de cuatro cifras. Las rutas anteriores a AUD-15 se conservan en el artefacto mediante `img/image-aliases.json`; el código nuevo debe utilizar únicamente las rutas canónicas. No eliminar estos alias sin revisar los posibles enlaces externos. Las pruebas de actualizadores siguen el nombre del módulo: `test_update_youtube.py`, `test_update_instagram.py` y `test_update_competitions.py`; el renderizador usa `test_render_calendar.py`.
 
 ## Formato
 
 UTF-8, LF y nueva línea final. Cuatro espacios para Python, JavaScript, HTML y CSS; dos para JSON y YAML. .editorconfig guía al editor y .gitattributes fija los finales de línea de los archivos de texto. No normalizar todo el repositorio ni mezclar un reformateo masivo con cambios funcionales.
 
-Preferir bloques multilínea a varias sentencias comprimidas. No introducir una dependencia de formato o un framework para resolver un cambio pequeño. La adopción de comprobaciones automáticas de formato y la normalización del legado siguen en AUD-17.
+Preferir bloques multilínea a varias sentencias comprimidas. AUD-17 incorpora Ruff 0.14.0, fijado en requirements-dev.txt y pyproject.toml: Python usa cuatro espacios, comillas simples y una longitud objetivo de 100 columnas. No se habilitan correcciones automáticas de lint ni cambios de lógica.
+
+`check_format.py` comprueba UTF-8 sin BOM, LF, nueva línea final (salvo archivos vacíos), ausencia de tabuladores de indentación y espacios finales. Markdown conserva los espacios finales porque pueden representar saltos de línea. El modo de comprobación no escribe; `--fix` normaliza texto y ejecuta el formateador de Python. Una codificación inválida o tabuladores requieren corrección manual.
+
+El alcance incluye los archivos de texto públicos, documentación, configuración, scripts, pruebas y workflows. Se excluyen imágenes binarias, `_site/`, cachés, dependencias y archivos locales como `.env`. HTML generado, SVG, XML, PowerShell, CSS, JavaScript y JSON conservan su disposición interna: se aplican las reglas de texto, sin un segundo formateador estructural. La indentación por lenguaje sigue definida en .editorconfig; el control automático de indentación exacta se aplica a Python mediante Ruff.
+
+```sh
+python -m pip install -r requirements-dev.txt
+python scripts/check_format.py
+python scripts/check_format.py --fix
+```
+
+`validate.py` ejecuta este control antes de las pruebas; los workflows de publicación, IFBB y optimización manual instalan la misma versión. La instalación requiere acceso al índice de paquetes; las comprobaciones posteriores son locales. No depende de `core.autocrlf`: .gitattributes fija LF en el checkout y .editorconfig orienta al editor. No ejecutar `git add --renormalize` para validar: modifica el índice; basta con el comprobador.
+
+Documentación del formateador: [Ruff formatter](https://docs.astral.sh/ruff/formatter/).
 
 ## Generación y validación
 
@@ -39,6 +53,7 @@ Usar generated_regions.replace_region para reemplazar regiones HTML. La función
 Ejecutar desde la raíz:
 
 ```sh
+python -m pip install -r requirements-dev.txt
 python scripts/validate.py --browser
 python scripts/build.py
 python -m http.server 8081 --bind 127.0.0.1 --directory _site

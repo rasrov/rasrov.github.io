@@ -1,13 +1,16 @@
 """Build a public _site/ from local snapshots without changing source files."""
+
 from pathlib import Path
 import shutil
 import tempfile
 
 if __package__:
+    from .image_aliases import materialize_image_aliases
     from . import render_calendar, update_instagram, update_youtube
     from .validate_data import validate_data
     from .validate_resources import validate_resources
 else:
+    from image_aliases import materialize_image_aliases
     from validate_data import validate_data
     from validate_resources import validate_resources
     import render_calendar
@@ -28,9 +31,12 @@ def render_page(root):
     page = (root / 'index.html').read_text(encoding='utf-8')
     page = update_youtube.replace_cards(page, read('youtube.json')['videos'])
     page = update_instagram.replace_posts(page, read('instagram.json')['posts'])
-    calendar = render_calendar.render(read('competitions.json')['events'],
-                                      read('competition-participation.json'),
-                                      read('competition-logos.json'), root=root)
+    calendar = render_calendar.render(
+        read('competitions.json')['events'],
+        read('competition-participation.json'),
+        read('competition-logos.json'),
+        root=root,
+    )
     return render_calendar.replace_calendar(page, calendar)
 
 
@@ -38,7 +44,9 @@ def build(root=ROOT):
     root = Path(root).resolve()
     output = root / '_site'
     if (root / '.snapshot-update').exists():
-        raise ValueError('Snapshot update active or interrupted; inspect .snapshot-update before building')
+        raise ValueError(
+            'Snapshot update active or interrupted; inspect .snapshot-update before building'
+        )
     if output.is_symlink() or output.is_junction() or (output.exists() and not output.is_dir()):
         raise ValueError('_site must be an ordinary build directory')
     page = render_page(root)
@@ -60,6 +68,7 @@ def build(root=ROOT):
             shutil.copy2(root / 'CNAME', public / 'CNAME')
         (public / 'index.html').write_text(page, encoding='utf-8', newline='\n')
         (public / '.nojekyll').touch()
+        materialize_image_aliases(public)
         validate_resources(public)
         if output.exists():
             output.rename(backup)

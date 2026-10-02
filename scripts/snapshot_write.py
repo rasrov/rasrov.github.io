@@ -1,4 +1,5 @@
 """Stage related outputs and restore their original bytes on write failure."""
+
 import json
 import os
 from pathlib import Path
@@ -9,12 +10,25 @@ class RecoveryRequiredError(RuntimeError):
     pass
 
 
-def write_outputs(root, outputs):
+def write_outputs(root, outputs, *, image_assets=False):
     root = Path(root).resolve()
     allowed = {'index.html', 'data/youtube.json', 'data/instagram.json', 'data/competitions.json'}
+    if image_assets:
+        allowed |= {'img/image-manifest.json', 'data/competition-logos.json'}
     targets = []
     for name, content in outputs.items():
-        if name not in allowed or not isinstance(content, str):
+        asset = Path(name)
+        generated_image = (
+            image_assets
+            and asset.as_posix() == name
+            and asset.parts[:1] == ('img',)
+            and 'optimized' in asset.parts
+            and asset.suffix == '.webp'
+            and '..' not in asset.parts
+        )
+        if (name not in allowed and not generated_image) or not isinstance(
+            content, (str, bytes) if image_assets else str
+        ):
             raise ValueError('Unexpected snapshot output')
         path = root / name
         if path.is_symlink() or not path.resolve().is_relative_to(root):
@@ -26,7 +40,9 @@ def write_outputs(root, outputs):
     try:
         staging.mkdir()
     except FileExistsError:
-        raise RecoveryRequiredError(f'Update already active or interrupted. Inspect {staging} before retrying.') from None
+        raise RecoveryRequiredError(
+            f'Update already active or interrupted. Inspect {staging} before retrying.'
+        ) from None
     installed = []
     cleanup = False
     try:
@@ -36,10 +52,11 @@ def write_outputs(root, outputs):
             if path.exists():
                 backup.write_bytes(path.read_bytes())
             prepared = staging / f'{number}.next'
-            prepared.write_bytes(content.encode('utf-8'))
+            prepared.write_bytes(content.encode('utf-8') if isinstance(content, str) else content)
             records.append({'path': name, 'existed': path.exists(), 'backup': backup.name})
         (staging / 'recovery.json').write_text(json.dumps(records, indent=2), encoding='utf-8')
         for number, (_, path, _) in enumerate(targets):
+            path.parent.mkdir(parents=True, exist_ok=True)
             os.replace(staging / f'{number}.next', path)
             installed.append(number)
         cleanup = True
@@ -59,7 +76,9 @@ def write_outputs(root, outputs):
             except OSError:
                 failures.append(number)
         if failures:
-            raise RecoveryRequiredError(f'Automatic restoration failed. Recover original files using {staging}/recovery.json.') from original
+            raise RecoveryRequiredError(
+                f'Automatic restoration failed. Recover original files using {staging}/recovery.json.'
+            ) from original
         cleanup = True
         raise
     finally:

@@ -12,7 +12,10 @@ class SnapshotInfoTests(unittest.TestCase):
     def test_comparison_ignores_json_formatting(self):
         with tempfile.TemporaryDirectory() as folder, redirect_stdout(io.StringIO()):
             path = Path(folder) / 'youtube.json'
-            snapshot = {'metadata': {'source': 'youtube-data-api', 'fetched_at': '2026-09-30T00:00:00Z'}, 'videos': []}
+            snapshot = {
+                'metadata': {'source': 'youtube-data-api', 'fetched_at': '2026-09-30T00:00:00Z'},
+                'videos': [],
+            }
             path.write_text(json.dumps(snapshot, indent=2))
             first = describe(path, 'youtube-data-api')
             path.write_text(json.dumps(snapshot, sort_keys=True))

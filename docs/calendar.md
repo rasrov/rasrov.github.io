@@ -39,7 +39,7 @@ El job valida el proyecto, consulta IFBB, construye y valida el artefacto actual
 
 El commit realizado con GITHUB_TOKEN no dispara automáticamente el workflow de publicación por push. Los nuevos datos se incorporarán en la siguiente ejecución programada del workflow de Pages existente (cada seis horas), si sus validaciones y consultas de redes terminan correctamente. También puede lanzarse ese workflow manualmente. Referencia: [comportamiento de GITHUB_TOKEN](https://docs.github.com/en/actions/concepts/security/github_token).
 
-Para activar la programación, estos cambios deben estar en la rama predeterminada de GitHub y Actions habilitado. Preparar los archivos localmente no activa el cron. Queda pendiente la primera ejecución real del workflow; la consulta completa y el importador sí se han probado localmente.
+Para activar la programación, estos cambios deben estar en la rama predeterminada de GitHub y Actions habilitado. Preparar los archivos localmente no activa el cron. La consulta completa y el importador se han probado localmente; la confirmación de activación y primera ejecución remota se gestiona en el [TODO general](../TODO.md).
 
 ## Logos y participación manuales
 
